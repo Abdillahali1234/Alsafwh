@@ -1,8 +1,9 @@
 import MainLayout from "@layouts/MainLayout";
-import ErrorPage from "@pages/error/ErrorPage";
+// import ErrorPage from "@pages/error/ErrorPage";
 import HomePage from "@pages/Home/HomePage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
+import ErrorPage from "./../pages/error/ErrorPage";
+import { MantineProvider } from "@mantine/core";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -19,5 +20,7 @@ export default function AppRouter() {
     },
   ]);
 
-  return <RouterProvider router={router}></RouterProvider>;
+  return <MantineProvider>
+    <RouterProvider router={router}></RouterProvider>
+  </MantineProvider>;
 }

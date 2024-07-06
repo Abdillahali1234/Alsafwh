@@ -1,0 +1,135 @@
+.header {
+  height: rem(60px);
+  /* padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md); */
+  /* border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4)); */
+  direction: rtl;
+ 
+}
+
+
+
+.link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgb(34,139,230);
+    transition: width 0.4s ease;
+}
+
+.link:hover::before {
+    width: 100%;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-weight: 500;
+  /* font-size: var(--mantine-font-size-sm); */
+  font-size: 22px;
+  font-weight: 400;
+  position: relative;
+  @media (max-width: "48em") {
+    height: rem(42px);
+    width: 100%;
+  }
+}
+
+.subLink {
+  width: 100%;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+
+  @mixin hover {
+    background-color: light-dark(
+      var(--mantine-color-gray-0),
+      var(--mantine-color-dark-7)
+    );
+  }
+}
+
+.dropdownFooter {
+  background-color: light-dark(
+    var(--mantine-color-gray-0),
+    var(--mantine-color-dark-7)
+  );
+  margin: calc(var(--mantine-spacing-md) * -1);
+  margin-top: var(--mantine-spacing-sm);
+  padding: var(--mantine-spacing-md) calc(var(--mantine-spacing-md) * 2);
+  padding-bottom: var(--mantine-spacing-xl);
+  border-top: rem(1px) solid
+    light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
+}
+
+.decorationLight {
+  /* direction: rtl; */
+  /* box-shadow: 1px 2px 20px 0px #cff4ffbd; */
+  border-bottom: rem(1px) solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    position:fixed;
+    z-index: 10000;
+    background-color: rgb(255,255,255);
+}
+
+.decorationDark {
+  /* direction: rtl; */
+  /* box-shadow: 1px 2px 20px 0px #cff4ffbd; */
+  border-bottom: rem(1px) solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    position:fixed;
+    z-index: 10000;
+    background-color: rgb(36,36,36);
+}
+
+.itemHeader {
+  gap: 3rem;
+  margin-left: -75px;
+  text-align: center;
+}
+
+.reponsHeader {
+  justify-content: space-evenly;
+}
+
+@media (max-width: 992px) {
+  .reponsHeader {
+    justify-content: space-around;
+  }
+}
+
+
+
+
+.icon {
+  width: rem(22px);
+  height: rem(22px);
+}
+
+.dark {
+  @mixin dark {
+    display: none;
+  }
+
+  
+  @mixin light {
+    display: block;
+    
+  }
+}
+
+.light {
+  @mixin light {
+    display: none;
+  }
+
+
+  @mixin dark {
+    display: block;
+  }
+}
