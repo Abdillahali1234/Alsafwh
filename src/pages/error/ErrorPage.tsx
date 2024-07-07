@@ -6,7 +6,7 @@ import {
   Button,
   SimpleGrid,
 } from "@mantine/core";
-import image from "@assets/image.11cd6c19.svg";
+import image from "@assets/404 Error-pana.svg";
 import imageTwo from "@assets/image.11cd6c19.svg";
 
 import classes from "./ErrorPage.module.css";

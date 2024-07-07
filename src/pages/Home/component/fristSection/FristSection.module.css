@@ -3,11 +3,9 @@
     margin-top:60px;
 }
 
-
-
 .image {
-  width: 700px;
-  height: 700px;
+  width: 650px;
+  height: 650px;
 }
 
 .font {
@@ -34,6 +32,14 @@
 }
 .gap {
   gap: 35px;
+}
+
+
+@media (max-width: 1250px) {
+  .image {
+    width: 500px;
+    height: 500px;
+  }
 }
 
 @media (max-width: 1111px) {

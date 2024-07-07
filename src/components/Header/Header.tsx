@@ -89,6 +89,9 @@ export default function Header() {
                   wrapper: {
                     width: "58%",
                   },
+                  dropdown:{
+                    zIndex:10000
+                  }
                 }}
                 data={["العربية", "English"]}
                 defaultValue={"العربية"}
