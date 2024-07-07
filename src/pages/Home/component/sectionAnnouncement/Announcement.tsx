@@ -7,12 +7,18 @@ export default function Announcement() {
       <Box mx={0} className={classes.containerUp}>
         <Box c={"white"} className={classes.popup}>
           <Text fz={30} mb={30}>
-            انت <span style={{color:"#003EDD"}}>المستقبل</span> , ونحن السبيل!
+            انت <span style={{ color: "#003EDD" }}>المستقبل</span> , ونحن
+            السبيل!
           </Text>
-          <Text fz={15} fw={400} mb={40}>تابع تقدمك في اي وقت</Text>
-          <Link to={"/"} className={classes.btnSubscribe}>اشترك الان</Link>
+          <Text fz={15} fw={400} mb={40}>
+            تابع تقدمك في اي وقت
+          </Text>
+          <Link to={"/"} className={classes.btnSubscribe}>
+            اشترك الان
+          </Link>
           <Text mt={40} mb={30} fz={16}>
-            يمكنك الحصول علي <span style={{color:"#003EDD"}}>العروض و الخصومات</span>
+            يمكنك الحصول علي{" "}
+            <span style={{ color: "#003EDD" }}>العروض و الخصومات</span>
           </Text>
         </Box>
       </Box>

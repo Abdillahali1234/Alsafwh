@@ -10,12 +10,11 @@ import secondPersone from "@assets/Alsafwa/Retrato Corporativo _ Foto para Linke
 import secondPersoneOne from "@assets/Alsafwa/Group therapy-bro.png";
 import { Box, Container, Text } from "@mantine/core";
 import {
-  IconArrowNarrowLeft,
   IconClock,
   IconPointFilled,
   IconUser,
 } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import Button from "@shared/Button/Button";
 export default function NewCourses() {
   // const computedColorScheme = useComputedColorScheme("light", {
   //   getInitialValueInEffect: true,
@@ -27,8 +26,7 @@ export default function NewCourses() {
         <Text mt={150} fz={30} fw={700} mr={50} mb={70}>
           أحدث{" "}
           <span
-            style={{ color: "#003EDD", fontSize: "35px", fontWeight: "bold" }}
-          >
+            style={{ color: "#003EDD", fontSize: "35px", fontWeight: "bold" }}>
             الكورسات
           </span>{" "}
           إضافة{" "}
@@ -41,8 +39,7 @@ export default function NewCourses() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }}>
         <Container>
           <Box className={classes.styleAllCard}>
             <Box className={classes.styleCard}>
@@ -81,12 +78,10 @@ export default function NewCourses() {
                   pt={5}
                   pl={10}
                   display={"flex"}
-                  style={{ justifyContent: "space-between" }}
-                >
+                  style={{ justifyContent: "space-between" }}>
                   <Box
                     display={"flex"}
-                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}
-                  >
+                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}>
                     <IconPointFilled
                       stroke={2.0}
                       style={{ width: "25px", height: "27px" }}
@@ -147,12 +142,10 @@ export default function NewCourses() {
                   pl={10}
                   pt={5}
                   display={"flex"}
-                  style={{ justifyContent: "space-between" }}
-                >
+                  style={{ justifyContent: "space-between" }}>
                   <Box
                     display={"flex"}
-                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}
-                  >
+                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}>
                     <IconPointFilled
                       stroke={2.0}
                       style={{ width: "25px", height: "27px" }}
@@ -213,12 +206,10 @@ export default function NewCourses() {
                   pl={10}
                   pt={5}
                   display={"flex"}
-                  style={{ justifyContent: "space-between" }}
-                >
+                  style={{ justifyContent: "space-between" }}>
                   <Box
                     display={"flex"}
-                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}
-                  >
+                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}>
                     <IconPointFilled
                       stroke={2.0}
                       style={{ width: "25px", height: "27px" }}
@@ -279,12 +270,10 @@ export default function NewCourses() {
                   pl={10}
                   pt={5}
                   display={"flex"}
-                  style={{ justifyContent: "space-between" }}
-                >
+                  style={{ justifyContent: "space-between" }}>
                   <Box
                     display={"flex"}
-                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}
-                  >
+                    style={{ color: "rgb(37,202,133)", alignItems: "start" }}>
                     <IconPointFilled
                       stroke={2.0}
                       style={{ width: "25px", height: "27px" }}
@@ -305,12 +294,7 @@ export default function NewCourses() {
           </Box>
         </Container>
       </Box>
-      <Box mb={100} display={"flex"} style={{ justifyContent: "center" }}>
-        <Link to={"/"} className={classes.btnAllCourses}>
-          جميع الكورسات
-          <IconArrowNarrowLeft />
-        </Link>
-      </Box>
+      <Button route="/all-courses" text="جميع الكورسات" />
     </>
   );
 }

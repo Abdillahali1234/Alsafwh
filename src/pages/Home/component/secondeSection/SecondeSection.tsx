@@ -3,6 +3,7 @@ import imageOne from "@assets/Alsafwa/second-section-one.png";
 import imageTwo from "@assets/Alsafwa/Premium Vector _ Online business training 3d isometric vector concept.png";
 import imageThree from "@assets/Alsafwa/second-section-three.png";
 import classes from "./SecondeSection.module.css";
+import TitleSection from "@shared/titlesction/TitleSection";
 export default function SecondeSection() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
@@ -10,32 +11,14 @@ export default function SecondeSection() {
 
   return (
     <>
-      <Box
-        className={
-          computedColorScheme == "light"
-            ? classes.styleBackLight
-            : classes.styleBackDark
-        }
-      >
-        <Text
-          fz={30}
-          className={
-            computedColorScheme == "light"
-              ? classes.titleLight
-              : classes.titleDark
-          }
-        >
-          ما تُميز المنصة
-        </Text>
-      </Box>
+      <TitleSection title="ما تُميز المنصة" />
       <Box
         mb={100}
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }}>
         <Container mx={0} p={0}>
           <Box className={classes.styleAllCard}>
             <Box
@@ -43,8 +26,7 @@ export default function SecondeSection() {
                 computedColorScheme == "light"
                   ? classes.styleCardLight
                   : classes.styleCardDark
-              }
-            >
+              }>
               <Box className={classes.positionImage}>
                 <img src={imageOne} width={"150px"} height={"150px"} />
               </Box>
@@ -59,8 +41,7 @@ export default function SecondeSection() {
                       ? classes.descLight
                       : classes.desckDark
                   }
-                  fz={11}
-                >
+                  fz={11}>
                   قاعدة بيانات تحتوى على امتحانات سابقة مرتبة حسب السنوات
                   والمواد بالإضافة الى حلول نموذجية
                 </Text>
@@ -72,8 +53,7 @@ export default function SecondeSection() {
                 computedColorScheme == "light"
                   ? classes.styleCardLight
                   : classes.styleCardDark
-              }
-            >
+              }>
               <Box className={classes.positionImage}>
                 <img src={imageTwo} width={"150px"} height={"150px"} />
               </Box>
@@ -88,8 +68,7 @@ export default function SecondeSection() {
                       ? classes.descLight
                       : classes.desckDark
                   }
-                  fz={11}
-                >
+                  fz={11}>
                   فيديوهات تعليمية عالية الجودة تشمل جميع مواد الثانوية العامة
                   وإمكانية الوصول الى المحتوى فى أى وقت وأى مكان
                 </Text>
@@ -101,8 +80,7 @@ export default function SecondeSection() {
                 computedColorScheme == "light"
                   ? classes.styleCardLight
                   : classes.styleCardDark
-              }
-            >
+              }>
               <Box className={classes.positionImage}>
                 <img src={imageThree} width={"150px"} height={"150px"} />
               </Box>
@@ -117,8 +95,7 @@ export default function SecondeSection() {
                       ? classes.descLight
                       : classes.desckDark
                   }
-                  fz={11}
-                >
+                  fz={11}>
                   نظام أمنى قوى لحماية بيانات الطالب والمحتوى التعليمى وسياسة
                   خصوصية تضمن سرية المعلومات{" "}
                 </Text>
@@ -130,8 +107,7 @@ export default function SecondeSection() {
                 computedColorScheme == "light"
                   ? classes.styleCardLight
                   : classes.styleCardDark
-              }
-            >
+              }>
               <Box className={classes.positionImage}>
                 <img src={imageThree} width={"150px"} height={"150px"} />
               </Box>
@@ -146,8 +122,7 @@ export default function SecondeSection() {
                       ? classes.descLight
                       : classes.desckDark
                   }
-                  fz={11}
-                >
+                  fz={11}>
                   نظام دعم فنى لمساعدة الطلاب فى حل اي مشكلات تقنية جلسات
                   تفاعلية مع المعلمين للإجابة على الأسئلةوالاستفسارات{" "}
                 </Text>

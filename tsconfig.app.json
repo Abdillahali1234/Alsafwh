@@ -25,7 +25,7 @@
       "@store/*": ["src/store/*"],
       "@styles/*": ["src/styles/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@util/*": ["src/utilities/*"],
+      "@utilities/*": ["src/utilities/*"],
       "@images/*": ["src/images/*"],
       "@helmets/*":["src/helmets/*"],
       "@schemas/*":["src/schemas/*"],

@@ -5,12 +5,13 @@ import imageEnglish from "@assets/Alsafwa/English teacher-bro.png";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 
 import {
-  IconArrowNarrowLeft,
+
   IconCertificate,
   IconPlus,
   IconSchool,
 } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import Button from "@shared/Button/Button";
+
 export default function Status() {
   return (
     <Box mb={100} mt={200}>
@@ -26,8 +27,7 @@ export default function Status() {
             mr={50}
             mt={50}
             display={"flex"}
-            style={{ gap: "2rem", flexWrap: "wrap" }}
-          >
+            style={{ gap: "2rem", flexWrap: "wrap" }}>
             <Box display={"flex"} style={{ alignItems: "start" }}>
               <IconSchool
                 style={{
@@ -101,12 +101,7 @@ export default function Status() {
             </Box>
           </Box>
 
-          <Box className={classes.containerBtn}>
-            <Link to={"/"} className={classes.btnAllCourses}>
-              جميع المواد
-              <IconArrowNarrowLeft />
-            </Link>
-          </Box>
+          <Button route="/subjects" text="جميع المواد" />
         </Box>
 
         <Box className={classes.cards}>
@@ -115,8 +110,7 @@ export default function Status() {
               ta={"center"}
               w={"250px"}
               h={"150px"}
-              className={classes.styleFirstCard}
-            >
+              className={classes.styleFirstCard}>
               <Text>الكيمياء سحر العِلم</Text>
               <img src={image} width={"150px"} height={"110px"} />
             </Box>
@@ -125,8 +119,7 @@ export default function Status() {
               ta={"center"}
               w={"250px"}
               h={"150px"}
-              className={classes.styleSecondCard}
-            >
+              className={classes.styleSecondCard}>
               <Text>الإنجليزية توسع الآفاق</Text>
               <img src={imageEnglish} width={"150px"} height={"110px"} />
             </Box>
@@ -137,8 +130,7 @@ export default function Status() {
               ta={"center"}
               w={"250px"}
               h={"150px"}
-              className={classes.styleThreeCard}
-            >
+              className={classes.styleThreeCard}>
               <Text>الرياضيات عقل الحياة</Text>
               <img src={image} width={"150px"} height={"110px"} />
             </Box>
@@ -147,8 +139,7 @@ export default function Status() {
               ta={"center"}
               w={"250px"}
               h={"150px"}
-              className={classes.styleFourCard}
-            >
+              className={classes.styleFourCard}>
               <Text>الفيزياء أساس الكون</Text>
               <img src={image} width={"150px"} height={"110px"} />
             </Box>

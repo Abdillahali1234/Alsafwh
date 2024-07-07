@@ -1,25 +1,31 @@
-// import { useForm } from "@mantine/form";
-// import { NumberInput, TextInput, Button } from "@mantine/core";
-
 import Courses from "./component/courses/Courses";
+import FeedBack from "./component/feedbacks/FeedBack";
 import FristSection from "./component/fristSection/FristSection";
 import NewCourses from "./component/newCourses/NewCourses";
 import SecondeSection from "./component/secondeSection/SecondeSection";
 import Announcement from "./component/sectionAnnouncement/Announcement";
 import Status from "./component/status/Status";
-
+import { motion } from "framer-motion";
+import Subscription from "./component/subscription/Subscription";
+import HomeHelmet from "@helmets/HomeHelmet";
 
 export default function Home() {
-  
-
   return (
-    <>
-      <FristSection/>
-      <SecondeSection/>
-      <NewCourses/>
-      <Announcement/>
-      <Courses/>
-      <Status/>
-    </>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
+      <HomeHelmet />
+      <FristSection />
+      <SecondeSection />
+      <NewCourses />
+      <Announcement />
+      <Courses />
+      <Status />
+      {/* <Teachers /> */}
+      <FeedBack />
+
+      <Subscription />
+    </motion.div>
   );
 }
