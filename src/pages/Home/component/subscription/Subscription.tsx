@@ -1,23 +1,26 @@
 import SubscriptionCard from "@shared/subscriptioncard/SubscriptionCard";
-import styles from "./Subscription.module.css";
+// import styles from "./Subscription.module.css";
 import TitleSection from "@shared/titlesction/TitleSection";
+// import { classes } from '@pages/Home/component/courses/Courses.module.css';
+import classes from "./Subscription.module.css";
+import { Box } from "@mantine/core";
 
-const { parent, centerCard } = styles;
+// const { centerCard } = styles;
 export default function Subscription() {
   return (
-    <div>
+    <Box mb={100}>
       <TitleSection title="الاشتراكات" />
-      <div className={parent}>
+      <Box className={classes.parent}>
         <div style={{ height: "600px" }}>
           <SubscriptionCard />
         </div>
-        <div className={centerCard}>
+        <div className={classes.centerCard}>
           <SubscriptionCard />
         </div>
         <div style={{ height: "600px" }}>
           <SubscriptionCard />
         </div>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

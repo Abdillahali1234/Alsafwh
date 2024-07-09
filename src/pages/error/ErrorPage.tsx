@@ -5,6 +5,7 @@ import {
   Text,
   Button,
   SimpleGrid,
+  Box,
 } from "@mantine/core";
 import image from "@assets/404 Error-pana.svg";
 import imageTwo from "@assets/404 Error-pana.svg";
@@ -19,6 +20,8 @@ export default function ErrorPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
+        <Box display={"grid"} style={{justifyContent:"center"}}>
+
       <Container className={classes.root}>
         <SimpleGrid spacing={{ base: 40, sm: 80 }} cols={{ base: 1, sm: 2 }}>
           <Image src={image} className={classes.mobileImage} />
@@ -46,6 +49,8 @@ export default function ErrorPage() {
           <Image src={imageTwo} className={classes.desktopImage} />
         </SimpleGrid>
       </Container>
+
+        </Box>
     </motion.div>
   );
 }

@@ -11,7 +11,10 @@ export default function SecondeSection() {
 
   return (
     <>
-      <TitleSection title="ما تُميز المنصة" />
+    <Box mb={50}>
+
+      <TitleSection  title="ما تُميز المنصة" />
+    </Box>
       <Box
         mb={100}
         style={{

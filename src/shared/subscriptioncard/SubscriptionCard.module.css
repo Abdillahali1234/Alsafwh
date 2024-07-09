@@ -63,3 +63,14 @@
   color: #00bfff; /* Blue icon color */
   font-size: 1.2em;
 }
+
+
+@media (max-width:450px) {
+  .card {
+    
+    width: 350px;
+  
+  }
+  
+  
+}

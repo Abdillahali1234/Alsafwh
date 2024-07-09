@@ -5,6 +5,7 @@ import person from "@assets/Alsafwa/girl.png";
 import { useState } from "react";
 import Button from "@shared/Button/Button";
 
+
 const { parentDiv } = styles;
 
 export default function FeedBack() {
@@ -53,7 +54,7 @@ export default function FeedBack() {
   return (
     <>
       {" "}
-      <div>
+      <div style={{marginTop:"200px"}}>
         <TitleSection title="آراء عن المنصة" />
         <Container className={parentDiv}>
           <div className={styles.mapContainer}>
@@ -116,7 +117,7 @@ export default function FeedBack() {
           
         </Container>
       </div>
-      <Button route="/feedbacks" text="جميع الاراء" />
+      <Button  route="/feedbacks" text="جميع الاراء" />
     </>
   );
 }

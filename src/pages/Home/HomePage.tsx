@@ -8,6 +8,8 @@ import Status from "./component/status/Status";
 import { motion } from "framer-motion";
 import Subscription from "./component/subscription/Subscription";
 import HomeHelmet from "@helmets/HomeHelmet";
+import Teachers from "./component/teachers/Teachers";
+import { Box } from "@mantine/core";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
+        <Box  display={"grid"} style={{justifyContent:"center"}}>
+
       <HomeHelmet />
       <FristSection />
       <SecondeSection />
@@ -22,10 +26,11 @@ export default function Home() {
       <Announcement />
       <Courses />
       <Status />
-      {/* <Teachers /> */}
+      <Teachers />
       <FeedBack />
 
       <Subscription />
+        </Box>
     </motion.div>
   );
 }

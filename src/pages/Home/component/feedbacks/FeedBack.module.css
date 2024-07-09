@@ -5,8 +5,9 @@
 
 .mapContainer {
   position: relative;
-  background: url("./../../../../assets/Alsafwa/word.png"),
-    linear-gradient(rgba(208, 208, 208, 0.2), #ffffff);
+  /* background: url("./../../../../assets/Alsafwa/word-removebg-preview.png"),
+    linear-gradient(rgba(208, 208, 208, 0.2), #ffffff); */
+    background-image: url("../../../../assets/Alsafwa/word-removebg-preview.png");
 
   background-repeat: no-repeat;
   background-position: top;
@@ -54,6 +55,7 @@
   align-items: center;
 }
 
+
 .cardText {
   font-size: 16px;
   color: #333;
@@ -81,6 +83,7 @@
   font-size: 18px;
   font-weight: bold;
   margin: 0;
+  color: black;
 }
 
 .cardProfileRole {
@@ -147,4 +150,15 @@
 .handler {
   height: 340px;
   width: 100%;
+}
+
+
+@media (max-width:550px) {
+
+  .cardContainer {
+     margin-bottom: -80px; 
+  }
+  .parentDiv{
+    margin-bottom: 150px;
+  }
 }
