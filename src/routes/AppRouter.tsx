@@ -11,6 +11,7 @@ import AboutUs from "@pages/aboutUs/AboutUs";
 import SingleCourse from "@pages/singleCourse/SingleCourse";
 import AllTeacher from "@pages/allTeacher/AllTeacher";
 import StudentPage from "./../pages/studentPage/StudentPage";
+import AllCourses from "@pages/allcourses/AllCourses";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -28,20 +29,24 @@ export default function AppRouter() {
           element: <AllTeacher />,
         },
         {
-          path:"/signin-user",
-          element:<SigninUser/>
+          path: "/signin",
+          element: <SigninUser />,
         },
         {
-          path:"/login-user",
-          element:<LoginUser/>
+          path: "/login",
+          element: <LoginUser />,
         },
         {
-          path:"/about-us",
-          element:<AboutUs/>
+          path: "/about-us",
+          element: <AboutUs />,
         },
         {
-          path:"/single-course",
-          element:<SingleCourse/>
+          path: "/single-course",
+          element: <SingleCourse />,
+        },
+        {
+          path: "/all-courses",
+          element: <AllCourses />,
         },
         {
           path:"/student-page",

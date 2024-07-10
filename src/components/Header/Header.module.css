@@ -1,8 +1,6 @@
 .header {
   height: rem(70px);
-  /* padding-left: var(--mantine-spacing-md);
-    padding-right: var(--mantine-s acing-md); */
-  /* border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4)); */
+
   direction: rtl;
 }
 
@@ -27,7 +25,6 @@
   height: 100%;
   text-decoration: none;
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-  /* font-size: var(--mantine-font-size-sm); */
   font-size: 18px;
   font-weight: 400;
   position: relative;
@@ -64,8 +61,7 @@
 }
 
 .decorationLight {
-  /* direction: rtl; */
-  /* box-shadow: 1px 2px 20px 0px #cff4ffbd; */
+
   border-bottom: rem(1px) solid
     light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   position: fixed;
@@ -75,13 +71,13 @@
 }
 
 .decorationDark {
-  /* direction: rtl; */
-  /* box-shadow: 1px 2px 20px 0px #cff4ffbd; */
+
   border-bottom: rem(1px) solid
     light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   position: fixed;
   z-index: 1000;
   background-color: rgb(36, 36, 36);
+    padding: 0 !important;
 }
 
 .itemHeader {

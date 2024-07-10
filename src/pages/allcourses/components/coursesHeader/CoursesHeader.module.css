@@ -1,0 +1,89 @@
+.header {
+  background-image: url(/src/assets/Alsafwa/virtual-classroom-study-space.jpg);
+  background-repeat: no-repeat;
+  width: 731px;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  margin: 30px auto;
+  position: relative;
+}
+
+.InfoSection {
+  background-color: rgba(0, 0, 0, 0.417);
+  width: 47%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.InfoSection > h2 {
+  font-weight: 500;
+}
+
+.styleButton {
+  padding: 6px 10px;
+  margin: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #4090ff;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+/* background: #4090ff; */
+.styleButton > a {
+  text-decoration: none;
+  color: #4090ff;
+  transition: all 0.2s ease-in-out;
+}
+.styleButton:hover {
+  background-color: #4090ff;
+}
+.styleButton:hover a {
+  color: white;
+}
+
+.SearchStyle {
+  position: absolute;
+  bottom: -33px;
+  padding: 0 10px;
+  width: 100%;
+  z-index: 30;
+}
+
+@media (max-width: 810px) {
+  .header {
+    width: 600px;
+  }
+}
+@media (max-width: 570px) {
+  .header {
+    max-width: 450px;
+    margin-bottom: 100px;
+  }
+  .SearchStyle {
+    bottom: -30%;
+    padding: 0 10px;
+  }
+  .InfoSection {
+    width: 70%;
+    height: 60%;
+  }
+  .InfoSection > h2 {
+    margin: 0;
+  }
+}
+@media (max-width: 400px) {
+  .header {
+    width: 350px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+}
