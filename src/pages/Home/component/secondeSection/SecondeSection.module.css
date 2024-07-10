@@ -22,14 +22,15 @@
 }
 
 .styleCardDark{
-    box-shadow: rgba(255, 255, 255, 0.51) 0px 4px 5px;;
+    /* box-shadow: rgba(255, 255, 255, 0.203) 0px 4px 5px;; */
     padding: 15px 10px 20px;
     position: relative;
    border-radius: 10px;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 4px 5px;
 }
 
 .styleCardDark:hover{
-    box-shadow: rgba(255, 255, 255, 0.697) 0px 4px 5px;;
+    box-shadow: rgba(255, 255, 255, 0.319) 0px 4px 5px;;
     transform: translate(0px , -20px);
     transition-duration: 0.2s;
 }

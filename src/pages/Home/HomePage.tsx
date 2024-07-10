@@ -17,7 +17,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
-        <Box  display={"grid"} style={{justifyContent:"center"}}>
+        <Box  >
 
       <HomeHelmet />
       <FristSection />

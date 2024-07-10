@@ -1,4 +1,4 @@
-input{
+.input{
     border-radius: 8px;
     outline: none;
     border: 0px solid #408fff;
@@ -6,20 +6,14 @@ input{
     box-shadow: #3788fa51 0px 4px 12px;    
 }
 
-/* .inputDark{
-    background-color: white;
-    color: black;
-}
 
-.inputLight:focus{
+
+.inputt:focus{
     border: 0px;
     box-shadow: #3788faa3 0px 4px 12px;    
 }
 
-.inputDark:focus{
-    border: 0px;
-    box-shadow: #ffffffa3 0px 4px 12px;    
-} */
+
 
 .form{
     display: grid;

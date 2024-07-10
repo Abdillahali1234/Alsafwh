@@ -9,7 +9,7 @@ import { IconAntennaBars5 } from "@tabler/icons-react";
 
 export default function Teachers() {
   return (
-    <Box mt={200}>
+    <Box className={classes.parent}>
       <TitleSection title="الأساتذة" />
       <Box className={classes.sectionTeacher}>
 

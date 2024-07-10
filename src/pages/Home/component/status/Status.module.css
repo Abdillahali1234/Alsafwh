@@ -5,6 +5,14 @@
   margin-right: 50px;
 }
 
+.parent{
+  margin-top: 200px;
+}
+
+.titleStatus{
+  margin-right: 50px;
+}
+
 .cards {
   display: flex;
   position: relative;
@@ -90,7 +98,13 @@
     display: grid;
     justify-content: center;
   }
+  .parent{
+    margin-top: 150px;
+  }
 
+  .titleStatus{
+    margin-right: 30px;
+  }
   .containerBtn {
     margin-top: 50px;
     display: flex;
@@ -98,7 +112,7 @@
   }
 
   .cards {
-    margin-top: 150px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     position: relative;
@@ -117,7 +131,7 @@
 
 @media (max-width: 600px) {
   .cards {
-    margin-top: 90px;
+    margin-top: 0px;
     display: grid;
     justify-content: center;
     position: relative;
@@ -160,6 +174,10 @@
     right: 37%;
     bottom: 75%;
     background-color: #2eff2e;
+  }
+
+  .titleStatus{
+    margin-right: 0px;
   }
 
   .pointTwo {

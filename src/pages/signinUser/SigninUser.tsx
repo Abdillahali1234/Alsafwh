@@ -10,25 +10,25 @@ export default function SigninUser() {
     <Box display={"grid"} style={{justifyContent:"center"}}>
 
             <Container my={50} display={"grid"} style={{gap:"1rem"}}>
-                <Text className={computedColorScheme=='light'?classes.titleLight:classes.titleDark} ta={"center"} fz={30} fw={700} c={"#408fff"}>تسجيل الدخول</Text>
+                <Text className={computedColorScheme=='light'?classes.titleLight:classes.titleDark} ta={"center"} fz={30} fw={700} c={"#408fff"}> انشاء حساب</Text>
                 <form action="" className={classes.form}>
 
-                    <input type="text" name="firstName" placeholder="الاسم الاول"  className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
-                    <input type="text" name="secondeName" placeholder="الاسم الثاني"  className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
+                    <input type="text" name="firstName" placeholder="الاسم الاول"  className={classes.input}/>
+                    <input type="text" name="secondeName" placeholder="الاسم الثاني"  className={classes.input}/>
 
                     <Box display={"flex"} style={{gap:"1rem"}} >
-                    <input type="number" name="yourNumber"  placeholder="رقم الهاتف" style={{width:"100%"}} className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
-                    <input type="number" name="parentNumber"  placeholder="رقم هاتف ولي الامر" style={{width:"100%"}} className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
+                    <input type="number" name="yourNumber"  placeholder="رقم الهاتف" style={{width:"100%"}} className={classes.input}/>
+                    <input type="number" name="parentNumber"  placeholder="رقم هاتف ولي الامر" style={{width:"100%"}} className={classes.input}/>
                     </Box>
-                    <input type="email" name="email" placeholder="البريد الالكتروني"className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
+                    <input type="email" name="email" placeholder="البريد الالكتروني" className={classes.input}/>
 
-                    <input type="password" name="password"  placeholder="كلمة المرور" className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
-                    <input type="password" name="confirmPassword"  placeholder="تاكيد كلمة المرور" className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
+                    <input type="password" name="password"  placeholder="كلمة المرور" className={classes.input}/>
+                    <input type="password" name="confirmPassword"  placeholder="تاكيد كلمة المرور" className={classes.input}/>
 
-                    <input type="text" name="class"  placeholder="الصف"  className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
-                    <input type="text" name="department"  placeholder="القسم او التخصص" className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
+                    <input type="text" name="class"  placeholder="الصف"  className={classes.input}/>
+                    <input type="text" name="department"  placeholder="القسم او التخصص" className={classes.input}/>
 
-                    <input type="text" placeholder="شهادة الميلاد" className={computedColorScheme=='light'?classes.inputLight:classes.inputDark}/>
+                    <input type="text" placeholder="شهادة الميلاد" className={classes.input}/>
                     
                     <Box mt={10} display={"grid"} style={{justifyContent:"center" }}>
 

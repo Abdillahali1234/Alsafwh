@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.parent{
+    margin-top: 150px;
+}
+
 .descrbtion{
     font-size: 25px;
 }
@@ -170,7 +174,6 @@
     }
 
     .teacher{
-        /* backdrop-filter: blur(10px); */
         width: 600px;
         height: 350px;
     }
@@ -205,14 +208,14 @@
 }
 
 
-@media (max-width:750px) {
+/* @media (max-width:750px) {
 
     .teacher{
         width: 500px;
         height: 350px;
     }
 
-}
+} */
 
 @media (max-width:750px) {
 
@@ -265,14 +268,7 @@
 
 }
 
-@media (max-width:750px) {
 
-    .teacher{
-        width: 500px;
-        height: 350px;
-    }
-
-}
 
 @media (max-width:550px) {
 
@@ -281,6 +277,10 @@
         width: 400px;
         height: 350px;
        margin-right: 50px;
+    }
+
+    .parent{
+        margin-top: -77px;
     }
 
 .imageTeacherOne{

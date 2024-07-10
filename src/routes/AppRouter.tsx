@@ -4,11 +4,12 @@ import HomePage from "@pages/Home/HomePage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./../pages/error/ErrorPage";
 import { MantineProvider } from "@mantine/core";
-import AllCourses from "@pages/allcourses/AllCourses";
+// import AllCourses from "@pages/allcourses/AllCourses";
 import SigninUser from "@pages/signinUser/SigninUser";
 import LoginUser from "@pages/loginUser/LoginUser";
 import AboutUs from "@pages/aboutUs/AboutUs";
 import SingleCourse from "@pages/singleCourse/SingleCourse";
+import AllTeacher from "@pages/allTeacher/AllTeacher";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -22,8 +23,8 @@ export default function AppRouter() {
           element: <HomePage />,
         },
         {
-          path: "/all-courses",
-          element: <AllCourses />,
+          path: "/all-teacher",
+          element: <AllTeacher />,
         },
         {
           path:"/signin-user",
