@@ -10,6 +10,7 @@ import LoginUser from "@pages/loginUser/LoginUser";
 import AboutUs from "@pages/aboutUs/AboutUs";
 import SingleCourse from "@pages/singleCourse/SingleCourse";
 import AllTeacher from "@pages/allTeacher/AllTeacher";
+import StudentPage from "./../pages/studentPage/StudentPage";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -41,6 +42,10 @@ export default function AppRouter() {
         {
           path:"/single-course",
           element:<SingleCourse/>
+        },
+        {
+          path:"/student-page",
+          element:<StudentPage/>
         },
 
       ],
