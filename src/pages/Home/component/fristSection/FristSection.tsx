@@ -11,8 +11,7 @@ export default function FristSection() {
           <Grid styles={{ inner: { alignItems: "center" } }}>
             <Grid.Col
               className={classes.container}
-              span={{ base: 12, md: 6, lg: 6 }}
-            >
+              span={{ base: 12, md: 6, lg: 6 }}>
               <div>
                 <Text className={classes.font}>
                   <span style={{ color: "#003EDD" }}> تُريد التعلم ؟</span>
@@ -24,10 +23,10 @@ export default function FristSection() {
                 </Text>
 
                 <Group className={classes.gap} mt={15}>
-                  <Link to={"/"} className={classes.linkOne}>
+                  <Link to={"/signin"} className={classes.linkOne}>
                     انضم لنا الان
                   </Link>
-                  <Link to={"/"} className={classes.linkTwo}>
+                  <Link to={"/about-us"} className={classes.linkTwo}>
                     نبذة عنا
                   </Link>
                 </Group>
@@ -36,8 +35,7 @@ export default function FristSection() {
 
             <Grid.Col
               className={classes.container}
-              span={{ base: 12, md: 6, lg: 6 }}
-            >
+              span={{ base: 12, md: 6, lg: 6 }}>
               <img src={image} className={classes.image} />
             </Grid.Col>
           </Grid>
