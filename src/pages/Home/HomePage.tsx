@@ -10,14 +10,14 @@ import Subscription from "./component/subscription/Subscription";
 import HomeHelmet from "@helmets/HomeHelmet";
 import Teachers from "./component/teachers/Teachers";
 import { Box } from "@mantine/core";
-
+import classes from "./Home.module.css";
 export default function Home() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
-        <Box  >
+        <Box className={classes.container}>
 
       <HomeHelmet />
       <FristSection />
