@@ -6,6 +6,7 @@ import imageTwo from '@assets/Alsafwa/personTwo.png'
 import imageThree from '@assets/Alsafwa/Free Photo _ CheerfulTwo.png'
 import imageFour from '@assets/Alsafwa/Free Photo _ PortraitTwo.png'
 import { IconAntennaBars5 } from "@tabler/icons-react";
+import Button from "@shared/Button/Button";
 
 export default function Teachers() {
   return (
@@ -91,11 +92,14 @@ export default function Teachers() {
           </Box>
 
 
-
-
         </Box>
 
       </Box>
+    <Box mt={100}>
+
+      <Button text="جميع المدرسين" route="/all-teacher"/>
+
+    </Box>
     </Box>
   );
 }

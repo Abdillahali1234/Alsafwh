@@ -19,7 +19,7 @@ import {
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-const color = "rgb(34,166,241)";
+ const color = "rgb(34,166,241)";
 
 export default function StudentPage() {
   const computedColorScheme = useComputedColorScheme("light", {
@@ -35,7 +35,16 @@ export default function StudentPage() {
   };
 
   return (
-    <Box my={100} className={classes.parent}>
+    <Box mb={100} className={classes.parent}>
+      <Box mb={50} className={classes.headerPageTeacher}>
+        <Text my={20} fz={30} c={"#003EDD"}>
+          الطلاب{" "}
+        </Text>
+
+        <Text my={20} fz={30} c={"white"}>
+          هم امل التقدم و مفتاح المستقبل{" "}
+        </Text>
+      </Box>
       <Container
         px={50}
         py={20}
@@ -387,8 +396,10 @@ export default function StudentPage() {
           display={"flex"}
           style={{ justifyContent: "space-between" }}
         >
-          <button className={classes.btnSave}>تعديل</button>
-          <button className={classes.btnSave}>حفظ</button>
+          {/* <button ></button> */}
+          <Link to={"/"} className={classes.btnSave}>تعديل</Link>
+          <Link to={"/"} className={classes.btnSave}>حفظ</Link>
+          {/* <button className={classes.btnSave}>حفظ</button> */}
         </Box>
       </Container>
     </Box>

@@ -1,3 +1,10 @@
+.headerPageTeacher{
+  background-image: url("../../assets/Alsafwa/virtual-classroom-study-space.jpg");
+  padding: 50px 100px;
+background-size: 100% ;
+background-repeat: no-repeat;
+}
+
 .containerLight {
   background-color: rgb(234, 241, 255);
   border-radius: 10px;
@@ -79,6 +86,7 @@
   border-radius: 6px;
   padding: 6px 20px;
   color: white;
+  text-decoration: none;
 }
 
 @media (max-width: 790px) {
@@ -108,3 +116,13 @@
     gap: 5px;
   }
 }
+
+
+@media (max-width:460px) {
+
+  .headerPageTeacher{
+      padding: 40px 20px;
+  
+      background-size:auto 100% ;
+  }
+  }

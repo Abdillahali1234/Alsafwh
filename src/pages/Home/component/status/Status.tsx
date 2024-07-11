@@ -97,7 +97,7 @@ export default function Status() {
             </Box>
           </Box>
 
-          <Button route="/subjects" text="جميع المواد" />
+          <Button route="/all-materials" text="جميع المواد" />
         </Box>
 
         <Box className={classes.cards}>

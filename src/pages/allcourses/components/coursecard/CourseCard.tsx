@@ -36,7 +36,7 @@ export default function CourseCard() {
         ويتفوق بها مع أشطر الأساتذة على مستوى مصر
       </p>
       <div className={buttons}>
-        <a href="details.html" className={buttonDetails}>
+        <a href="/single-course" className={buttonDetails}>
           تفاصيل
         </a>
         <a href="register.html" className={buttonRegister}>
