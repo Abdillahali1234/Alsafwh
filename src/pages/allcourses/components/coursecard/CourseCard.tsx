@@ -14,6 +14,7 @@ const {
 
 import img from "@assets/Alsafwa/img.png";
 import teacherImg from "@assets/Alsafwa/teacher.png";
+import { Link } from "react-router-dom";
 
 export default function CourseCard() {
   return (
@@ -36,12 +37,12 @@ export default function CourseCard() {
         ويتفوق بها مع أشطر الأساتذة على مستوى مصر
       </p>
       <div className={buttons}>
-        <a href="/single-course" className={buttonDetails}>
+        <Link to="/single-course" className={buttonDetails}>
           تفاصيل
-        </a>
-        <a href="register.html" className={buttonRegister}>
+        </Link>
+        <Link to="/login" className={buttonRegister}>
           تسجيل
-        </a>
+        </Link>
       </div>
     </div>
   );

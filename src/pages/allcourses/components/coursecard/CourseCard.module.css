@@ -1,6 +1,6 @@
 .card {
   background-color: #fff;
-  max-width: 340px;
+  width: 375px;
   min-width: 300px;
   height: 500px;
   box-shadow: 0 5px 20px rgba(1, 1, 1, 0.35);

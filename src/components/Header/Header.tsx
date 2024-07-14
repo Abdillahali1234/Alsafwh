@@ -159,7 +159,10 @@ export default function Header() {
           hiddenFrom="md"
           zIndex={1000000}
           style={{ direction: "rtl" }}>
-          <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
+          <ScrollArea
+            h={`calc(100vh - ${rem(80)})`}
+            mx="-md"
+            className={classes.DrwerStyling}>
             <Divider my="sm" />
             {Links.map((link, index) => (
               <Link key={index} to={link.path} className={classes.link}>

@@ -14,7 +14,9 @@ import StudentPage from "./../pages/studentPage/StudentPage";
 import AllCourses from "@pages/allcourses/AllCourses";
 import AllMaterials from "@pages/allMaterials/AllMaterials";
 import SingleMaterial from "@pages/singleMaterial/SingleMaterial";
-import { ContactUs } from "@pages/contactUs/ContactUs";
+import ContactUsPage from "@pages/contact-us/ContactUsPage";
+import TeacherPage from "@pages/teacherpage/TeacherPage";
+import TeacherCourses from "@pages/teacherpage/components/Teachercourses/TeacherCourses";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -52,22 +54,29 @@ export default function AppRouter() {
           element: <AllCourses />,
         },
         {
-          path:"/student-page",
-          element:<StudentPage/>
+          path: "/student-page",
+          element: <StudentPage />,
         },
         {
-          path:"/all-materials",
-          element:<AllMaterials/>
+          path: "/all-materials",
+          element: <AllMaterials />,
         },
         {
-          path:"/single-material",
-          element:<SingleMaterial/>
+          path: "/single-material",
+          element: <SingleMaterial />,
         },
         {
-          path:"/contact-us",
-          element:<ContactUs/>
-        }
-
+          path: "/contact-us",
+          element: <ContactUsPage />,
+        },
+        {
+          path: "/teacher-profile",
+          element: <TeacherPage />,
+        },
+        {
+          path: "teacher-courses",
+          element: <TeacherCourses />,
+        },
       ],
     },
   ]);
