@@ -36,7 +36,8 @@ export default function ContactForm() {
     <Box
       bg={col()}
       style={{ boxShadow: BoxShadow() }}
-      className={classes.wrapper}>
+      className={classes.wrapper}
+    >
       <SimpleGrid cols={{ base: 1, sm: 1 }} spacing={50}>
         <Box className={classes.form}>
           <div className={classes.ParentToInputs}>
@@ -44,6 +45,7 @@ export default function ContactForm() {
               label="الايميل"
               placeholder="your@email.com"
               required
+              mt={16}
               classNames={{ input: classes.input, label: classes.inputLabel }}
             />
             <TextInput

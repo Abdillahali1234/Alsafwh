@@ -3,12 +3,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(248, 250, 252);
+  /* background-color: rgb(248, 250, 252); */
   width: 100%;
   padding: 50px 10px;
 }
 
-.StylingSocial {
+.StylingSocialLight {
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.StylingSocialLight,
+.StylingSocialDark {
   color: black;
   text-decoration: none;
   display: flex;
@@ -20,9 +26,8 @@
   background: rgb(241, 245, 249);
   padding: 10px 20px;
   border-radius: 14px;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
-    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
+
 .conToSocial {
   display: flex;
   flex-direction: column;
@@ -30,54 +35,95 @@
   align-items: center;
 }
 
-.StylingSocial svg {
+.StylingSocialLight svg {
   rotate: 270deg;
 }
-.StylingSocial > div {
+
+.StylingSocialDark svg {
+  rotate: 270deg;
+}
+
+.StylingSocialLight > div {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
 }
-.StylingSocial > div span {
+
+.StylingSocialDark > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.StylingSocialLight > div span {
   font-size: 18px;
 }
-.conToSocial .StylingSocial:first-child svg {
+
+.StylingSocialDark > div span {
+  font-size: 18px;
+}
+
+.conToSocial .StylingSocialLight:first-child svg {
   color: rgb(95, 213, 104);
   height: 37px;
   width: 37px;
 }
-.conToSocial .StylingSocial:nth-child(2) svg {
+
+.conToSocial .StylingSocialDark:first-child svg {
+  color: rgb(95, 213, 104);
+  height: 37px;
+  width: 37px;
+}
+
+.conToSocial .StylingSocialLight:nth-child(2) svg {
   color: #007bff;
   height: 37px;
   width: 37px;
 }
-.StylingSocial > span {
+
+.conToSocial .StylingSocialDark:nth-child(2) svg {
+  color: #007bff;
+  height: 37px;
+  width: 37px;
+}
+
+.StylingSocialLight > span {
   font-size: 16px;
 }
 
-.ConToLinks {
+.StylingSocialDark > span {
+  font-size: 16px;
+}
+
+.ConToLinksLight,
+.ConToLinksDark {
   margin: 50px 10px;
   display: flex;
   justify-content: space-between;
   gap: 10px;
   align-items: center;
 }
-
-.ConToLinks > a {
+.ConToLinksLight > a {
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+.ConToLinksLight > a,
+.ConToLinksDark > a {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   text-decoration: none;
   background-color: white;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
-    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.ConToLinks > a > div {
+
+.ConToLinksLight > a > div,
+.ConToLinksDark > a > div {
   background-color: #94a3b8;
   color: white;
   padding: 10px;
@@ -112,4 +158,28 @@
 
 .FormStyling {
   height: 500px;
+}
+
+@media (max-width: 770px) {
+  .FormStyling {
+    margin-left: 20px;
+  }
+
+  .parent {
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 550px) {
+  .StylingSocialLight,
+  .StylingSocialDark {
+    display: grid;
+    gap: 0px;
+    width: fit-content;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .parent {
+    margin-bottom: 150px;
+  }
 }

@@ -6,8 +6,9 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--mantine-radius-md);
+  /* margin-left: 10px; */
   @media (max-width: 48em) {
-    padding: calc(var(--mantine-spacing-xl) * 1.5);
+    padding: calc(var(--mantine-spacing-xl) * 1);
     margin: 10px;
   }
 }
@@ -62,6 +63,13 @@
 
 .ParentToInputs {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
+}
+
+@media (max-width: 550px) {
+  .ParentToInputs {
+    gap: 5px;
+  }
 }

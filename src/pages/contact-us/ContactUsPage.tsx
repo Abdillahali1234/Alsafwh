@@ -5,20 +5,10 @@ import {
   IconBrandWhatsapp,
   IconPhone,
 } from "@tabler/icons-react";
-import Style from "./ContactUsPage.module.css";
+import classes from "./ContactUsPage.module.css";
 import { Link } from "react-router-dom";
 import ContactForm from "./components/contactform/ContactForm";
-
-const {
-  parent,
-  mainInfo,
-  ConToLinks,
-  Handler,
-  Seprator,
-  StylingSocial,
-  conToSocial,
-  FormStyling,
-} = Style;
+import { useComputedColorScheme } from "@mantine/core";
 
 const links = [
   {
@@ -50,18 +40,27 @@ const social = [
 ];
 
 export default function ContactUsPage() {
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
+
   return (
-    <div className={parent}>
-      <div className={Handler}></div>
-      <div className={mainInfo}>
-        <div className={conToSocial}>
+    <div className={classes.parent}>
+      <div className={classes.Handler}></div>
+      <div className={classes.mainInfo}>
+        <div className={classes.conToSocial}>
           {social.map((item) => (
             <Link
               key={item.link}
               to={item.link}
-              className={StylingSocial}
+              className={
+                computedColorScheme == "light"
+                  ? classes.StylingSocialLight
+                  : classes.StylingSocialDark
+              }
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               <div>
                 <item.icon />
                 <span>{item.phoneNumber}</span>
@@ -70,13 +69,20 @@ export default function ContactUsPage() {
             </Link>
           ))}
         </div>
-        <div className={ConToLinks}>
+        <div
+          className={
+            computedColorScheme == "light"
+              ? classes.ConToLinksLight
+              : classes.ConToLinksDark
+          }
+        >
           {links.map((item) => (
             <Link
               key={item.link}
               to={item.link}
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               <div>
                 <item.icon />
               </div>
@@ -84,8 +90,8 @@ export default function ContactUsPage() {
           ))}
         </div>
       </div>
-      <span className={Seprator}>او</span>
-      <div className={FormStyling}>
+      <span className={classes.Seprator}>او</span>
+      <div className={classes.FormStyling}>
         <ContactForm />
       </div>
     </div>
