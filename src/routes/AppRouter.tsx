@@ -17,6 +17,7 @@ import SingleMaterial from "@pages/singleMaterial/SingleMaterial";
 import ContactUsPage from "@pages/contact-us/ContactUsPage";
 import TeacherPage from "@pages/teacherpage/TeacherPage";
 import TeacherCourses from "@pages/teacherpage/components/Teachercourses/TeacherCourses";
+import ContentCourse from './../pages/contentCourse/ContentCourse';
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -74,8 +75,12 @@ export default function AppRouter() {
           element: <TeacherPage />,
         },
         {
-          path: "teacher-courses",
+          path: "/teacher-courses",
           element: <TeacherCourses />,
+        },
+        {
+          path: "/content-course",
+          element: <ContentCourse/>,
         },
       ],
     },
