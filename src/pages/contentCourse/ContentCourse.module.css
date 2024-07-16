@@ -1,10 +1,68 @@
+.parent{
+    display: grid;
+    grid-template-columns: 330px auto;
+    /* justify-content: space-between; */
+}
+
 .container{
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
+    /* gap: -5/rem; */
     cursor: pointer;
-
     &[data-active]{
         color: blue;
     }
 }
+
+.containerLesson{
+
+}
+
+.styleTabsPanel{
+    background-color: rgba(34, 166, 241, 0.03);
+    border-radius: 10px;
+    margin: 10px 0px;
+    padding: 10px 20px;
+}
+
+.containerImageEmail {
+    display: flex;
+    justify-content: center;
+    border-radius: 100px;
+    background-color: rgb(209, 146, 153);
+    overflow: hidden;
+  }
+
+  .containerTabs{
+    display: grid;
+    grid-template-columns: auto 250px;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (max-width:1170px) {
+    .containerTabs{
+        display: grid;
+        grid-template-columns:  none;
+        grid-template-rows: auto auto;
+        flex-wrap: wrap;
+        gap:1rem;
+        margin-top: 50px;
+        justify-content: center;
+      }
+  }
+
+
+  @media (max-width:900px) {
+    .parent{
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: auto auto;
+        gap: 2rem;
+        /* justify-content: space-between; */
+    }
+  }
+
+
+
+
