@@ -18,6 +18,9 @@ import ContactUsPage from "@pages/contact-us/ContactUsPage";
 import TeacherPage from "@pages/teacherpage/TeacherPage";
 import TeacherCourses from "@pages/teacherpage/components/Teachercourses/TeacherCourses";
 import ContentCourse from './../pages/contentCourse/ContentCourse';
+import AllFeedback from './../pages/allFeedback/AllFeedback';
+import ResetPassword from './../pages/resetPassword/ResetPassword';
+import TeachersStudent from './../pages/teachersStudent/TeachersStudent';
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -81,6 +84,18 @@ export default function AppRouter() {
         {
           path: "/content-course",
           element: <ContentCourse/>,
+        },
+        {
+          path: "/all-feedback",
+          element: <AllFeedback/>,
+        },
+        {
+          path: "/reset-password",
+          element: <ResetPassword/>,
+        },
+        {
+          path: "/teacher-student",
+          element: <TeachersStudent/>,
         },
       ],
     },

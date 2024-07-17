@@ -10,12 +10,33 @@
     /* gap: -5/rem; */
     cursor: pointer;
     &[data-active]{
-        color: blue;
+        color: rgb(34,139,230);
     }
 }
 
-.containerLesson{
+.bgLessonLight{
+  background-color: #F5F5F5;
+  color: black;
+}
 
+.bgLessonDark{
+  background-color:"";
+  color: white;
+}
+
+.colorComponentLight{
+  color: black;
+}
+
+.colorComponentDark{
+  color: white;
+}
+
+.titleLight{
+ color: #3E3E3E;
+}
+.titleDark{
+  color: white;
 }
 
 .styleTabsPanel{

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Box, Button, rem, Tabs, Text } from "@mantine/core";
+import { Box, Button, rem, Tabs, Text, useComputedColorScheme } from "@mantine/core";
 import classes from "./ContentCourse.module.css";
 import image from "@assets/Alsafwa/RetratoTwo.png";
 import {
@@ -13,6 +13,12 @@ import { useState } from "react";
 import ReactPlayer from "react-player";
 
 export default function ContentCourse() {
+
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
+
+
   const iconStyle = { width: rem(12), height: rem(12) };
   const exam = ["امتحان 1", "امتحان 2", "امتحان 3"];
 
@@ -406,7 +412,7 @@ export default function ContentCourse() {
       className={classes.container}
     >
       <Text
-        style={{ border: "2px solid", borderColor: "", borderRadius: "50px" }}
+        style={{ border: "2px solid", borderRadius: "50px" }}
         py={1}
         px={10}
       >
@@ -426,14 +432,14 @@ export default function ContentCourse() {
   return (
   
     <Box  className={classes.parent}>
-      <Box px={20} pt={20} pb={50} bg={"#F5F5F5"} style={{borderLeft:"1px solid rgba(0, 0, 0, 0.3)"}}>
+      <Box px={20} pt={20} pb={50}  className={computedColorScheme=='light' ? classes.bgLessonLight : classes.bgLessonDark}  style={{borderLeft:"1px solid rgba(0, 0, 0, 0.3)"}}>
         <Text  mb={50} ta={"center"} fz={20} fw={700} >
           مادة التاريخ{" "}
         </Text>
         <Box className={classes.containerLesson}>{door}</Box>
       </Box>
 
-      <Box py={15} px={50}>
+      <Box className={computedColorScheme=='light' ? classes.colorComponentLight : classes.colorComponentDark} py={15} px={50}>
         <Box>
           <Text fz={25} fw={700} mt={0} ml={0} mb={25}>
             {title}
@@ -448,7 +454,7 @@ export default function ContentCourse() {
             <Text fz={20} c={"blue"}>
               {id}
             </Text>
-            <Text fz={18} c={"#3E3E3E"}>
+            <Text fz={18} className={computedColorScheme=='light' ? classes.titleLight : classes.titleDark} >
               {title}
             </Text>
           </Box>
@@ -479,7 +485,7 @@ export default function ContentCourse() {
               <Box mt={5} className={classes.containerImageEmail} h={70} w={70}>
                   <img src={image} width={"150px"} height={"100%"} alt="" />
                 </Box>             
-              <Box mr={5}>
+              <Box mr={10}>
                 <Text fz={14} ta={"center"}  fw={700} c={"rgba(34, 166, 241, 1)"}>أحمد كامل</Text>
                 <Text fz={13} ta={"center"} fw={700} >معلم مادة التاريخ </Text>
               </Box> 

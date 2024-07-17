@@ -508,10 +508,10 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.2.0"
 
-"@mantine/carousel@^7.11.1":
-  version "7.11.1"
-  resolved "https://registry.npmjs.org/@mantine/carousel/-/carousel-7.11.1.tgz"
-  integrity sha512-w/hDZKkfamaiADhtWwo33ssrR8c6N9neVo5o5fep36k1R56+7+pFSm51g0/YgH8Y41GyLGzSVcGDvVGWOzg3+Q==
+"@mantine/carousel@^7.11.2":
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@mantine/carousel/-/carousel-7.11.2.tgz#a34192e19f971fe0391025ea0c984e9cc30f06e7"
+  integrity sha512-SSK8VRMNhSzKV+icfjgBpc0XyN/SlwWZMw3bZ8/pg4kfhl8mzX21omG6ZaIaDdB3hs8CPLg1jZiQDjDAMniFpA==
 
 "@mantine/charts@^7.11.1":
   version "7.11.1"
@@ -1510,23 +1510,17 @@ dom-helpers@^5.0.1:
     "@babel/runtime" "^7.8.7"
     csstype "^3.0.2"
 
-embla-carousel-react@^8.1.6:
-  version "8.1.6"
-  resolved "https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.1.6.tgz"
-  integrity sha512-DHxwFzF63yVrU95Eo58E9Xr5b6Y9ul6TTsqb/rtwMi+jXudAmIqN1i9iBxQ73i8jKuUVxll/ziNYMmnWvrdQJQ==
+embla-carousel-react@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel-react/-/embla-carousel-react-7.1.0.tgz#e716f4df7fd31f7ca3e59a3e011158167bc3c468"
+  integrity sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==
   dependencies:
-    embla-carousel "8.1.6"
-    embla-carousel-reactive-utils "8.1.6"
+    embla-carousel "7.1.0"
 
-embla-carousel-reactive-utils@8.1.6:
-  version "8.1.6"
-  resolved "https://registry.npmjs.org/embla-carousel-reactive-utils/-/embla-carousel-reactive-utils-8.1.6.tgz"
-  integrity sha512-Wg+J2YoqLqkaqsXi7fTJaLmXm6BpgDRJ0EfTdvQ4KE/ip5OsUuKGpJsEQDTt4waGXSDyZhIBlfoQtgGJeyYQ1Q==
-
-embla-carousel@8.1.6:
-  version "8.1.6"
-  resolved "https://registry.npmjs.org/embla-carousel/-/embla-carousel-8.1.6.tgz"
-  integrity sha512-9n7FVsbPAs1KD+JmO84DnEDOZMXPBQbLujjMQqvsBRN2CDWwgZ9hRSNapztdPnyJfzOIxowGmj0BUQ8ACYAPkA==
+embla-carousel@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-7.1.0.tgz#c770dd3ade9285a97f5e3b6bbf705bc35ec0f9b5"
+  integrity sha512-Bh8Pa8NWzgugLkf8sAGexQlBCNDFaej5BXiKgQdRJ1mUC9NWBrw9Z23YVPVGkguWoz5LMjZXXFVGCobl3UPt/Q==
 
 enhanced-resolve@^5.10.0:
   version "5.17.0"

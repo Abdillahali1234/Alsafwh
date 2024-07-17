@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import AppRouter from "./routes/AppRouter.tsx";
 import "./Main.css";
+import '@mantine/carousel/styles.css';
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
