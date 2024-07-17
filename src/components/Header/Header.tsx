@@ -21,6 +21,7 @@ import {
   classes,
   Image,
 }from "@utilities/imports/ImportsHeader";
+import { NavLink } from "react-router-dom";
 
 interface obj {
   title: string;
@@ -37,6 +38,10 @@ export default function Header() {
   });
 
   const Links: obj[] = [
+    {
+      title: "الرئيسيه",
+      path: "/",
+    },
     {
       title: "الكورسات",
       path: "/all-courses",
@@ -85,9 +90,9 @@ export default function Header() {
               ml={-10}
               visibleFrom="md">
               {Links.map((link, index) => (
-                <Link key={index} to={link.path} className={classes.link}>
+                <NavLink key={index} to={link.path} className={classes.link}>
                   {link.title}
-                </Link>
+                </NavLink>
               ))}
             </Group>
 

@@ -1,0 +1,31 @@
+.parent {
+  padding: 20px 10px;
+}
+
+.lesson {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title {
+  color: rgb(65, 130, 249);
+}
+
+.lesson button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background-color: rgb(65, 130, 249);
+
+  outline: none;
+  border: none;
+  color: white;
+}
+
+.activeButton {
+  cursor: pointer;
+}

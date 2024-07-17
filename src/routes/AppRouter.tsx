@@ -1,10 +1,8 @@
 import MainLayout from "@layouts/MainLayout";
-// import ErrorPage from "@pages/error/ErrorPage";
 import HomePage from "@pages/Home/HomePage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./../pages/error/ErrorPage";
 import { MantineProvider } from "@mantine/core";
-// import AllCourses from "@pages/allcourses/AllCourses";
 import SigninUser from "@pages/signinUser/SigninUser";
 import LoginUser from "@pages/loginUser/LoginUser";
 import AboutUs from "@pages/aboutUs/AboutUs";
@@ -21,6 +19,8 @@ import ContentCourse from './../pages/contentCourse/ContentCourse';
 import AllFeedback from './../pages/allFeedback/AllFeedback';
 import ResetPassword from './../pages/resetPassword/ResetPassword';
 import TeachersStudent from './../pages/teachersStudent/TeachersStudent';
+import LessonDetailsTeacher from "@pages/lession-details/LessonDetailsTeacher";
+import Exam from "@pages/exam/Exam";
 
 export default function AppRouter() {
   const router = createBrowserRouter([
@@ -83,19 +83,27 @@ export default function AppRouter() {
         },
         {
           path: "/content-course",
-          element: <ContentCourse/>,
+          element: <ContentCourse />,
         },
         {
           path: "/all-feedback",
-          element: <AllFeedback/>,
+          element: <AllFeedback />,
         },
         {
           path: "/reset-password",
-          element: <ResetPassword/>,
+          element: <ResetPassword />,
         },
         {
           path: "/teacher-student",
-          element: <TeachersStudent/>,
+          element: <TeachersStudent />,
+        },
+        {
+          path: "/lesson-details/:id",
+          element: <LessonDetailsTeacher />,
+        },
+        {
+          path: "/add-exam/:lessonId",
+          element: <Exam />, // 404 page
         },
       ],
     },

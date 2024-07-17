@@ -1,10 +1,10 @@
 .parent {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 20px;
   padding: 20px;
   margin: auto;
   width: 100%;
+  justify-content: center;
 }
 
 @media (min-width: 700px) {

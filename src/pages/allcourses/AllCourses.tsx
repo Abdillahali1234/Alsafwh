@@ -17,6 +17,7 @@ export default function AllCourses() {
         <AllCoursesBody />
 
         <PaginationCom />
+        
       </div>
     </motion.div>
   );

@@ -1,6 +1,7 @@
 .header {
   background-color: white;
   padding: 20px 10px;
+  width: 90%;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -13,7 +14,7 @@
 .conSearch {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: rgb(9, 52, 145);
   width: 50px;
   height: 50px;
@@ -21,7 +22,14 @@
   border-radius: 50%;
   color: white;
 }
-.formStyle >div >input {
+.formStyle > div {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.formStyle > div > input {
   border-radius: 8px;
   outline: none;
   border: 0px solid #408fff;
@@ -33,6 +41,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  width: 70%;
 }
 
 .formStyle > div > select {
@@ -45,11 +54,7 @@
   box-shadow: #3788fa51 0px 4px 12px;
 }
 
-@media (max-width: 810px) {
-  .header {
-    width: 580px;
-    margin: auto;
-  }
+@media (max-width: 1087px) {
   .conSearch {
     width: 40px;
     height: 40px;
@@ -59,7 +64,25 @@
   .formStyle > div > span {
     font-size: 14px;
   }
+  .formStyle > div > input {
+    font-size: 14px;
+  }
 }
+@media (max-width: 810px) {
+  .conSearch {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    padding: 12px;
+  }
+  .formStyle > div > span {
+    font-size: 14px;
+  }
+  .formStyle {
+    width: 90%;
+  }
+}
+
 @media (max-width: 637px) {
   .header {
     display: flex;
