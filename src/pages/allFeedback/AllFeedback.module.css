@@ -1,127 +1,157 @@
-.topParentLight{
-    background-color: rgba(234, 241, 255, 1);
-    border-radius: 15px;
-    padding: 50px;
+.topParentLight {
+  background-color: rgba(234, 241, 255, 1);
+  border-radius: 15px;
+  padding: 50px;
 }
-.topParentDark{
-    background-color:"";
-    padding: 50px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.112);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    color: white;
+.topParentDark {
+  background-color: "";
+  padding: 50px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.112);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  color: white;
 }
 
-.styleSize{
-    margin: 50px 50px;
+.styleSize {
+  margin: 50px 50px;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 87%,
+    47% 87%,
+    22% 96%,
+    29% 87%,
+    0 87%
+  );
+  height: 250px;
 }
 
 .parent {
-    height: 80px;
-    padding: 10px 20px;
-  }
+  height: 80px;
+  padding: 10px 20px;
+}
 
-  .titleStyle{
-    font-weight: 600;
-    font-size: 30px ;
-    line-height: 65%;
-  }
-  
-  .titleLight {
-    color: black;
-  
-  }
-  .titleDark {
-    color: white;
-  }
+.titleStyle {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 65%;
+}
 
-  .styleBackLight {
-    width: fit-content;
-    position: relative;
-  }
-  
-  .styleBackDark {
-    width: fit-content;
-    position: relative;
-  }
+.titleLight {
+  color: black;
+}
+.titleDark {
+  color: white;
+}
 
-  .styleBackLight::before {
+.styleBackLight {
+  width: fit-content;
+  position: relative;
+}
+
+.styleBackDark {
+  width: fit-content;
+  position: relative;
+}
+
+.styleBackLight::before {
+  content: "";
+  width: 60%;
+  display: inline-block;
+  background-color: rgb(115 205 255 / 42%);
+  height: 43px;
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  transform: translateY(50%);
+  border-radius: 5px;
+}
+.styleBackDark::before {
+  content: "";
+  width: 60%;
+  display: inline-block;
+  background-color: rgba(25, 15, 207, 0.244);
+  height: 43px;
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  transform: translateY(50%);
+  border-radius: 5px;
+}
+
+.slide {
+  position: relative;
+}
+
+.slide::before {
     content: "";
-    width: 60%;
-    display: inline-block;
-    background-color: rgb(115 205 255 / 42%);
-    height: 43px;
     position: absolute;
-    bottom: 50%;
-    right: 0;
-    transform: translateY(50%);
-    border-radius: 5px;
-  }
-  .styleBackDark::before {
-    content: "";
-    width: 60%;
-    display: inline-block;
-    background-color: rgba(25, 15, 207, 0.244);
-    height: 43px;
-    position: absolute;
-    bottom: 50%;
-    right: 0;
-    transform: translateY(50%);
-    border-radius: 5px;
-  }
-  
+    width: 90px;
+    height: 33px;
+    background: rgb(234, 241, 255);
+    bottom: 81px;
+    left: 16%;
+    z-index: 100;
+    /* border-radius: 16%; */
+    clip-path: circle(59% at 50% 173%);
 
-  @media (max-width:961px) {
-    
-    .topParentLight{
-        width: 700px;
-        padding: 50px;
-    }
-    .topParentDark{
-        padding: 50px;
-        width: 700px;
-    }
-  }
+}
+.info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 14%;
+}
 
-  @media (max-width:701px) {
-    
-    .topParentLight{
-        width: 500px;
-        padding: 50px;
-    }
-    .topParentDark{
-        padding: 50px;
-        width: 500px;
-    }
+@media (max-width: 961px) {
+  .topParentLight {
+    width: 700px;
+    padding: 50px;
   }
+  .topParentDark {
+    padding: 50px;
+    width: 700px;
+  }
+}
 
-  @media (max-width:501px) {
-    
-    .topParentLight{
-        padding: 40px 20px;
-        width: 400px;
-    }
-    .topParentDark{
-        padding: 40px 20px;
-        width: 400px;
-    }
-    .styleSize{
-        margin: 40px 40px;
-    }
+@media (max-width: 701px) {
+  .topParentLight {
+    width: 500px;
+    padding: 50px;
   }
+  .topParentDark {
+    padding: 50px;
+    width: 500px;
+  }
+}
 
-  
-  @media (max-width:401px) {
-    
-    .topParentLight{
-        padding: 40px 10px;
-        width: 350px;
-    }
-    .topParentDark{
-        padding: 40px 10px;
-        width: 350px;
-    }
-    .styleSize{
-        margin:  40px 0px;
-    }
+@media (max-width: 501px) {
+  .topParentLight {
+    padding: 40px 20px;
+    width: 400px;
   }
+  .topParentDark {
+    padding: 40px 20px;
+    width: 400px;
+  }
+  .styleSize {
+    margin: 40px 40px;
+  }
+}
+
+@media (max-width: 401px) {
+  .topParentLight {
+    padding: 40px 10px;
+    width: 350px;
+  }
+  .topParentDark {
+    padding: 40px 10px;
+    width: 350px;
+  }
+  .styleSize {
+    margin: 40px 0px;
+  }
+}

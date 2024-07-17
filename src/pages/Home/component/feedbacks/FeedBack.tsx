@@ -117,7 +117,7 @@ export default function FeedBack() {
           
         </Container>
       </div>
-      <Button  route="/feedbacks" text="جميع الاراء" />
+      <Button  route="/all-feedback" text="جميع الاراء" />
     </>
   );
 }

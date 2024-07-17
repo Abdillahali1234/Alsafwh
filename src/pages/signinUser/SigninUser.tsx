@@ -295,7 +295,7 @@ export default function SigninUser() {
               لديك حساب ؟{" "}
               <Link
                 style={{ color: "#408fff", marginRight: "5px" }}
-                to={"/login-user"}>
+                to={"/login"}>
                 تسجيل الدخول
               </Link>
             </Text>

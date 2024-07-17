@@ -19,10 +19,12 @@ import {
   cx,
   Link,
   classes,
-  Image,
-}from "@utilities/imports/ImportsHeader";
+} from "@utilities/imports/ImportsHeader";
 import { NavLink } from "react-router-dom";
+import MainLogo from "@assets/Alsafwa/الصفوة بالخط العربى.png";
 
+import ImgPerson from "@assets/Alsafwa/person.png";
+import MenuCom from "@shared/menu/MenuCom";
 interface obj {
   title: string;
   path: string;
@@ -76,10 +78,11 @@ export default function Header() {
             <div className={classes.StyleImg}>
               <Link to="/">
                 <img
-                  src={Image}
-                  style={{ marginTop: "-27px" }}
+                  src={MainLogo}
+                  className={classes.logoImg}
+                  style={{ marginTop: "-5px" ,objectFit:"contain"}}
                   width={"135px"}
-                  height={"83px"}
+                  height={"70px"}
                 />
               </Link>
             </div>
@@ -144,6 +147,9 @@ export default function Header() {
                     />
                   </ActionIcon>
                 </Box>
+              </Box>
+              <Box>
+                <MenuCom img={ImgPerson} />
               </Box>
             </Group>
 
