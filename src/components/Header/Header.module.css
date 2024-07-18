@@ -77,7 +77,13 @@
   background-color: rgb(36, 36, 36);
   padding: 0 !important;
 }
-
+.StyleImg {
+  height: 70px;
+}
+.StyleImg > a {
+  display: inline-block;
+  height: 70px;
+}
 .itemHeader {
   gap: 3rem;
   margin-left: -75px;

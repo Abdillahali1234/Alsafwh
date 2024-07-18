@@ -21,7 +21,7 @@ import {
   classes,
 } from "@utilities/imports/ImportsHeader";
 import { NavLink } from "react-router-dom";
-import MainLogo from "@assets/Alsafwa/الصفوة بالخط العربى.png";
+import MainLogo from "@assets/Alsafwa/11.png";
 
 import ImgPerson from "@assets/Alsafwa/person.png";
 import MenuCom from "@shared/menu/MenuCom";
@@ -80,7 +80,7 @@ export default function Header() {
                 <img
                   src={MainLogo}
                   className={classes.logoImg}
-                  style={{ marginTop: "-5px" ,objectFit:"contain"}}
+                  style={{ marginTop: "0" ,objectFit:"contain"}}
                   width={"135px"}
                   height={"70px"}
                 />

@@ -3,6 +3,11 @@
     justify-content: space-evenly;
 }
 
+.logo{
+
+    object-fit: contain;
+}
+
 .linkFooter{
     text-decoration: none;
     color: #eee;
