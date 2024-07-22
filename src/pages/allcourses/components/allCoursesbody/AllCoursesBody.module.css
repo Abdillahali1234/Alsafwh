@@ -7,11 +7,13 @@
   justify-content: center;
 }
 
+
 @media (min-width: 700px) {
   .parent {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 
 @media (min-width: 900px) {
   .parent {

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import classes from "./SingleCourse.module.css";
-import { Box, Text } from "@mantine/core";
+import { Box, Text, useComputedColorScheme } from "@mantine/core";
 import image from "@assets/Alsafwa/Free Photo _ CheerfulTwo.png";
 import {
   IconClock,
@@ -119,9 +119,14 @@ export default function SingleCourse() {
       />
     </Box>
   );
+  
+
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
 
   return (
-    <Box className={classes.parent}>
+    <Box c={computedColorScheme == 'light' ? "black" : "white"}  className={classes.parent}>
       <Box className={classes.headerPage}>
         <Text mb={20} fz={30} c={"white"}>
           مادة الفلسفة{" "}

@@ -4,11 +4,27 @@
   width: 90%;
   border-radius: 10px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 10px;
   box-shadow: #3788fa51 0px 4px 12px;
   margin: auto;
+}
+
+.headerDark{
+  background-color: rgb(36,36,36);
+  padding: 20px 10px;
+  width: 90%;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: #3788fa51 0px 4px 12px;
+  margin: auto;
+  color: white;
 }
 
 .conSearch {
@@ -38,9 +54,10 @@
 }
 .formStyle {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 1rem;
   width: 70%;
 }
 
@@ -53,6 +70,20 @@
   padding: 5px 10px;
   box-shadow: #3788fa51 0px 4px 12px;
 }
+
+
+@media (max-width:1170px) {
+  .formStyle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    width: 70%;
+  }
+  
+}
+
 
 @media (max-width: 1087px) {
   .conSearch {

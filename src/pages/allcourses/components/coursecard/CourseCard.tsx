@@ -14,11 +14,12 @@ const {
 
 import img from "@assets/Alsafwa/img.png";
 import teacherImg from "@assets/Alsafwa/teacher.png";
+import { Box } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 export default function CourseCard() {
   return (
-    <div className={card}>
+    <Box c={"black"} className={card}>
       <div className={discussionImage}>
         <img src={img} alt="Group Discussion" />
       </div>
@@ -44,6 +45,6 @@ export default function CourseCard() {
           تسجيل
         </Link>
       </div>
-    </div>
+    </Box>
   );
 }
