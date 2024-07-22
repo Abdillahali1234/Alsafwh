@@ -6,6 +6,10 @@ import styles from "./MainLayout.module.css"
 
 const { MainLayoutStyle } = styles;
 export default function MainLayout() {
+
+
+
+
   return (
     <div className={MainLayoutStyle}>
       <Header />

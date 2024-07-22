@@ -8,7 +8,7 @@
 
 
 
-.inputt:focus{
+.input:focus{
     border: 0px;
     box-shadow: #3788faa3 0px 4px 12px;    
 }

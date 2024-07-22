@@ -79,23 +79,39 @@
   border-radius: 5px;
 }
 
-.slide {
+.slideLight {
   position: relative;
 }
 
-.slide::before {
-    content: "";
-    position: absolute;
-    width: 90px;
-    height: 33px;
-    background: rgb(234, 241, 255);
-    bottom: 81px;
-    left: 16%;
-    z-index: 100;
-    /* border-radius: 16%; */
-    clip-path: circle(59% at 50% 173%);
-
+.slideLight::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 33px;
+  background: rgb(234, 241, 255);
+  bottom: 81px;
+  left: 16%;
+  z-index: 100;
+  clip-path: circle(59% at 50% 173%);
 }
+
+.slideDark {
+  position: relative;
+}
+
+.slideDark::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 33px;
+  background: rgb(36, 36, 36);
+  bottom: 81px;
+  left: 16%;
+  z-index: 100;
+  /* border-radius: 16%; */
+  clip-path: circle(59% at 50% 173%);
+}
+
 .info {
   position: absolute;
   display: flex;
@@ -104,6 +120,29 @@
   justify-content: center;
   bottom: 0;
   left: 14%;
+}
+
+.inputComment {
+  border: 0px;
+  outline: none;
+  border-bottom: 1px solid rgba(60, 59, 59, 0.301);
+  margin: 20px 0px;
+  padding: 10px 5px 5px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.containerForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.styleImage {
+  width: 450px;
+  height: 450px;
+  margin-left: -150px;
+  margin-top: -50px;
 }
 
 @media (max-width: 961px) {
@@ -117,6 +156,35 @@
   }
 }
 
+@media (max-width: 761px) {
+  .styleImage {
+    width: 350px;
+    height: 350px;
+    margin-left: 0px;
+    /* margin-right: -150px; */
+    margin-top: -20px;
+  }
+  .containerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 733px) {
+  .containerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .styleImage {
+    width: 250px;
+    height: 250px;
+    margin-left: -150px;
+    margin-top: -50px;
+  }
+}
+
 @media (max-width: 701px) {
   .topParentLight {
     width: 500px;
@@ -125,6 +193,17 @@
   .topParentDark {
     padding: 50px;
     width: 500px;
+  }
+}
+
+@media (max-width: 551px) {
+  .styleImage {
+    display: none;
+  }
+  .containerForm {
+    display: inline;
+    justify-content: center;
+    align-items: center;
   }
 }
 

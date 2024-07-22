@@ -9,15 +9,23 @@ import { motion } from "framer-motion";
 import Subscription from "./component/subscription/Subscription";
 import HomeHelmet from "@helmets/HomeHelmet";
 import Teachers from "./component/teachers/Teachers";
-import { Box } from "@mantine/core";
+import { Box, useComputedColorScheme } from "@mantine/core";
 import classes from "./Home.module.css";
 export default function Home() {
+
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
+
+
+
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
-        <Box className={classes.container}>
+        <Box c={computedColorScheme == "light" ? "black" : "white"} className={classes.container}>
 
       <HomeHelmet />
       <FristSection />
