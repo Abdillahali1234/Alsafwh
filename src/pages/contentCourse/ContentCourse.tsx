@@ -1,8 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import {
   Box,
   Button,
-  Divider,
   rem,
   Tabs,
   Text,
@@ -21,14 +19,31 @@ import { useState } from "react";
 import ReactPlayer from "react-player";
 import examImage from "@assets/exambg.png";
 import { Link } from "react-router-dom";
-import imagePerson from "@assets/Alsafwa/RetratoTwo.png";
+// import imagePerson from "@assets/Alsafwa/RetratoTwo.png";
+import Comments from "./comment/Comments";
 
 export default function ContentCourse() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
+
   const iconStyle = { width: rem(12), height: rem(12) };
+
+  // const comments = [
+  //   {
+  //     id: 1,
+  //     name: "احمد ماهر",
+  //     comment: "أريد ان اسأل سؤال : هل التاريخ يمكن التحريف فيه حقا ؟",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "احمد ماهر",
+  //     comment: "أريد ان اسأل سؤال : هل التاريخ يمكن التحريف فيه حقا ؟",
+  //   },
+  // ];
+
   const examTap = ["امتحان 1", "امتحان 2", "امتحان 3"];
+
   const doors = [
     {
       id: 1,
@@ -84,72 +99,77 @@ export default function ContentCourse() {
           </Tabs.Panel>
           <Tabs.Panel className={classes.styleTabsPanel} value="settings">
             <ul style={{ listStyle: "decimal" }}>
-              {examTap.map((item) => (
-                <li style={{ marginBottom: "10px" }}>{item}</li>
+              {examTap.map((item, index) => (
+                <li key={index} style={{ marginBottom: "10px" }}>
+                  {item}
+                </li>
               ))}
             </ul>
           </Tabs.Panel>
           <Tabs.Panel className={classes.styleTabsPanel} value="comment">
-            <Box>
-              <Box
-                display={"flex"}
-                style={{ alignItems: "center", gap: "5px" }}
-              >
+            {/* {comments.map((item) => (
+              <Box key={item.id}>
                 <Box
                   display={"flex"}
-                  bg={"yellow"}
-                  style={{
-                    borderRadius: "100px",
-                    justifyContent: "center",
-                    overflow: "hidden",
-                  }}
+                  style={{ alignItems: "center", gap: "5px" }}
                 >
-                  <img
-                    src={imagePerson}
-                    alt=""
-                    width={"50px"}
-                    height={"50px"}
-                  />
+                  <Box
+                    display={"flex"}
+                    bg={"yellow"}
+                    style={{
+                      borderRadius: "100px",
+                      justifyContent: "center",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src={imagePerson}
+                      alt=""
+                      width={"50px"}
+                      height={"50px"}
+                    />
+                  </Box>
+                  <Box>
+                    <Text fz={13} fw={500}>
+                      {item.name}
+                    </Text>
+                    <Text fz={13} fw={300}>
+                      االأربعاء 13 مارس الساعة 2:45 ظهرا
+                    </Text>
+                  </Box>
                 </Box>
-                <Box>
-                  <Text fz={13} fw={500}>
-                    احمد ماهر
-                  </Text>
-                  <Text fz={13} fw={300}>
-                    االأربعاء 13 مارس الساعة 2:45 ظهرا
-                  </Text>
-                </Box>
-              </Box>
-              <Text mt={10} mr={10} fz={15} fw={500}>
-                أريد ان اسأل سؤال : هل التاريخ يمكن التحريف فيه حقا ؟
-              </Text>
+                <Text mt={10} mr={10} fz={15} fw={500}>
+                  {item.comment}
+                </Text>
 
-              <Box mt={10} mr={20} display={"flex"} style={{ gap: "2rem" }}>
-                <Text
-                  fz={13}
-                  fw={500}
-                  c={
-                    computedColorScheme == "light"
-                      ? "rgba(0, 0, 0, 0.6)"
-                      : "white"
-                  }
-                >
-                  رد
-                </Text>
-                <Text
-                  fz={13}
-                  fw={500}
-                  c={
-                    computedColorScheme == "light"
-                      ? "rgba(0, 0, 0, 0.6)"
-                      : "white"
-                  }
-                >
-                  اعجاب
-                </Text>
+                <Box mt={10} mr={20} display={"flex"} style={{ gap: "2rem" }}>
+                  <Text
+                    fz={13}
+                    fw={500}
+                    c={
+                      computedColorScheme == "light"
+                        ? "rgba(0, 0, 0, 0.6)"
+                        : "white"
+                    }
+                  >
+                    رد
+                  </Text>
+                  <Text
+                    fz={13}
+                    fw={500}
+                    c={
+                      computedColorScheme == "light"
+                        ? "rgba(0, 0, 0, 0.6)"
+                        : "white"
+                    }
+                  >
+                    اعجاب
+                  </Text>
+                </Box>
+                <Divider my={20} />
               </Box>
-            </Box>
-            <Divider my={20} />
+            ))}
+
             <form>
               <Box
                 display={"flex"}
@@ -170,12 +190,14 @@ export default function ContentCourse() {
                   className={classes.inputCommentCourse}
                   type="text"
                   name="comment"
-                  placeholder="اضافة تعليق"
+                  placeholder="اضافة تعليق..."
                   required
                 />
                 <Button type="submit">ارسال</Button>
               </Box>
-            </form>
+            </form> */}
+
+            <Comments/>
           </Tabs.Panel>
         </Tabs>
       ),
@@ -285,8 +307,10 @@ export default function ContentCourse() {
           </Tabs.Panel>
           <Tabs.Panel className={classes.styleTabsPanel} value="settings">
             <ul style={{ listStyle: "decimal" }}>
-              {examTap.map((item) => (
-                <li style={{ marginBottom: "10px" }}>{item}</li>
+              {examTap.map((item, index) => (
+                <li key={index} style={{ marginBottom: "10px" }}>
+                  {item}
+                </li>
               ))}
             </ul>
           </Tabs.Panel>
@@ -401,8 +425,10 @@ export default function ContentCourse() {
           </Tabs.Panel>
           <Tabs.Panel className={classes.styleTabsPanel} value="settings">
             <ul style={{ listStyle: "decimal" }}>
-              {examTap.map((item) => (
-                <li style={{ marginBottom: "10px" }}>{item}</li>
+              {examTap.map((item, index) => (
+                <li key={index} style={{ marginBottom: "10px" }}>
+                  {item}
+                </li>
               ))}
             </ul>
           </Tabs.Panel>
@@ -465,6 +491,7 @@ export default function ContentCourse() {
       ),
     },
   ];
+
   const [active, setActive] = useState(0);
 
   const id = doors[active].id;
@@ -530,6 +557,7 @@ export default function ContentCourse() {
             : classes.colorComponentDark
         }
         py={15}
+        // px={""}
       >
         <Box>
           <Text fz={25} fw={700} mt={0} ml={0} mb={25}>

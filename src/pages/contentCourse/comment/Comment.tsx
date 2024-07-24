@@ -1,83 +1,25 @@
-import { Box, Grid, GridCol } from '@mantine/core';
-import React, { useState } from 'react'
-import { Form } from 'react-router-dom';
+import React, { FC } from 'react';
 
-export default function Comment() {
-
-	const [skills, setSkills] = useState("");
-
-	const [allSkills, setAllSkills] = useState([]);
+interface CommentProps {
+  text: string;
+}
 
 
-    const onAddSkillsHandler = () => {
 
-		if (skills) {
-			// Check if the skill already exists
-			const skillExists = allSkills.some((skill) => skill.title === skills);
-			if (!skillExists) {
-				setAllSkills([...allSkills,  skills]); // Use skill title as ID
-			}
-			setSkills("");
-		} else {
-			return;
-		}
-	};
+const Comment: FC<CommentProps> = ({text}) => {
 
-	const deleteSkillHandler = (skillTitle) => {
-		let data = allSkills.filter((skill) => skill.title||skill!== skillTitle);
-		setAllSkills(data);
-	};
+// localStorage.setItem("comment" , JSON.stringify(text))
 
-    const generateRandomId = () => {
-		return Math.floor(Math.random() * 1000000);
-	};
+  
+  
+
 
 
   return (
-    
+    <div>
+      <p>{text}</p>
+    </div>
+  );
+};
 
-    <Box>
-
-
-<Form  className="mb-3">
-
-    <Grid>
-
-							<Grid.Col >
-								<label>Skills</label>
-							</Grid.Col>
-							<Grid.Col >
-								<Form
-									value={skills}
-									onChange={(e) => setSkills(e.target.value)}
-								/>
-							</Grid.Col>
-							<Grid.Col >
-								<button
-									className="btn btn-success add-skill-btn"
-									type="button"
-									onClick={onAddSkillsHandler}
-								>
-									Add
-								</button>
-							</Grid.Col>
-    </Grid>
-						</Form>
-
-                        <div className="skills">
-							<ul className="privateUl">
-								{allSkills &&
-									allSkills.map((single) => (
-										<li className="privateLi"
-											key={generateRandomId()}
-											onClick={() => deleteSkillHandler(single)}
-										>
-											{single.title?single.title:single}
-											<span className="delete-skill">Delete</span>
-										</li>
-									))}
-							</ul>
-						</div>
-    </Box>
-  )
-}
+export default Comment;

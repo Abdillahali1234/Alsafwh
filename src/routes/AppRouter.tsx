@@ -22,7 +22,6 @@ import TeachersStudent from './../pages/teachersStudent/TeachersStudent';
 import LessonDetailsTeacher from "@pages/lession-details/LessonDetailsTeacher";
 import Exam from "@pages/exam/Exam";
 import ExamPage from "@pages/examPage/ExamPage";
-
 export default function AppRouter() {
   const router = createBrowserRouter([
     {
@@ -109,7 +108,7 @@ export default function AppRouter() {
         {
           path:"/exam-page",
           element:<ExamPage/>
-        }
+        },
       ],
     },
   ]);

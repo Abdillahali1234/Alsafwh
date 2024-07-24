@@ -66,7 +66,7 @@ export default function TeachersStudent() {
                 احمد كامل
               </Text>
               <Text fz={15} fw={400} mt={8}>
-                طالب
+              معلم مادة التاريخ
               </Text>
             </Box>
           </Box>

@@ -60,7 +60,7 @@
   display: grid;
   grid-template-columns: auto 250px;
   gap: 3rem;
-  align-items: center;
+  align-items: start;
 }
 
 .containerImage {
@@ -135,6 +135,17 @@
     margin: 0px 0px;
   }
 }
+
+
+@media (max-width: 501px) {
+  .btnSend {
+    width: 100%;
+  }
+  .inputCommentCourse{
+    width:70%;
+  }
+}
+
 
 @media (max-width: 450px) {
   .imageSize {
