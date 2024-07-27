@@ -11,6 +11,7 @@ import HomeHelmet from "@helmets/HomeHelmet";
 import Teachers from "./component/teachers/Teachers";
 import { Box, useComputedColorScheme } from "@mantine/core";
 import classes from "./Home.module.css";
+import Buttons from "./component/Buttons";
 export default function Home() {
 
   const computedColorScheme = useComputedColorScheme("light", {
@@ -26,7 +27,7 @@ export default function Home() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
         <Box c={computedColorScheme == "light" ? "black" : "white"} className={classes.container}>
-
+        <Buttons/>
       <HomeHelmet />
       <FristSection />
       <SecondeSection />

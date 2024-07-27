@@ -22,6 +22,10 @@ import TeachersStudent from './../pages/teachersStudent/TeachersStudent';
 import LessonDetailsTeacher from "@pages/lession-details/LessonDetailsTeacher";
 import Exam from "@pages/exam/Exam";
 import ExamPage from "@pages/examPage/ExamPage";
+import AddQuestion from "@pages/addQuestion/AddQuestion";
+import FeedbackCourse from "@pages/feedbackCourse/FeedbackCourse";
+import CoursesForStudent from "@pages/coursesForStudent/CoursesForStudent";
+
 export default function AppRouter() {
   const router = createBrowserRouter([
     {
@@ -108,6 +112,18 @@ export default function AppRouter() {
         {
           path:"/exam-page",
           element:<ExamPage/>
+        },
+        {
+          path:"/add-question",
+          element:<AddQuestion/>
+        },
+        {
+          path:"/feedback-course",
+          element:<FeedbackCourse/>
+        },
+        {
+          path:"/courses-student",
+          element:<CoursesForStudent/>
         },
       ],
     },
