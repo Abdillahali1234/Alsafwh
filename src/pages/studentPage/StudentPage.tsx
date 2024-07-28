@@ -16,10 +16,13 @@ import {
   IconSchool,
   IconUserFilled,
 } from "@tabler/icons-react";
-import { RiDeleteBin5Fill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/Store";
+import { useEffect } from "react";
+import { GetStudentApi } from "@store/api/StudentApi";
 
- const color = "rgb(34,166,241)";
+const color = "rgb(34,166,241)";
 
 export default function StudentPage() {
   const computedColorScheme = useComputedColorScheme("light", {
@@ -34,6 +37,14 @@ export default function StudentPage() {
     }
   };
 
+  const dispatch = useDispatch<AppDispatch>();
+  const { student } = useSelector((state: RootState) => state.Student);
+
+  const { StudentId } = useParams();
+  useEffect(() => {
+    if (!StudentId) return;
+    dispatch(GetStudentApi(StudentId));
+  }, []);
   return (
     <Box mb={100} className={classes.parent}>
       <Box mb={50} className={classes.headerPageTeacher}>
@@ -52,27 +63,36 @@ export default function StudentPage() {
           computedColorScheme == "light"
             ? classes.containerLight
             : classes.containerDark
-        }
-      >
+        }>
         <Box
           display={"flex"}
           style={{
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
-          }}
-        >
+          }}>
           <Box display={"flex"} style={{ alignItems: "center", gap: "1rem" }}>
             <Box className={classes.containerImage} h={100} w={100}>
-              <img src={image} width={"150px"} height={"100%"} alt="" />
+              <img
+                src={
+                  student?.user.fileUploads.url
+                    ? student?.user.fileUploads.url
+                    : image
+                }
+                width={"150px"}
+                height={"100%"}
+                alt=""
+              />
             </Box>
 
             <Box>
               <Text fw={700} fz={18} c={color}>
-                احمد كامل
+                {student
+                  ? student.user.firstName + " " + student.user.lastName
+                  : ""}
               </Text>
               <Text fz={15} fw={400} mt={8}>
-                طالب
+                {student?.user.gender === "male" ? "طالب" : "طالبه"}
               </Text>
             </Box>
           </Box>
@@ -80,8 +100,7 @@ export default function StudentPage() {
           <Box
             className={classes.numberOfCourses}
             display={"flex"}
-            style={{ alignItems: "center" }}
-          >
+            style={{ alignItems: "center" }}>
             <IconSchool
               style={{
                 marginLeft: "7px",
@@ -102,8 +121,7 @@ export default function StudentPage() {
           display={"flex"}
           mt={50}
           style={{ gap: "2rem" }}
-          className={classes.containerFiled}
-        >
+          className={classes.containerFiled}>
           <Box w={"100%"}>
             <Box display={"flex"}>
               <IconUserFilled
@@ -150,13 +168,11 @@ export default function StudentPage() {
             />
           </Box>
         </Box>
-
         <Box
           display={"flex"}
           mt={20}
           style={{ gap: "2rem" }}
-          className={classes.containerFiled}
-        >
+          className={classes.containerFiled}>
           <Box w={"100%"}>
             <Box display={"flex"}>
               <IconAlignJustified
@@ -185,9 +201,8 @@ export default function StudentPage() {
               pointer
               id="class"
               name="class"
-              className={classes.inputFiledSelect}
-            >
-              <option value="" disabled selected hidden>
+              className={classes.inputFiledSelect}>
+              <option defaultValue="year" disabled hidden>
                 صفك
               </option>
               <option value="1">1</option>
@@ -223,9 +238,8 @@ export default function StudentPage() {
               pointer
               id="department"
               name="department"
-              className={classes.inputFiledSelect}
-            >
-              <option value="" disabled selected hidden>
+              className={classes.inputFiledSelect}>
+              <option value="spelization" disabled hidden>
                 تخصصك
               </option>
               <option value="1">1</option>
@@ -237,8 +251,7 @@ export default function StudentPage() {
           display={"flex"}
           mt={20}
           style={{ gap: "2rem" }}
-          className={classes.containerFiled}
-        >
+          className={classes.containerFiled}>
           <Box w={"100%"}>
             <Box display={"flex"} style={{ alignItems: "center" }}>
               <IconPassword
@@ -290,8 +303,7 @@ export default function StudentPage() {
           display={"flex"}
           mt={50}
           className={classes.containerStudentDate}
-          style={{ justifyContent: "space-between" }}
-        >
+          style={{ justifyContent: "space-between" }}>
           <Box>
             <Box>
               <Box display={"flex"} style={{ alignItems: "center" }}>
@@ -310,28 +322,22 @@ export default function StudentPage() {
                 mt={20}
                 display={"flex"}
                 className={classes.emailStyle}
-                style={{ alignItems: "center" }}
-              >
+                style={{ alignItems: "center" }}>
                 <Box className={classes.containerImageEmail} h={70} w={70}>
-                  <img src={image} width={"150px"} height={"100%"} alt="" />
+                  <img
+                    src={
+                      student?.user.fileUploads.url
+                        ? student?.user.fileUploads.url
+                        : image
+                    }
+                    width={"150px"}
+                    height={"100%"}
+                    alt=""
+                  />
                 </Box>
-                <Text>alexarawles@gmail.com</Text>
-                <RiDeleteBin5Fill color="red" />
-              </Box>
-              <Box mt={20}>
-                <Link
-                  to={"/"}
-                  className={
-                    computedColorScheme == "light"
-                      ? classes.addEmailLight
-                      : classes.addEmailDark
-                  }
-                >
-                  <Text>إضافة بريد الكترونى</Text>
-                  <span style={{ fontSize: "25px", marginRight: "10px" }}>
-                    +
-                  </span>
-                </Link>
+                <Text>
+                  {student?.user.email ? student?.user.email : "test@gmail.com"}
+                </Text>
               </Box>
             </Box>
           </Box>
@@ -357,34 +363,19 @@ export default function StudentPage() {
                   alignItems: "center",
                   justifyContent: "space-between",
                   gap: "1rem",
-                }}
-              >
-                <Text>01054789322</Text>
-                <RiDeleteBin5Fill color="red" />
+                }}>
+                <Text>
+                  {student ? student?.user.phone : "لا يوجد رقم هاتف"}
+                </Text>
               </Box>
               <Box
                 mt={10}
                 display={"flex"}
-                style={{ alignItems: "center", gap: "1rem", flexWrap: "wrap" }}
-              >
-                <Text>01054789322</Text>
+                style={{ alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+                <Text>
+                  {student ? student?.fatherPhone : "لا يوجد رقم هاتف"}
+                </Text>
                 <Text className={classes.parentPhone}>رقم هاتف ولى الأمر</Text>
-                <RiDeleteBin5Fill color="red" />
-              </Box>
-              <Box mt={30}>
-                <Link
-                  to={"/"}
-                  className={
-                    computedColorScheme == "light"
-                      ? classes.addEmailLight
-                      : classes.addEmailDark
-                  }
-                >
-                  <Text> إضافة رقم موبيل </Text>
-                  <span style={{ fontSize: "25px", marginRight: "10px" }}>
-                    +
-                  </span>
-                </Link>
               </Box>
             </Box>
           </Box>
@@ -394,11 +385,14 @@ export default function StudentPage() {
           mb={30}
           ml={30}
           display={"flex"}
-          style={{ justifyContent: "space-between" }}
-        >
+          style={{ justifyContent: "space-between" }}>
           {/* <button ></button> */}
-          <Link to={"/"} className={classes.btnSave}>تعديل</Link>
-          <Link to={"/"} className={classes.btnSave}>حفظ</Link>
+          <Link to={"/"} className={classes.btnSave}>
+            تعديل
+          </Link>
+          <Link to={"/"} className={classes.btnSave}>
+            حفظ
+          </Link>
           {/* <button className={classes.btnSave}>حفظ</button> */}
         </Box>
       </Container>
