@@ -3,7 +3,6 @@
   background-color: rgba(234, 241, 255, 1);
   border-radius: 15px;
   padding: 50px;
-  max-width: 100%;
   box-sizing: border-box;
 }
 .topParentDark {
@@ -13,7 +12,6 @@
   border: 1px solid rgba(255, 255, 255, 0.112);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   color: white;
-  max-width: 100%;
   box-sizing: border-box;
 }
 

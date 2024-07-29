@@ -55,14 +55,16 @@ export default function StudentPage() {
           computedColorScheme == "light"
             ? classes.containerLight
             : classes.containerDark
-        }>
+        }
+      >
         <Box
           display={"flex"}
           style={{
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
-          }}>
+          }}
+        >
           <Box display={"flex"} style={{ alignItems: "center", gap: "1rem" }}>
             <Box className={classes.containerImage} h={100} w={100}>
               <img
@@ -92,7 +94,8 @@ export default function StudentPage() {
           <Box
             className={classes.numberOfCourses}
             display={"flex"}
-            style={{ alignItems: "center" }}>
+            style={{ alignItems: "center" }}
+          >
             <IconSchool
               style={{
                 marginLeft: "7px",
@@ -113,7 +116,8 @@ export default function StudentPage() {
           display={"flex"}
           mt={50}
           style={{ gap: "2rem" }}
-          className={classes.containerFiled}>
+          className={classes.containerFiled}
+        >
           <Box w={"100%"}>
             <Box display={"flex"}>
               <IconUserFilled
@@ -164,7 +168,8 @@ export default function StudentPage() {
           display={"flex"}
           mt={20}
           style={{ gap: "2rem" }}
-          className={classes.containerFiled}>
+          className={classes.containerFiled}
+        >
           <Box w={"100%"}>
             <Box display={"flex"}>
               <IconAlignJustified
@@ -193,7 +198,8 @@ export default function StudentPage() {
               pointer
               id="class"
               name="class"
-              className={classes.inputFiledSelect}>
+              className={classes.inputFiledSelect}
+            >
               <option defaultValue="year" disabled hidden>
                 صفك
               </option>
@@ -230,7 +236,8 @@ export default function StudentPage() {
               pointer
               id="department"
               name="department"
-              className={classes.inputFiledSelect}>
+              className={classes.inputFiledSelect}
+            >
               <option value="spelization" disabled hidden>
                 تخصصك
               </option>
@@ -243,7 +250,8 @@ export default function StudentPage() {
           display={"flex"}
           mt={20}
           style={{ gap: "2rem" }}
-          className={classes.containerFiled}>
+          className={classes.containerFiled}
+        >
           <Box w={"100%"}>
             <Box display={"flex"} style={{ alignItems: "center" }}>
               <IconPassword
@@ -295,39 +303,8 @@ export default function StudentPage() {
           display={"flex"}
           mt={50}
           className={classes.containerStudentDate}
-<<<<<<< HEAD
-          style={{ justifyContent: "space-between" }}>
-=======
           style={{ justifyContent: "space-between" }}
         >
-<Box>
-            <Box>
-              <Box display={"flex"} style={{ alignItems: "center" }}>
-                <IconMailFilled
-                  style={{
-                    height: "15px",
-                    width: "15px",
-                    color: color,
-                    marginLeft: "5px",
-                  }}
-                />
-                <Text>البريد الالكترونى </Text>
-              </Box>
-
-              <Box
-                mt={20}
-                display={"flex"}
-                className={classes.emailStyle}
-                style={{ alignItems: "center" }}>
-                <Box className={classes.containerImageEmail} h={70} w={70}>
-                  <img src={image} width={"150px"} height={"100%"} alt="" />
-                </Box>
-                <Text>alexarawles@gmail.com</Text>
-              </Box>
-            </Box>
-          </Box>
-
->>>>>>> de810f0dc200d46ed6d406af68e18c314df558fd
           <Box>
             <Box>
               <Box display={"flex"} style={{ alignItems: "center" }}>
@@ -346,7 +323,36 @@ export default function StudentPage() {
                 mt={20}
                 display={"flex"}
                 className={classes.emailStyle}
-                style={{ alignItems: "center" }}>
+                style={{ alignItems: "center" }}
+              >
+                <Box className={classes.containerImageEmail} h={70} w={70}>
+                  <img src={image} width={"150px"} height={"100%"} alt="" />
+                </Box>
+                <Text>alexarawles@gmail.com</Text>
+              </Box>
+            </Box>
+          </Box>
+
+          <Box>
+            <Box>
+              <Box display={"flex"} style={{ alignItems: "center" }}>
+                <IconMailFilled
+                  style={{
+                    height: "15px",
+                    width: "15px",
+                    color: color,
+                    marginLeft: "5px",
+                  }}
+                />
+                <Text>البريد الالكترونى </Text>
+              </Box>
+
+              <Box
+                mt={20}
+                display={"flex"}
+                className={classes.emailStyle}
+                style={{ alignItems: "center" }}
+              >
                 <Box className={classes.containerImageEmail} h={70} w={70}>
                   <img
                     src={
@@ -387,7 +393,8 @@ export default function StudentPage() {
                   alignItems: "center",
                   justifyContent: "space-between",
                   gap: "1rem",
-                }}>
+                }}
+              >
                 <Text>
                   {student ? student?.user.phone : "لا يوجد رقم هاتف"}
                 </Text>
@@ -395,7 +402,8 @@ export default function StudentPage() {
               <Box
                 mt={10}
                 display={"flex"}
-                style={{ alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+                style={{ alignItems: "center", gap: "1rem", flexWrap: "wrap" }}
+              >
                 <Text>
                   {student ? student?.fatherPhone : "لا يوجد رقم هاتف"}
                 </Text>
@@ -409,7 +417,8 @@ export default function StudentPage() {
           mb={30}
           ml={30}
           display={"flex"}
-          style={{ justifyContent: "space-between" }}>
+          style={{ justifyContent: "space-between" }}
+        >
           {/* <button ></button> */}
           <Link to={"/"} className={classes.btnSave}>
             تعديل
