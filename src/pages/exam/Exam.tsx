@@ -1,8 +1,10 @@
 import HeaderTeacher from "@pages/teacherpage/components/headerteacher/HeaderTeacher";
 import Styles from "./Exam.module.css";
 import img from "@assets/Alsafwa/person.png";
-import { Box, useComputedColorScheme } from "@mantine/core";
+import { Box, Text, useComputedColorScheme } from "@mantine/core";
 import { Link } from "react-router-dom";
+import HeaderLesson from "@shared/HeaderLesson/HeaderLesson";
+import imageSubject from "@assets/Alsafwa/Mathematics-bro.png";
 
 export default function Exam() {
   const computedColorScheme = useComputedColorScheme("light", {
@@ -12,14 +14,20 @@ export default function Exam() {
 
   return (
     <Box
+    pt={50}
       bg={computedColorScheme == "light" ? "" : "rgb(36,36,36)"}
       style={{border:"1px solid rgba(255, 255, 255, 0.334)"}}
       className={Styles.parent}
     >
       <div className={Styles.header}>
         <HeaderTeacher image={img} name="عبدالله" subject="رياضه" />
-        <h1>الامتحانات</h1>
+        <HeaderLesson
+          img={imageSubject}
+          name="ماده الرياضيات"
+          title="الرياضيات هي العقل"
+        />
       </div>
+        <Text fz={35} c={" rgb(65, 130, 249)"} ta={"center"} my={50}  fw={700}>الامتحانات</Text>
       <form>
         <div>
           <label className="nameExam" htmlFor="nameExam">

@@ -125,6 +125,7 @@ export default function AppRouter() {
           path:"/courses-student",
           element:<CoursesForStudent/>
         },
+       
       ],
     },
   ]);

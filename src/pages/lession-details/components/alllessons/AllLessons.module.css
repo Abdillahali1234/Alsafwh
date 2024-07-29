@@ -5,13 +5,18 @@
 .lesson {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+
 }
 
 .title {
   color: rgb(65, 130, 249);
+  /* margin-bottom: 0px; */
 }
+
+
 
 .lesson button {
   display: flex;
@@ -28,4 +33,13 @@
 
 .activeButton {
   cursor: pointer;
+}
+
+
+@media (max-width:568px) {
+  .title {
+    /* color: rgb(65, 130, 249); */
+    margin-bottom: 0px;
+  }
+  
 }

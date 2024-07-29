@@ -1,25 +1,32 @@
 import HeaderTeacher from "@pages/teacherpage/components/headerteacher/HeaderTeacher";
 import Styles from "./AddQuestion.module.css";
 import img from "@assets/Alsafwa/person.png";
-import { Box, Button, useComputedColorScheme } from "@mantine/core";
+import { Box, Button, Text, useComputedColorScheme } from "@mantine/core";
+import imageSubject from "@assets/Alsafwa/Mathematics-bro.png";
 import { Link } from "react-router-dom";
+import HeaderLesson from "@shared/HeaderLesson/HeaderLesson";
 export default function AddQuestion() {
-
-    const computedColorScheme = useComputedColorScheme("light", {
-        getInitialValueInEffect: true,
-      });
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
 
   return (
     <div>
       <Box
+      pt={50}
         bg={computedColorScheme == "light" ? "" : "rgb(36,36,36)"}
         style={{ border: "1px solid rgba(255, 255, 255, 0.334)" }}
         className={Styles.parent}
       >
         <div className={Styles.header}>
           <HeaderTeacher image={img} name="عبدالله" subject="رياضه" />
-          <h1>الامتحانات</h1>
+          <HeaderLesson
+            img={imageSubject}
+            name="ماده الرياضيات"
+            title="الرياضيات هي العقل"
+          />
         </div>
+        <Text fz={35} c={" rgb(65, 130, 249)"} ta={"center"} my={50}  fw={700}>الامتحانات</Text>
         <form>
           <div>
             <label className="nameExam" htmlFor="nameExam">

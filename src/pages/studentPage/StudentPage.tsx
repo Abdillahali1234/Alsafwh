@@ -10,6 +10,7 @@ import image from "@assets/Alsafwa/RetratoTwo.png";
 import {
   IconAlignJustified,
   IconChevronDown,
+  IconMailFilled,
   IconPassword,
   IconPhoneFilled,
   IconSchool,
@@ -289,8 +290,34 @@ export default function StudentPage() {
           display={"flex"}
           mt={50}
           className={classes.containerStudentDate}
-          style={{ justifyContent: "start" }}
+          style={{ justifyContent: "space-between" }}
         >
+<Box>
+            <Box>
+              <Box display={"flex"} style={{ alignItems: "center" }}>
+                <IconMailFilled
+                  style={{
+                    height: "15px",
+                    width: "15px",
+                    color: color,
+                    marginLeft: "5px",
+                  }}
+                />
+                <Text>البريد الالكترونى </Text>
+              </Box>
+
+              <Box
+                mt={20}
+                display={"flex"}
+                className={classes.emailStyle}
+                style={{ alignItems: "center" }}>
+                <Box className={classes.containerImageEmail} h={70} w={70}>
+                  <img src={image} width={"150px"} height={"100%"} alt="" />
+                </Box>
+                <Text>alexarawles@gmail.com</Text>
+              </Box>
+            </Box>
+          </Box>
 
           <Box ml={50}>
             <Box>
