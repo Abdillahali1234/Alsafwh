@@ -26,16 +26,13 @@ import TeachersStudent from "./../pages/teachersStudent/TeachersStudent";
 import LessonDetailsTeacher from "@pages/lession-details/LessonDetailsTeacher";
 import Exam from "@pages/exam/Exam";
 import ExamPage from "@pages/examPage/ExamPage";
-<<<<<<< HEAD
 import ConfirmEmail from "@pages/ConfirmEmail/ConfirmEmail";
 import { useSelector } from "react-redux";
 import { RootState } from "@store/Store";
-=======
 import AddQuestion from "@pages/addQuestion/AddQuestion";
 import FeedbackCourse from "@pages/feedbackCourse/FeedbackCourse";
 import CoursesForStudent from "@pages/coursesForStudent/CoursesForStudent";
 
->>>>>>> 69526a8aa66970b2072bae238165d1f3818f3333
 export default function AppRouter() {
   const { IsConfirmed, AuthModel } = useSelector(
     (state: RootState) => state.Auth

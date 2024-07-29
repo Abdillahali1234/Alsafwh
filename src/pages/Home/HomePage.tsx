@@ -11,35 +11,43 @@ import HomeHelmet from "@helmets/HomeHelmet";
 import Teachers from "./component/teachers/Teachers";
 import { Box, useComputedColorScheme } from "@mantine/core";
 import classes from "./Home.module.css";
-import Buttons from "./component/Buttons";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/Store";
+import { useEffect } from "react";
+import { GetStudentApi } from "@store/api/StudentApi";
 export default function Home() {
-
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
+  const dispatch = useDispatch<AppDispatch>();
+  const { AuthModel } = useSelector((state: RootState) => state.Auth);
 
-
-
+  useEffect(() => {
+    if (!AuthModel?.userId) return;
+    dispatch(GetStudentApi(AuthModel.userId));
+  }, []);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
-        <Box c={computedColorScheme == "light" ? "black" : "white"} className={classes.container}>
-        <Buttons/>
-      <HomeHelmet />
-      <FristSection />
-      <SecondeSection />
-      <NewCourses />
-      <Announcement />
-      <Courses />
-      <Status />
-      <Teachers />
-      <FeedBack />
+      <Box
+        c={computedColorScheme == "light" ? "black" : "white"}
+        className={classes.container}>
+        {/* <Buttons/> */}
+        <HomeHelmet />
+        <FristSection />
+        <SecondeSection />
+        <NewCourses />
+        <Announcement />
+        <Courses />
+        <Status />
+        <Teachers />
+        <FeedBack />
 
-      <Subscription />
-        </Box>
+        <Subscription />
+      </Box>
     </motion.div>
   );
 }

@@ -1,6 +1,6 @@
 import { Box, Text } from "@mantine/core";
 import classes from "./AboutUs.module.css";
-import logo from "@assets/logo.png";
+import logo from "@assets/Alsafwa/11.png";
 import { motion } from "framer-motion";
 
 export default function AboutUs() {

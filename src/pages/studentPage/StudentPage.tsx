@@ -10,16 +10,15 @@ import image from "@assets/Alsafwa/RetratoTwo.png";
 import {
   IconAlignJustified,
   IconChevronDown,
+  IconMailFilled,
   IconPassword,
   IconPhoneFilled,
   IconSchool,
   IconUserFilled,
 } from "@tabler/icons-react";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/Store";
-import { useEffect } from "react";
-import { GetStudentApi } from "@store/api/StudentApi";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/Store";
 
 const color = "rgb(34,166,241)";
 
@@ -36,14 +35,8 @@ export default function StudentPage() {
     }
   };
 
-  const dispatch = useDispatch<AppDispatch>();
   const { student } = useSelector((state: RootState) => state.Student);
 
-  const { StudentId } = useParams();
-  useEffect(() => {
-    if (!StudentId) return;
-    dispatch(GetStudentApi(StudentId));
-  }, []);
   return (
     <Box mb={100} className={classes.parent}>
       <Box mb={50} className={classes.headerPageTeacher}>
@@ -302,7 +295,6 @@ export default function StudentPage() {
           display={"flex"}
           mt={50}
           className={classes.containerStudentDate}
-<<<<<<< HEAD
           style={{ justifyContent: "space-between" }}>
           <Box>
             <Box>
@@ -341,10 +333,6 @@ export default function StudentPage() {
               </Box>
             </Box>
           </Box>
-=======
-          style={{ justifyContent: "start" }}
-        >
->>>>>>> 69526a8aa66970b2072bae238165d1f3818f3333
 
           <Box ml={50}>
             <Box>

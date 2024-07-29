@@ -10,26 +10,28 @@ import {
 import classes from "./AllFeedback.module.css";
 import { Carousel } from "@mantine/carousel";
 import image from "@assets/Alsafwa/img.png";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/Store";
 
 export default function AllFeedback() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
 
+  const {AuthModel} = useSelector((state: RootState) => state.Auth);
+
   const slider = (
     <Carousel.Slide
       className={
         computedColorScheme == "light" ? classes.slideLight : classes.slideDark
-      }
-    >
+      }>
       <Box
         c={"white"}
         px={40}
         py={30}
         className={classes.styleSize}
         bg={"rgba(69, 79, 255, 1)"}
-        style={{ borderRadius: "15px" }}
-      >
+        style={{ borderRadius: "15px" }}>
         <Group></Group>
         <Text pl={54} pt="sm" size="sm">
           This Pokémon likes to lick its palms that are sweetened by being
@@ -46,9 +48,6 @@ export default function AllFeedback() {
         />
         <Box>
           <Text size="sm">Jacob Warnhalter</Text>
-          <Text size="xs" c="">
-            10 minutes ago
-          </Text>
         </Box>
       </Box>
     </Carousel.Slide>
@@ -61,23 +60,20 @@ export default function AllFeedback() {
         computedColorScheme == "light"
           ? classes.topParentLight
           : classes.topParentDark
-      }
-    >
+      }>
       <div className={classes.parent}>
         <Box
           className={`${
             computedColorScheme == "light"
               ? classes.styleBackLight
               : classes.styleBackDark
-          }`}
-        >
+          }`}>
           <Text
             className={`${classes.titleStyle} ${
               computedColorScheme == "light"
                 ? classes.titleLight
                 : classes.titleDark
-            }`}
-          >
+            }`}>
             كل الاراء
           </Text>
         </Box>
@@ -94,8 +90,7 @@ export default function AllFeedback() {
         loop
         dragFree
         slideGap="md"
-        align="start"
-      >
+        align="start">
         {slider}
         {slider}
         {slider}
@@ -109,8 +104,7 @@ export default function AllFeedback() {
         pt={60}
         bg={computedColorScheme == "light" ? "white" : "rgb(36,36,36)"}
         style={{ borderRadius: "15px", width: "fit-content" }}
-        className={classes.styleForm}
-      >
+        className={classes.styleForm}>
         <Box className={classes.containerForm}>
           <form>
             <Text fw={700} fz={23} mb={30}>
@@ -152,28 +146,21 @@ export default function AllFeedback() {
                 variant="filled"
                 color={"rgba(175, 202, 255, 1)"}
                 type={"submit"}
-                c={"black"}
-              >
+                c={"black"}>
                 ارسال
               </Button>
             </Box>
           </form>
 
           <Box>
-            <img
-              src={image}
-              className={classes.styleImage}
-              alt=""
-        
-            />
+            <img src={image} className={classes.styleImage} alt="" />
           </Box>
         </Box>
 
         <Box
           ta={"center"}
           my={20}
-          c={computedColorScheme == "light" ? "black" : "white"}
-        >
+          c={computedColorScheme == "light" ? "black" : "white"}>
           <Text fz={10} fw={400} mb={10}>
             نحن نسعى دائماً لتحسين خدماتنا بناءً على ملاحظاتك القيمة. نرجو منك
             تخصيص بعض الوقت لتزويدنا بملاحظاتك وتجربتك مع خدماتنا.

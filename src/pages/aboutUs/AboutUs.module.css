@@ -2,6 +2,7 @@
   width: 500px;
   height: 275px;
   margin-bottom: 50px;
+  object-fit: contain;
 }
 
 .endSection {

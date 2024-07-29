@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {IUser } from "@utilities/interfaces/PublicInterfce";
 import { IStudent } from "@utilities/interfaces/StudentInterfce";
-
 
 export interface IStartState {
   student: IStudent | null;
 }
 
-const initialState:IStartState = {
-  student: null,
+const storedData = localStorage.getItem("student");
+
+const initialState: IStartState = {
+  student: storedData ? JSON.parse(storedData) : null,
 };
 
 const StudentSlice = createSlice({
