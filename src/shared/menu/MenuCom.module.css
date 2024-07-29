@@ -16,3 +16,10 @@
   border-radius:50% ;
   object-fit: contain;
 }
+
+
+.LinkStyle{
+
+  text-decoration: none;
+  color: black;
+}

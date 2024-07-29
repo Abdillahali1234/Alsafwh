@@ -3,7 +3,12 @@ import classes from "./LoginUser.module.css";
 import { Box, Container, Text } from "@mantine/core";
 import { useFormik } from "formik";
 import LoginSchema from "@schemas/loginSchema";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@store/Store";
+import { LoginApi } from "@store/api/AuthApi";
 export default function LoginUser() {
+  const dispatch = useDispatch<AppDispatch>();
+
   const initialValues = {
     email: "",
     password: "",
@@ -13,8 +18,8 @@ export default function LoginUser() {
     validationSchema: LoginSchema,
     validateOnBlur: true,
     validateOnChange: true,
-    onSubmit: () => {
-      console.log("su");
+    onSubmit: (values) => {
+      dispatch(LoginApi(values.email, values.password));
     },
   });
   return (

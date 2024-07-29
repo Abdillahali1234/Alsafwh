@@ -1,14 +1,20 @@
-import { Menu, Text, rem } from "@mantine/core";
+import { Menu, rem } from "@mantine/core";
 import {
   IconSettings,
-  IconSearch,
   IconPhoto,
   IconMessageCircle,
   IconTrash,
-  IconArrowsLeftRight,
 } from "@tabler/icons-react";
 import Styles from "./MenuCom.module.css";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/Store";
+import { RiLogoutCircleLine } from "react-icons/ri";
+
 export default function MenuCom({ img }: { img: string }) {
+  const { AuthModel } = useSelector((state: RootState) => state.Auth);
+  const { student } = useSelector((state: RootState) => state.Student);
+
   return (
     <Menu
       shadow="md"
@@ -16,7 +22,10 @@ export default function MenuCom({ img }: { img: string }) {
       transitionProps={{ transition: "rotate-right", duration: 150 }}>
       <Menu.Target>
         <div className={Styles.conImg}>
-          <img src={img} alt="" />
+          <img
+            src={student?.user.fileUploads ? student.user.fileUploads.url : img}
+            alt=""
+          />
         </div>
       </Menu.Target>
 
@@ -26,13 +35,17 @@ export default function MenuCom({ img }: { img: string }) {
           leftSection={
             <IconSettings style={{ width: rem(14), height: rem(14) }} />
           }>
-          Settings
+          <Link
+            to={`/student-page/${AuthModel?.userId}`}
+            className={Styles.LinkStyle}>
+            الاعدادت
+          </Link>
         </Menu.Item>
         <Menu.Item
           leftSection={
             <IconMessageCircle style={{ width: rem(14), height: rem(14) }} />
           }>
-          Messages
+          الرسائل
         </Menu.Item>
         <Menu.Item
           leftSection={
@@ -40,33 +53,24 @@ export default function MenuCom({ img }: { img: string }) {
           }>
           Gallery
         </Menu.Item>
-        <Menu.Item
-          leftSection={
-            <IconSearch style={{ width: rem(14), height: rem(14) }} />
-          }
-          rightSection={
-            <Text size="xs" c="dimmed">
-              ⌘K
-            </Text>
-          }>
-          Search
-        </Menu.Item>
 
         <Menu.Divider />
 
         <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item
-          leftSection={
-            <IconArrowsLeftRight style={{ width: rem(14), height: rem(14) }} />
-          }>
-          Transfer my data
-        </Menu.Item>
+
         <Menu.Item
           color="red"
           leftSection={
             <IconTrash style={{ width: rem(14), height: rem(14) }} />
           }>
-          Delete my account
+          حذف الاكونت
+        </Menu.Item>
+        <Menu.Item
+          color="red"
+          leftSection={
+            <RiLogoutCircleLine style={{ width: rem(14), height: rem(14) }} />
+          }>
+          تسجيل الخروج
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

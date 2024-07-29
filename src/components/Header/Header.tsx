@@ -80,7 +80,7 @@ export default function Header() {
                 <img
                   src={MainLogo}
                   className={classes.logoImg}
-                  style={{ marginTop: "0" ,objectFit:"contain"}}
+                  style={{ marginTop: "0", objectFit: "contain" }}
                   width={"135px"}
                   height={"70px"}
                 />
@@ -93,7 +93,10 @@ export default function Header() {
               ml={-10}
               visibleFrom="md">
               {Links.map((link, index) => (
-                <NavLink key={index} to={link.path} className={classes.link}>
+                <NavLink
+                  key={index}
+                  to={link.path}
+                  className={`LinkActiveInMain ${classes.link}`}>
                   {link.title}
                 </NavLink>
               ))}
@@ -176,7 +179,10 @@ export default function Header() {
             className={classes.DrwerStyling}>
             <Divider my="sm" />
             {Links.map((link, index) => (
-              <Link key={index} to={link.path} className={classes.link}>
+              <Link
+                key={index}
+                to={link.path}
+                className={`LinkActiveInMain ${classes.link}`}>
                 {link.title}
               </Link>
             ))}

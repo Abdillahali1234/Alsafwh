@@ -1,6 +1,10 @@
 import MainLayout from "@layouts/MainLayout";
 import HomePage from "@pages/Home/HomePage";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import ErrorPage from "./../pages/error/ErrorPage";
 import { MantineProvider } from "@mantine/core";
 import SigninUser from "@pages/signinUser/SigninUser";
@@ -15,18 +19,25 @@ import SingleMaterial from "@pages/singleMaterial/SingleMaterial";
 import ContactUsPage from "@pages/contact-us/ContactUsPage";
 import TeacherPage from "@pages/teacherpage/TeacherPage";
 import TeacherCourses from "@pages/teacherpage/components/Teachercourses/TeacherCourses";
-import ContentCourse from './../pages/contentCourse/ContentCourse';
-import AllFeedback from './../pages/allFeedback/AllFeedback';
-import ResetPassword from './../pages/resetPassword/ResetPassword';
-import TeachersStudent from './../pages/teachersStudent/TeachersStudent';
+import ContentCourse from "./../pages/contentCourse/ContentCourse";
+import AllFeedback from "./../pages/allFeedback/AllFeedback";
+import ResetPassword from "./../pages/resetPassword/ResetPassword";
+import TeachersStudent from "./../pages/teachersStudent/TeachersStudent";
 import LessonDetailsTeacher from "@pages/lession-details/LessonDetailsTeacher";
 import Exam from "@pages/exam/Exam";
 import ExamPage from "@pages/examPage/ExamPage";
+import ConfirmEmail from "@pages/ConfirmEmail/ConfirmEmail";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/Store";
 import AddQuestion from "@pages/addQuestion/AddQuestion";
 import FeedbackCourse from "@pages/feedbackCourse/FeedbackCourse";
 import CoursesForStudent from "@pages/coursesForStudent/CoursesForStudent";
 
 export default function AppRouter() {
+  const { IsConfirmed, AuthModel } = useSelector(
+    (state: RootState) => state.Auth
+  );
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -43,11 +54,11 @@ export default function AppRouter() {
         },
         {
           path: "/signin",
-          element: <SigninUser />,
+          element: AuthModel ? <Navigate to={"/"} /> : <SigninUser />,
         },
         {
           path: "/login",
-          element: <LoginUser />,
+          element: AuthModel ? <Navigate to={"/"} /> : <LoginUser />,
         },
         {
           path: "/about-us",
@@ -62,7 +73,7 @@ export default function AppRouter() {
           element: <AllCourses />,
         },
         {
-          path: "/student-page",
+          path: "/student-page/:StudentId",
           element: <StudentPage />,
         },
         {
@@ -110,8 +121,12 @@ export default function AppRouter() {
           element: <Exam />, // 404 page
         },
         {
-          path:"/exam-page",
-          element:<ExamPage/>
+          path: "/exam-page",
+          element: <ExamPage />,
+        },
+        {
+          path: "/confirm-email",
+          element: !IsConfirmed ? <ConfirmEmail /> : <Navigate to={`/`} />,
         },
         {
           path:"/add-question",

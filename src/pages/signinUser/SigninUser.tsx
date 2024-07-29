@@ -1,26 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "./SigninUser.module.css";
 import { Box, Container, Text, useComputedColorScheme } from "@mantine/core";
 import { useFormik } from "formik";
 import signUpSchema from "@schemas/signUpSchema";
 import { motion } from "framer-motion";
-
-interface DataUserSending {
-  year: "FirstYear" | "SecondYear" | "ThirdYear";
-  imgIdentity: File | null;
-  specialization: "literary" | "Mathematical" | "scientific" | "";
-  location: string;
-  gender: "male" | "female";
-  email: string;
-  fatherPhone: string;
-  phone: string;
-  img: File | null;
-  firstName: string;
-  lastName: string;
-  password: string;
-  confirmedPassword: string;
-}
+import { FaImages } from "react-icons/fa6";
+import { IStudentRegister } from "@utilities/interfaces/AuthInterface";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/Store";
+import { SignInApi } from "@store/api/AuthApi";
+import Spinner from "@shared/spineer/Spinner";
+import Swal from "sweetalert2";
 
 const depratmets = [
   {
@@ -60,42 +51,79 @@ const gender = [
     value: "female",
   },
 ];
+
 export default function SigninUser() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
-
-  const initialValues: DataUserSending = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmedPassword: "",
-    phone: "",
-    location: "",
-    gender: "male",
-    fatherPhone: "",
-    specialization: "",
-    img: null,
-    imgIdentity: null,
-    year: "ThirdYear",
+  const { IsLoading } = useSelector((state: RootState) => state.Auth);
+  const initialValues: IStudentRegister = {
+    FirstName: "",
+    LastName: "",
+    Email: "",
+    Password: "",
+    ConfirmPassword: "",
+    Phone: "",
+    Location: "",
+    Gender: "male",
+    FatherPhone: "",
+    Specialization: "",
+    Img: null,
+    ImgIdentity: null,
+    Year: "ThirdYear",
   };
-
+  const dispatch = useDispatch<AppDispatch>();
+  const { IsRegistered } = useSelector((state: RootState) => state.Auth);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: signUpSchema,
     validateOnBlur: true,
     validateOnChange: true,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: (values: IStudentRegister) => {
+      const formData = new FormData();
+      formData.append("FirstName", values.FirstName);
+      formData.append("LastName", values.LastName);
+      formData.append("Email", values.Email);
+      formData.append("Password", values.Password);
+      formData.append("ConfirmedPassword", values.ConfirmPassword);
+      formData.append("Phone", values.Phone);
+      formData.append("Location", values.Location);
+      formData.append("Gender", values.Gender);
+      formData.append("FatherPhone", values.FatherPhone);
+      formData.append("Specialization", values.Specialization);
+      formData.append("Year", values.Year);
+      if (values.Img && values.ImgIdentity) {
+        formData.append("Img", values.Img);
+        formData.append("ImgIdentity", values.ImgIdentity);
+      }
+      dispatch(SignInApi(formData));
     },
   });
-
+  useEffect(() => {
+    if (IsRegistered) {
+      Swal.fire({
+        title: "من فضلك سجل الدخول",
+        text: "هل تريد تسحيل الدخول!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "تسجيل الدخول",
+        cancelButtonText: "إلغاء",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
+  }, [IsRegistered]);
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
+      {IsLoading && <Spinner />}
       <Box display={"grid"} style={{ justifyContent: "center" }}>
         <Container my={50} display={"grid"} style={{ gap: "1rem" }}>
           <Text
@@ -116,76 +144,88 @@ export default function SigninUser() {
             onSubmit={formik.handleSubmit}>
             <input
               type="text"
-              name="firstName"
+              name="FirstName"
               placeholder="الاسم الاول"
               className={classes.input}
-              value={formik.values.firstName}
+              value={formik.values.FirstName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <Text c="red">{formik.errors.firstName}</Text>
+            {formik.touched.FirstName && formik.errors.FirstName ? (
+              <Text c="red">{formik.errors.FirstName}</Text>
             ) : null}
             <input
               type="text"
-              name="lastName"
+              name="LastName"
               placeholder="الاسم الثاني"
               className={classes.input}
-              value={formik.values.lastName}
+              value={formik.values.LastName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <Text c="red">{formik.errors.lastName}</Text>
+            {formik.touched.LastName && formik.errors.LastName ? (
+              <Text c="red">{formik.errors.LastName}</Text>
             ) : null}
             <Box display={"flex"} style={{ gap: "1rem" }}>
               <div>
                 <input
-                  type="number"
-                  name="phone"
+                  type="text"
+                  name="Phone"
                   placeholder="رقم الهاتف"
                   style={{ width: "100%" }}
                   className={classes.input}
-                  value={formik.values.phone}
+                  value={formik.values.Phone}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.phone && formik.errors.phone ? (
-                  <Text c="red">{formik.errors.phone}</Text>
+                {formik.touched.Phone && formik.errors.Phone ? (
+                  <Text c="red">{formik.errors.Phone}</Text>
                 ) : null}
               </div>
               <div>
                 <input
-                  type="number"
-                  name="fatherPhone"
+                  type="text"
+                  name="FatherPhone"
                   placeholder="رقم هاتف ولي الامر"
                   style={{ width: "100%" }}
                   className={classes.input}
-                  value={formik.values.fatherPhone}
+                  value={formik.values.FatherPhone}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.fatherPhone && formik.errors.fatherPhone ? (
-                  <Text c="red">{formik.errors.fatherPhone}</Text>
+                {formik.touched.FatherPhone && formik.errors.FatherPhone ? (
+                  <Text c="red">{formik.errors.FatherPhone}</Text>
                 ) : null}
               </div>
             </Box>
             <input
               type="email"
-              name="email"
+              name="Email"
               placeholder="البريد الالكتروني"
               className={classes.input}
-              value={formik.values.email}
+              value={formik.values.Email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.email && formik.errors.email ? (
-              <Text c="red">{formik.errors.email}</Text>
+            {formik.touched.Email && formik.errors.Email ? (
+              <Text c="red">{formik.errors.Email}</Text>
+            ) : null}
+            <input
+              type="text"
+              name="Location"
+              placeholder=" المكان"
+              className={classes.input}
+              value={formik.values.Location}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.Location && formik.errors.Location ? (
+              <Text c="red">{formik.errors.Location}</Text>
             ) : null}
             <select
-              name="year"
+              name="Year"
               onChange={formik.handleChange}
-              value={formik.values.year}
+              value={formik.values.Year}
               onBlur={formik.handleBlur}
               className={classes.input}>
               {Years.map((year) => (
@@ -194,14 +234,14 @@ export default function SigninUser() {
                 </option>
               ))}
             </select>
-            {formik.touched.year && formik.errors.year ? (
-              <Text c="red">{formik.errors.year}</Text>
+            {formik.touched.Year && formik.errors.Year ? (
+              <Text c="red">{formik.errors.Year}</Text>
             ) : null}
 
             <select
-              name="specialization"
+              name="Specialization"
               onChange={formik.handleChange}
-              value={formik.values.specialization}
+              value={formik.values.Specialization}
               onBlur={formik.handleBlur}
               className={classes.input}>
               {depratmets.map((depratment) => (
@@ -211,13 +251,13 @@ export default function SigninUser() {
               ))}
             </select>
 
-            {formik.touched.specialization && formik.errors.specialization ? (
-              <Text c="red">{formik.errors.specialization}</Text>
+            {formik.touched.Specialization && formik.errors.Specialization ? (
+              <Text c="red">{formik.errors.Specialization}</Text>
             ) : null}
             <select
-              name="gender"
+              name="Gender"
               onChange={formik.handleChange}
-              value={formik.values.gender}
+              value={formik.values.Gender}
               onBlur={formik.handleBlur}
               className={classes.input}>
               {gender.map((ge) => (
@@ -227,64 +267,82 @@ export default function SigninUser() {
               ))}
             </select>
 
-            {formik.touched.gender && formik.errors.gender ? (
-              <Text c="red">{formik.errors.gender}</Text>
+            {formik.touched.Gender && formik.errors.Gender ? (
+              <Text c="red">{formik.errors.Gender}</Text>
             ) : null}
+            <label
+              className={`${classes.input} ${classes.LapelImg}`}
+              htmlFor="ImgIdentity">
+              شهاده الميلاد من فضلك
+              <span>
+                <FaImages />
+              </span>
+            </label>
             <input
               type="file"
-              name="imgIdentity"
-              className={classes.input}
+              name="ImgIdentity"
+              id="ImgIdentity"
+              hidden
               onChange={(event) => {
                 formik.setFieldValue(
-                  "imgIdentity",
+                  "ImgIdentity",
                   event.currentTarget.files?.[0] || null
                 );
               }}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.imgIdentity && formik.errors.imgIdentity ? (
-              <Text c="red">{formik.errors.imgIdentity}</Text>
+            {formik.touched.ImgIdentity && formik.errors.ImgIdentity ? (
+              <Text c="red">{formik.errors.ImgIdentity}</Text>
             ) : null}
+            <label
+              className={`${classes.input} ${classes.LapelImg}`}
+              htmlFor="Img">
+              صوره للبروفايل الخاص بك
+              <span>
+                <FaImages />
+              </span>
+            </label>
             <input
               type="file"
-              name="img"
+              name="Img"
+              hidden
+              id="Img"
               className={classes.input}
               onChange={(event) => {
                 formik.setFieldValue(
-                  "img",
+                  "Img",
                   event.currentTarget.files?.[0] || null
                 );
               }}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.img && formik.errors.img ? (
-              <Text c="red">{formik.errors.img}</Text>
+            {formik.touched.Img && formik.errors.Img ? (
+              <Text c="red">{formik.errors.Img}</Text>
             ) : null}
 
             <input
               type="password"
-              name="password"
+              name="Password"
               placeholder="كلمة المرور"
               className={classes.input}
-              value={formik.values.password}
+              value={formik.values.Password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.password && formik.errors.password ? (
-              <Text c="red">{formik.errors.password}</Text>
+            {formik.touched.Password && formik.errors.Password ? (
+              <Text c="red">{formik.errors.Password}</Text>
             ) : null}
             <input
               type="password"
-              name="confirmedPassword"
+              name="ConfirmPassword"
               placeholder="تأكيد كلمة المرور"
               className={classes.input}
-              value={formik.values.confirmedPassword}
+              value={formik.values.ConfirmPassword}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.confirmedPassword &&
-            formik.errors.confirmedPassword ? (
-              <Text c="red">{formik.errors.confirmedPassword}</Text>
+            {formik.touched.ConfirmPassword && formik.errors.ConfirmPassword ? (
+              <Text c="red">{formik.errors.ConfirmPassword}</Text>
             ) : null}
             <Box mt={10} display={"grid"} style={{ justifyContent: "center" }}>
               <button type="submit" className={classes.btnSumbit}>

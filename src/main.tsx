@@ -1,12 +1,14 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import AppRouter from "./routes/AppRouter.tsx";
 import "./Main.css";
-import '@mantine/carousel/styles.css';
-
+import "@mantine/carousel/styles.css";
+import { Provider } from "react-redux";
+import { Store } from "@store/Store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AppRouter />
-  </React.StrictMode>
+  <>
+    <Provider store={Store}>
+      <AppRouter />
+    </Provider>
+  </>
 );
