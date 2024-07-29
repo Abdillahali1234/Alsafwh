@@ -5,10 +5,18 @@ import image from "@assets/Alsafwa/English teacher-bro.png";
 import imageSubject from "@assets/Alsafwa/Mathematics-bro.png";
 import HeaderLesson from "@shared/HeaderLesson/HeaderLesson";
 import AllLessons from "./components/alllessons/AllLessons";
+import { Box, useComputedColorScheme } from "@mantine/core";
 
 export default function LessonDetailsTeacher() {
+
+
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
+
+
   return (
-    <div className={Styles.parent}>
+    <Box bg={computedColorScheme == 'light' ? "" : "rgb(36,36,36)"} className={Styles.parent}>
       <div className={Styles.header}>
         <HeaderTeacher image={image} name="احمد محمد" subject="انجليزي" />
         <HeaderLesson
@@ -21,6 +29,6 @@ export default function LessonDetailsTeacher() {
       <div className={Styles.bodyLesson}>
         <AllLessons />
       </div>
-    </div>
+    </Box>
   );
 }

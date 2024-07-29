@@ -4,21 +4,56 @@ import {
   Button,
   Container,
   Group,
+  Modal,
   Text,
   useComputedColorScheme,
 } from "@mantine/core";
 import classes from "./AllFeedback.module.css";
 import { Carousel } from "@mantine/carousel";
 import image from "@assets/Alsafwa/img.png";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/Store";
+import { useDisclosure } from "@mantine/hooks";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function AllFeedback() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
 
-  const {AuthModel} = useSelector((state: RootState) => state.Auth);
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const [selectedOptionName, setSelectedOptionName] = useState<string>("");
+  const [selectedOptionEmail, setSelectedOptionEmail] = useState<string>("");
+  const [selectedOptionNots, setSelectedOptionNots] = useState<string>("");
+  const [error, setError] = useState<string>("");
+
+  const handleOptionChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedOptionName(event.target.value);
+  };
+
+  const handleOptionChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedOptionEmail(event.target.value);
+  };
+
+  const handleOptionChangeNots = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedOptionNots(event.target.value);
+  };
+
+  // const [popup, setPopup] = useState(<></>);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!selectedOptionName || !selectedOptionEmail || !selectedOptionNots) {
+      setError("Please fill in all fields");
+    } else {
+      setError("");
+      setSelectedOptionName("");
+      setSelectedOptionEmail("");
+      setSelectedOptionNots("");
+      // localStorage.setItem("nots" , JSON.stringify({selectedOptionName ,selectedOptionEmail ,selectedOptionNots} ))
+      return open();
+    }
+  };
 
   const slider = (
     <Carousel.Slide
@@ -106,7 +141,7 @@ export default function AllFeedback() {
         style={{ borderRadius: "15px", width: "fit-content" }}
         className={classes.styleForm}>
         <Box className={classes.containerForm}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Text fw={700} fz={23} mb={30}>
               شاركنا رأيك
             </Text>
@@ -116,7 +151,8 @@ export default function AllFeedback() {
               type="text"
               placeholder="الاسم بالكامل"
               name="userName"
-              required
+              // required
+              onChange={handleOptionChangeName}
             />
             <br />
             <input
@@ -124,7 +160,8 @@ export default function AllFeedback() {
               type="email"
               placeholder="البريد الالكتروني"
               name="email"
-              required
+              // required
+              onChange={handleOptionChangeEmail}
             />
             <br />
 
@@ -133,8 +170,20 @@ export default function AllFeedback() {
               type="text"
               name="nots"
               placeholder="الملاحظات"
-              required
+              // required
+              onChange={handleOptionChangeNots}
             />
+            {error && (
+              <div
+                style={{
+                  color: "red",
+                  textAlign: "center",
+                  margin: "10px 0px",
+                }}
+              >
+                {error}
+              </div>
+            )}
 
             <Box ta={"center"}>
               <Button
@@ -146,11 +195,35 @@ export default function AllFeedback() {
                 variant="filled"
                 color={"rgba(175, 202, 255, 1)"}
                 type={"submit"}
-                c={"black"}>
+                c={"black"}
+                onSubmit={() => handleSubmit}
+              >
                 ارسال
               </Button>
             </Box>
           </form>
+
+          <Box>
+            <>
+              {/* {<>{handleSubmit}</>} */}
+              <Modal
+                styles={{
+                  header: { paddingBottom: "0px", paddingTop: "0px" },
+                  content: {
+                    color: computedColorScheme == "light" ? "black" : "white",
+                  },
+                }}
+                centered
+                opened={opened}
+                onClose={close}
+                title=""
+              >
+                <Text ta={"center"} fw={700}>
+                  شكراً لمشاركتك ملاحظاتك معنا
+                </Text>
+              </Modal>
+            </>
+          </Box>
 
           <Box>
             <img src={image} className={classes.styleImage} alt="" />

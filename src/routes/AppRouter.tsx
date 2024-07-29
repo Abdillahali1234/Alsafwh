@@ -140,10 +140,11 @@ export default function AppRouter() {
           path:"/courses-student",
           element:<CoursesForStudent/>
         },
+       
       ],
     },
   ]);
-
+//comment
   return (
     <MantineProvider>
       <RouterProvider router={router}></RouterProvider>

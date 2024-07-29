@@ -1,15 +1,25 @@
-import { Box, Text } from "@mantine/core";
+import { Box, Text, useComputedColorScheme } from "@mantine/core";
 import classes from "./AboutUs.module.css";
 import logo from "@assets/Alsafwa/11.png";
 import { motion } from "framer-motion";
 
 export default function AboutUs() {
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}>
-      <Box display={"grid"} mx={20} style={{ justifyContent: "center" }}>
+      exit={{ opacity: 0 }}
+    >
+      <Box
+        display={"grid"}
+        mx={20}
+        style={{ justifyContent: "center" }}
+        c={computedColorScheme == "light" ? "black" : "white"}
+      >
         <Box mt={50}>
           <Text fz={20} fw={700} c={"#003EDD"}>
             من نحن

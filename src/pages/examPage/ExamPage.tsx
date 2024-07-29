@@ -1,4 +1,3 @@
-/* eslint-disable prefer-const */
 import classes from "./ExamPage.module.css";
 import {
   Box,
@@ -10,91 +9,117 @@ import {
 import image from "@assets/Alsafwa/virtual-classroom-study-space.jpg";
 import TimerDown from "./Timer/TimerDown";
 import { Button } from "@mantine/core";
-
-const dateExam = [
-  {
-    id: 1,
-    title: (
-      <Text c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
-        السوال الاول
-      </Text>
-    ),
-    question: (
-      <Box>
-        التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
-        والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
-        اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
-        والمخطوطات والآثار لفهم الماضي.
-      </Box>
-    ),
-    imageQuestion: image,
-    answerName: "answerOne",
-    answer: ["امريكا", "القاهره", "فرنسا", "روسيا"],
-  },
-  {
-    id: 2,
-    title: (
-      <Text mt={50} c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
-        السوال الثاني
-      </Text>
-    ),
-    question: (
-      <Box>
-        التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
-        والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
-        اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
-        والمخطوطات والآثار لفهم الماضي.
-      </Box>
-    ),
-    imageQuestion: image,
-    answerName: "answerTwo",
-    answer: ["مصر", "ايطاليا", "اسبانيا", "البرتغال"],
-  },
-  {
-    id: 3,
-    title: (
-      <Text mt={50} c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
-        السوال الثالث
-      </Text>
-    ),
-    question: (
-      <Box>
-        التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
-        والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
-        اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
-        والمخطوطات والآثار لفهم الماضي.
-      </Box>
-    ),
-    imageQuestion: image,
-    answerName: "answerThree",
-    answer: ["البرازيل", "تونس", "لبنان", "دبي"],
-  },
-  {
-    id: 4,
-    title: (
-      <Text mt={70} c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
-        السوال الرابع
-      </Text>
-    ),
-    question: (
-      <Box>
-        التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
-        والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
-        اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
-        والمخطوطات والآثار لفهم الماضي.
-      </Box>
-    ),
-    imageQuestion: image,
-    answerName: "answerFour",
-    answer: ["المغرب", "ليبيا", "كندا", "كوريا"],
-  },
-];
+import { useDisclosure } from "@mantine/hooks";
+import { Modal } from "@mantine/core";
+import { ChangeEvent, FormEvent, useState } from "react";
+// import { ChangeEvent, FormEvent, useState } from "react";
+// import { string } from "yup";
 
 export default function ExamPage() {
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const [selectedOption, setSelectedOption] = useState<string>();
+  const [error, setError] = useState<string>("");
+
+  const handleOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const dateExam = [
+    {
+      id: 1,
+      title: (
+        <Text c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
+          السوال الاول
+        </Text>
+      ),
+      question: (
+        <Box>
+          التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
+          والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
+          اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
+          والمخطوطات والآثار لفهم الماضي.
+        </Box>
+      ),
+      imageQuestion: image,
+      answerName: "answerOne",
+      answer: ["امريكا", "القاهره", "فرنسا", "روسيا"],
+    },
+    // {
+    //   id: 2,
+    //   title: (
+    //     <Text mt={50} c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
+    //       السوال الثاني
+    //     </Text>
+    //   ),
+    //   question: (
+    //     <Box>
+    //       التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
+    //       والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
+    //       اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
+    //       والمخطوطات والآثار لفهم الماضي.
+    //     </Box>
+    //   ),
+    //   imageQuestion: image,
+    //   answerName: "answerTwo",
+    //   answer: ["مصر", "ايطاليا", "اسبانيا", "البرتغال"],
+    // },
+    // {
+    //   id: 3,
+    //   title: (
+    //     <Text mt={50} c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
+    //       السوال الثالث
+    //     </Text>
+    //   ),
+    //   question: (
+    //     <Box>
+    //       التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
+    //       والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
+    //       اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
+    //       والمخطوطات والآثار لفهم الماضي.
+    //     </Box>
+    //   ),
+    //   imageQuestion: image,
+    //   answerName: "answerThree",
+    //   answer: ["البرازيل", "تونس", "لبنان", "دبي"],
+    // },
+    // {
+    //   id: 4,
+    //   title: (
+    //     <Text mt={70} c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
+    //       السوال الرابع
+    //     </Text>
+    //   ),
+    //   question: (
+    //     <Box>
+    //       التاريخ هو دراسة الأحداث الماضية وتفسيرها لفهم كيفية تطور المجتمعات
+    //       والثقافات. يتناول التاريخ فترات زمنية مختلفة ويشمل جوانب سياسية،
+    //       اجتماعية، اقتصادية وثقافية. يستخدم المؤرخون مصادر متنوعة مثل الوثائق
+    //       والمخطوطات والآثار لفهم الماضي.
+    //     </Box>
+    //   ),
+    //   imageQuestion: image,
+    //   answerName: "answerFour",
+    //   answer: ["المغرب", "ليبيا", "كندا", "كوريا"],
+    // },
+  ];
+
+  // console.log(selectedOption);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!selectedOption) {
+      setError("Please select an option.");
+    } else {
+      setError("");
+      // setSelectedOption('');
+      return open();
+    }
+  };
+
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
-
 
   return (
     <Box
@@ -102,11 +127,16 @@ export default function ExamPage() {
       className={classes.parent}
       c={computedColorScheme == "light" ? "" : "white"}
     >
-      <Box ml={20} style={{ position: "sticky", top: "100px" }} ta={"end"}>
+      <Box
+        w={"fit-content"}
+        ml={20}
+        style={{ position: "sticky", top: "100px", right: "100%" }}
+        ta={"end"}
+      >
         <TimerDown initialMinutes={30} />
       </Box>
       <Container>
-        <form>
+        <form onSubmit={handleSubmit}>
           {dateExam.map((item) => (
             <Box key={item.id}>
               <Box
@@ -141,17 +171,24 @@ export default function ExamPage() {
                   >
                     <label htmlFor={ele}>{ele}</label>
                     <input
-                      required
+                      // required
                       className={classes.inputRadio}
                       type="radio"
                       id={ele}
                       name={item.answerName}
                       value={ele}
+                      checked={selectedOption === ele}
+                      onChange={handleOptionChange}
                     />
                   </Box>
                 ))}
-              </Box>
 
+                {error && (
+                  <div style={{ color: "red", margin: "10px 0px" }}>
+                    {error}
+                  </div>
+                )}
+              </Box>
               {item.id == dateExam.length ? (
                 ""
               ) : (
@@ -167,7 +204,46 @@ export default function ExamPage() {
           ))}
 
           <Box ta={"end"}>
-            
+            <Modal
+              styles={{
+                header: { paddingBottom: "0px", paddingTop: "0px" },
+                content: {
+                  color: computedColorScheme == "light" ? "black" : "white",
+                },
+              }}
+              centered
+              opened={opened}
+              onClose={close}
+              title=""
+            >
+              <Text ta={"center"} fw={700} fz={20}>
+                هل انهيت الامتحان
+              </Text>
+              <Box
+                mt={25}
+                display={"flex"}
+                style={{ justifyContent: "space-around" }}
+              >
+                <Button
+                  onClick={close}
+                  c={"red"}
+                  bg={computedColorScheme == "light" ? "white" : "#242424"}
+                >
+                  لا
+                </Button>
+                <Button
+                  type={"submit"}
+                  // onSubmit={()=>handleSubmit}
+                  // onClick={()=>console.log("ddd")}
+
+                  c={"rgba(0, 208, 121, 1)"}
+                  bg={computedColorScheme == "light" ? "white" : "#242424"}
+                >
+                  نعم
+                </Button>
+              </Box>
+            </Modal>
+
             <Button
               px={30}
               py={5}
@@ -177,6 +253,7 @@ export default function ExamPage() {
               variant="filled"
               color={"rgba(0, 208, 121, 1)"}
               type={"submit"}
+              onSubmit={() => handleSubmit}
             >
               تاكيد
             </Button>

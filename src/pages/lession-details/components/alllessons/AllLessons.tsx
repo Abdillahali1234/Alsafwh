@@ -1,3 +1,4 @@
+import { Box } from "@mantine/core";
 import styles from "./AllLessons.module.css";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaCheckCircle } from "react-icons/fa";
@@ -18,9 +19,9 @@ export default function AllLessons() {
   ];
 
   return (
-    <div className={styles.parent}>
+    <Box mt={50} className={styles.parent}>
       {lessions.map((lesson, index) => (
-        <div key={index} className={styles.lesson}>
+        <Box mb={10} key={index} className={styles.lesson}>
           <h4 className={styles.title}>{lesson.title}</h4>
           {lesson.isAdded ? (
             <>
@@ -39,8 +40,8 @@ export default function AllLessons() {
               </button>
             </>
           )}
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 }

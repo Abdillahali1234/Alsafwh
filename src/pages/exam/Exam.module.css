@@ -8,13 +8,17 @@
   border-radius: 10px;
 }
 
-.header > h1 {
+h1 {
   color: var(--second-main-color);
 }
 
 .header {
   width: 90%;
   margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
 }
 .parent > form > div {
   display: flex;

@@ -1,10 +1,23 @@
-import { Box, Container, Pagination, Text } from "@mantine/core";
+import {
+  Box,
+  Container,
+  Pagination,
+  Text,
+  useComputedColorScheme,
+} from "@mantine/core";
 import classes from "./SingleMaterial.module.css";
 import CourseCard from "@pages/allcourses/components/coursecard/CourseCard";
 export default function SingleMaterial() {
+  const computedColorScheme = useComputedColorScheme("light", {
+    getInitialValueInEffect: true,
+  });
+
   return (
     <Box>
-      <Box className={classes.headerPage}>
+      <Box
+        className={classes.headerPage}
+        c={computedColorScheme == "light" ? "black" : "white"}
+      >
         <Text mb={20} fz={30} c={"white"}>
           مادة التاريخ{" "}
           <span style={{ color: "#003EDD", fontSize: "15px" }}>
@@ -13,17 +26,23 @@ export default function SingleMaterial() {
             <span style={{ color: "white" }}>) </span>
           </span>
         </Text>
-        <Text mb={10} c={"white"}>
+        <Text  mb={20} c={"white"}>
           لمن يريد تعلم مادة التاريخ والتميز فيها{" "}
         </Text>
-        .
+        
         <Text mb={20} c={"white"}>
           الشعبة الدراسية :<span style={{ color: "#003EDD" }}>ادبي</span>
         </Text>
       </Box>
 
       <Container mb={50}>
-        <Text mt={100} mb={30} fw={700} fz={25}>
+        <Text
+          c={computedColorScheme == "light" ? "black" : "white"}
+          mt={100}
+          mb={30}
+          fw={700}
+          fz={25}
+        >
           الكورسات المتاحة لمادة{" "}
           <span style={{ color: "#003EDD" }}>التاريخ:</span>
         </Text>
