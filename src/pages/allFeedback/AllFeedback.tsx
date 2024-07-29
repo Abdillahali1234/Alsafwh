@@ -35,7 +35,6 @@ export default function AllFeedback() {
 
   const [opened, { open, close }] = useDisclosure(false);
 
-  // handling sending data to the server
 
   const dispatch = useDispatch<AppDispatch>();
   const { AuthModel } = useSelector((state: RootState) => state.Auth);
@@ -65,12 +64,11 @@ export default function AllFeedback() {
       open();
       dispatch(addFeedback({ loading: false, submit: false }));
     }
-  }, [isSubmitted]);
+  }, [dispatch, isSubmitted,open]);
 
   useEffect(() => {
     dispatch(GetAllFeedbackApi());
-  }, []);
-
+  }, [dispatch]);
 
   return (
     <Container
@@ -143,7 +141,9 @@ export default function AllFeedback() {
                   radius="xl"
                 />
                 <Box>
-                  <Text size="sm">{feedback.name?feedback.name:"شخصا ما"}</Text>
+                  <Text size="sm">
+                    {feedback.name ? feedback.name : "شخصا ما"}
+                  </Text>
                 </Box>
               </Box>
             </Carousel.Slide>

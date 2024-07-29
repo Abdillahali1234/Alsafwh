@@ -25,10 +25,31 @@ import MainLogo from "@assets/Alsafwa/11.png";
 
 import ImgPerson from "@assets/Alsafwa/person.png";
 import MenuCom from "@shared/menu/MenuCom";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/Store";
 interface obj {
   title: string;
   path: string;
 }
+
+const Links: obj[] = [
+  {
+    title: "الرئيسيه",
+    path: "/",
+  },
+  {
+    title: "الكورسات",
+    path: "/all-courses",
+  },
+  {
+    title: "تواصل معنا",
+    path: "/contact-us",
+  },
+  {
+    title: "معلومات عنا",
+    path: "/about-us",
+  },
+];
 
 export default function Header() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -39,24 +60,7 @@ export default function Header() {
     getInitialValueInEffect: true,
   });
 
-  const Links: obj[] = [
-    {
-      title: "الرئيسيه",
-      path: "/",
-    },
-    {
-      title: "الكورسات",
-      path: "/all-courses",
-    },
-    {
-      title: "تواصل معنا",
-      path: "/contact-us",
-    },
-    {
-      title: "معلومات عنا",
-      path: "/about-us",
-    },
-  ];
+  const { AuthModel } = useSelector((state: RootState) => state.Auth);
 
   return (
     <div>
@@ -151,9 +155,7 @@ export default function Header() {
                   </ActionIcon>
                 </Box>
               </Box>
-              <Box>
-                <MenuCom img={ImgPerson} />
-              </Box>
+              <Box>{AuthModel && <MenuCom img={ImgPerson} />}</Box>
             </Group>
 
             <Burger

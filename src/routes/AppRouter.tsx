@@ -21,7 +21,6 @@ import TeacherPage from "@pages/teacherpage/TeacherPage";
 import TeacherCourses from "@pages/teacherpage/components/Teachercourses/TeacherCourses";
 import ContentCourse from "./../pages/contentCourse/ContentCourse";
 import AllFeedback from "./../pages/allFeedback/AllFeedback";
-import ResetPassword from "./../pages/resetPassword/ResetPassword";
 import TeachersStudent from "./../pages/teachersStudent/TeachersStudent";
 import LessonDetailsTeacher from "@pages/lession-details/LessonDetailsTeacher";
 import Exam from "@pages/exam/Exam";
@@ -32,6 +31,8 @@ import { RootState } from "@store/Store";
 import AddQuestion from "@pages/addQuestion/AddQuestion";
 import FeedbackCourse from "@pages/feedbackCourse/FeedbackCourse";
 import CoursesForStudent from "@pages/coursesForStudent/CoursesForStudent";
+import ForgetPassword from "@pages/forgetPassword/ForgetPassword";
+import ResetPassword from "@pages/resetPassowrd/ResetPassword";
 
 export default function AppRouter() {
   const { IsConfirmed, AuthModel } = useSelector(
@@ -105,6 +106,10 @@ export default function AppRouter() {
           element: <AllFeedback />,
         },
         {
+          path: "/forget-password",
+          element: <ForgetPassword />,
+        },
+        {
           path: "/reset-password",
           element: <ResetPassword />,
         },
@@ -129,18 +134,17 @@ export default function AppRouter() {
           element: !IsConfirmed ? <ConfirmEmail /> : <Navigate to={`/`} />,
         },
         {
-          path:"/add-question",
-          element:<AddQuestion/>
+          path: "/add-question",
+          element: <AddQuestion />,
         },
         {
-          path:"/feedback-course",
-          element:<FeedbackCourse/>
+          path: "/feedback-course",
+          element: <FeedbackCourse />,
         },
         {
-          path:"/courses-student",
-          element:<CoursesForStudent/>
+          path: "/courses-student",
+          element: <CoursesForStudent />,
         },
-       
       ],
     },
   ]);

@@ -4,6 +4,8 @@ import { ConfirmEmail, SignIn, LogIn } from "@store/slices/AuthSlice";
 import { Api } from "@utilities/Api";
 import { toast } from "react-toastify";
 import { Cookies } from "react-cookie";
+import { getStudent } from "@store/slices/StudentSlice";
+import { IResetPassword } from "@utilities/interfaces/PublicInterfce";
 export const SignInApi = (Data: FormData) => {
   return async (dispatch: Dispatch<PayloadAction<boolean>>) => {
     try {
@@ -65,7 +67,6 @@ export const LoginApi = (email: string, password: string) => {
         );
       }
 
-      
       cookies.set("refreshToken", data.refrashToken, {
         path: "/",
         expires: expires,
@@ -82,6 +83,48 @@ export const LoginApi = (email: string, password: string) => {
     } catch (error: any) {
       console.error("Error during login:", error);
       toast.error(error?.response?.data?.message || "Login failed");
+    }
+  };
+};
+
+export const LogOut = () => {
+  return async (dispatch: Dispatch<PayloadAction<boolean>>) => {
+    try {
+      const cookies = new Cookies();
+      cookies.remove("RefreashToken", { path: "/" });
+      cookies.remove("refreshToken", { path: "/" });
+      cookies.remove("authModel", { path: "/" });
+      localStorage.removeItem("student");
+      dispatch(LogIn(null));
+      dispatch(getStudent(null));
+      toast.success("تم تسجيل الخروج");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const ForgetPasswordApi = (email: string) => {
+  return async (dispatch: Dispatch<PayloadAction<boolean>>) => {
+    try {
+      const { data } = await Api.post("Auth/forgetpassword", { email: email });
+      console.log(data);
+      toast.success(data.message);
+    } catch (error: any) {
+      toast.error(error?.response?.data?.message || "Error in ForgetPassword");
+    }
+  };
+};
+
+export const ResetPasswordApi = (obj: IResetPassword) => {
+  return async (dispatch: Dispatch<PayloadAction<boolean>>) => {
+    try {
+      const { data } = await Api.post("Auth/resetpassword", obj);
+      toast.success(data.message);
+    } catch (error: any) {
+      toast.error(
+        error?.response?.data?.message || "فشل اعاده تعيين كلمه السر"
+      );
     }
   };
 };
@@ -104,5 +147,3 @@ export const LoginApi = (email: string, password: string) => {
 //     }
 //   };
 // };
-
-

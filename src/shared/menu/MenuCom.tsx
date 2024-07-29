@@ -6,14 +6,37 @@ import {
   IconTrash,
 } from "@tabler/icons-react";
 import Styles from "./MenuCom.module.css";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/Store";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/Store";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import Swal from "sweetalert2";
+import { LogOut } from "@store/api/AuthApi";
 
 export default function MenuCom({ img }: { img: string }) {
   const { AuthModel } = useSelector((state: RootState) => state.Auth);
   const { student } = useSelector((state: RootState) => state.Student);
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    console.log("enter");
+    
+    Swal.fire({
+      title: "تسجيل الخروج",
+      text: "هل تريد تسحيل الخروج!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "تسجيل الخروج",
+      cancelButtonText: "إلغاء",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(LogOut());
+        navigate("/login");
+      }
+    });
+  };
 
   return (
     <Menu
@@ -67,6 +90,11 @@ export default function MenuCom({ img }: { img: string }) {
         </Menu.Item>
         <Menu.Item
           color="red"
+          onClick={() => {
+            console.log("clicked");
+            
+            handleLogout();
+          }}
           leftSection={
             <RiLogoutCircleLine style={{ width: rem(14), height: rem(14) }} />
           }>

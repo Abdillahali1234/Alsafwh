@@ -59,6 +59,14 @@ export default function LoginUser() {
             <Text c="red">{formik.errors.password}</Text>
           ) : null}
           <Box mt={10} display={"grid"} style={{ justifyContent: "center" }}>
+            <Link
+              to={`/forget-password`}
+              style={{ color: "#408fff", marginRight: "5px" }}
+              className={classes.LinkReset}>
+              نسيت كلمه السر؟
+            </Link>
+          </Box>
+          <Box mt={10} display={"grid"} style={{ justifyContent: "center" }}>
             <button type="submit" className={classes.btnSumbit}>
               تسجيل الدخول
             </button>

@@ -28,3 +28,10 @@ export interface IAddFeedBack {
   userId: string;
   text: string;
 }
+
+export interface IResetPassword {
+  email: string;
+  code: string;
+  password: string;
+  confirmPassword: string;
+}
