@@ -24,7 +24,7 @@ export interface IAuthModel {
   email: string;
   isAuthenticated: boolean;
   message: string | null;
-  refreshToken: string;
+  refrashToken: string;
   refreshTokenExpiresOn: Date | null;
   roles: string[];
   token: string;

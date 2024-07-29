@@ -65,7 +65,8 @@ export const LoginApi = (email: string, password: string) => {
         );
       }
 
-      cookies.set("refreshToken", data.refreshToken, {
+      
+      cookies.set("refreshToken", data.refrashToken, {
         path: "/",
         expires: expires,
       });

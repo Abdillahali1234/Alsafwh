@@ -9,10 +9,10 @@ export const Api = axios.create({
 });
 
 Api.interceptors.request.use((config) => {
-  const token = cookies.get("auhModel")?.token;
+  const authModel = cookies.get("authModel");
 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  if (authModel?.token) {
+    config.headers.Authorization = `Bearer ${authModel.token}`;
   }
   return config;
 });
@@ -23,15 +23,14 @@ Api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    
+
     if (error?.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
-      // Attempt to refresh the token
       try {
-        const refreshToken = cookies.get("refreshToken");
+        const refreshToken = cookies.get("RefreashToken");
         const { data } = await axios.get(
-          `${import.meta.env.VITE_SEVER_LINK}/Auth/refreshToken`,
+          `${import.meta.env.VITE_SEVER_LINK}Auth/refreshToken`,
           {
             headers: {
               Cookie: `refreshToken=${encodeURIComponent(refreshToken)}`,
@@ -40,10 +39,15 @@ Api.interceptors.response.use(
           }
         );
 
-        cookies.set("auhModel", data, {
+        const authModel = cookies.get("authModel") || {};
+        authModel.token = data.token;
+        authModel.refreshTokenExpiresOn = data.refreshTokenExpiresOn;
+
+        cookies.set("authModel", authModel, {
           path: "/",
-          expires: new Date(data.refreshTokenExpiresOn),
+          expires: new Date(authModel.refreshTokenExpiresOn),
         });
+
         cookies.set("refreshToken", data.refreshToken, {
           path: "/",
           expires: new Date(data.refreshTokenExpiresOn),
@@ -53,7 +57,6 @@ Api.interceptors.response.use(
         return Api(originalRequest);
       } catch (refreshError) {
         console.error("Error refreshing token:", refreshError);
-        // Redirect to login or handle the error as needed
         return Promise.reject(refreshError);
       }
     }

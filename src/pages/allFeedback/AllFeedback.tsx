@@ -12,8 +12,22 @@ import classes from "./AllFeedback.module.css";
 import { Carousel } from "@mantine/carousel";
 import image from "@assets/Alsafwa/img.png";
 import { useDisclosure } from "@mantine/hooks";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/Store";
+import { AddFeedbackApi, GetAllFeedbackApi } from "@store/api/FeedBackApi";
+import { toast } from "react-toastify";
+import Image from "@assets/Alsafwa/Ok.jpeg";
+import Spinner from "@shared/spineer/Spinner";
+import { useEffect } from "react";
+import { addFeedback } from "@store/slices/FeedBackSlice";
 
+const SchemaFeedback = Yup.object().shape({
+  text: Yup.string()
+    .required("من فضلك ادخل رايك")
+    .max(300, "المسموح به 300 حرف بحد اقصي"),
+});
 export default function AllFeedback() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
@@ -21,72 +35,42 @@ export default function AllFeedback() {
 
   const [opened, { open, close }] = useDisclosure(false);
 
-  const [selectedOptionName, setSelectedOptionName] = useState<string>("");
-  const [selectedOptionEmail, setSelectedOptionEmail] = useState<string>("");
-  const [selectedOptionNots, setSelectedOptionNots] = useState<string>("");
-  const [error, setError] = useState<string>("");
+  // handling sending data to the server
 
-  const handleOptionChangeName = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedOptionName(event.target.value);
-  };
-
-  const handleOptionChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedOptionEmail(event.target.value);
-  };
-
-  const handleOptionChangeNots = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedOptionNots(event.target.value);
-  };
-
-  // const [popup, setPopup] = useState(<></>);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!selectedOptionName || !selectedOptionEmail || !selectedOptionNots) {
-      setError("Please fill in all fields");
-    } else {
-      setError("");
-      setSelectedOptionName("");
-      setSelectedOptionEmail("");
-      setSelectedOptionNots("");
-      // localStorage.setItem("nots" , JSON.stringify({selectedOptionName ,selectedOptionEmail ,selectedOptionNots} ))
-      return open();
-    }
-  };
-
-  const slider = (
-    <Carousel.Slide
-      className={
-        computedColorScheme == "light" ? classes.slideLight : classes.slideDark
-      }>
-      <Box
-        c={"white"}
-        px={40}
-        py={30}
-        className={classes.styleSize}
-        bg={"rgba(69, 79, 255, 1)"}
-        style={{ borderRadius: "15px" }}>
-        <Group></Group>
-        <Text pl={54} pt="sm" size="sm">
-          This Pokémon likes to lick its palms that are sweetened by being
-          soaked in honey. Teddiursa concocts its own honey by blending fruits
-          and pollen collected by Beedrill. Blastoise has water spouts that
-          protrude from its shell. The water spouts are very accurate.
-        </Text>
-      </Box>
-      <Box className={classes.info}>
-        <Avatar
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-          alt="Jacob Warnhalter"
-          radius="xl"
-        />
-        <Box>
-          <Text size="sm">Jacob Warnhalter</Text>
-        </Box>
-      </Box>
-    </Carousel.Slide>
+  const dispatch = useDispatch<AppDispatch>();
+  const { AuthModel } = useSelector((state: RootState) => state.Auth);
+  const { isLoading, isSubmitted, feedbacks } = useSelector(
+    (state: RootState) => state.FeedBack
   );
+
+  const formik = useFormik({
+    initialValues: {
+      text: "",
+    },
+    validationSchema: SchemaFeedback,
+    validateOnBlur: true,
+    validateOnChange: true,
+    onSubmit: (values) => {
+      if (!AuthModel || !AuthModel?.userId) {
+        toast.error("من فضلك سجل الدخول اولا");
+        return;
+      }
+      dispatch(
+        AddFeedbackApi({ text: values.text, userId: AuthModel?.userId })
+      );
+    },
+  });
+  useEffect(() => {
+    if (isSubmitted) {
+      open();
+      dispatch(addFeedback({ loading: false, submit: false }));
+    }
+  }, [isSubmitted]);
+
+  useEffect(() => {
+    dispatch(GetAllFeedbackApi());
+  }, []);
+
 
   return (
     <Container
@@ -96,6 +80,7 @@ export default function AllFeedback() {
           ? classes.topParentLight
           : classes.topParentDark
       }>
+      {isLoading && <Spinner />}
       <div className={classes.parent}>
         <Box
           className={`${
@@ -126,11 +111,44 @@ export default function AllFeedback() {
         dragFree
         slideGap="md"
         align="start">
-        {slider}
-        {slider}
-        {slider}
-        {slider}
-        {slider}
+        {feedbacks.map((feedback) => {
+          return (
+            <Carousel.Slide
+              key={feedback.id}
+              className={
+                computedColorScheme == "light"
+                  ? classes.slideLight
+                  : classes.slideDark
+              }>
+              <Box
+                c={"white"}
+                px={40}
+                py={30}
+                className={classes.styleSize}
+                bg={"rgba(69, 79, 255, 1)"}
+                style={{ borderRadius: "15px" }}>
+                <Group></Group>
+                <Text pl={54} pt="sm" size="sm">
+                  {feedback.text}
+                </Text>
+              </Box>
+              <Box className={classes.info}>
+                <Avatar
+                  src={
+                    feedback
+                      ? feedback.imgUrl
+                      : "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
+                  }
+                  alt="Jacob Warnhalter"
+                  radius="xl"
+                />
+                <Box>
+                  <Text size="sm">{feedback.name?feedback.name:"شخصا ما"}</Text>
+                </Box>
+              </Box>
+            </Carousel.Slide>
+          );
+        })}
       </Carousel>
 
       <Container
@@ -141,7 +159,7 @@ export default function AllFeedback() {
         style={{ borderRadius: "15px", width: "fit-content" }}
         className={classes.styleForm}>
         <Box className={classes.containerForm}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={formik.handleSubmit}>
             <Text fw={700} fz={23} mb={30}>
               شاركنا رأيك
             </Text>
@@ -149,42 +167,16 @@ export default function AllFeedback() {
             <input
               className={classes.inputComment}
               type="text"
-              placeholder="الاسم بالكامل"
-              name="userName"
+              name="text"
+              placeholder="ملاحظاتك"
               // required
-              onChange={handleOptionChangeName}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.text}
             />
-            <br />
-            <input
-              className={classes.inputComment}
-              type="email"
-              placeholder="البريد الالكتروني"
-              name="email"
-              // required
-              onChange={handleOptionChangeEmail}
-            />
-            <br />
-
-            <input
-              className={classes.inputComment}
-              type="text"
-              name="nots"
-              placeholder="الملاحظات"
-              // required
-              onChange={handleOptionChangeNots}
-            />
-            {error && (
-              <div
-                style={{
-                  color: "red",
-                  textAlign: "center",
-                  margin: "10px 0px",
-                }}
-              >
-                {error}
-              </div>
-            )}
-
+            {formik.touched.text && formik.errors.text ? (
+              <Text c="red">{formik.errors.text}</Text>
+            ) : null}
             <Box ta={"center"}>
               <Button
                 px={40}
@@ -195,9 +187,7 @@ export default function AllFeedback() {
                 variant="filled"
                 color={"rgba(175, 202, 255, 1)"}
                 type={"submit"}
-                c={"black"}
-                onSubmit={() => handleSubmit}
-              >
+                c={"black"}>
                 ارسال
               </Button>
             </Box>
@@ -216,8 +206,10 @@ export default function AllFeedback() {
                 centered
                 opened={opened}
                 onClose={close}
-                title=""
-              >
+                title="">
+                <Box className={classes.ConImgOk}>
+                  <img src={Image} className={classes.styleImageOk} alt="" />
+                </Box>
                 <Text ta={"center"} fw={700}>
                   شكراً لمشاركتك ملاحظاتك معنا
                 </Text>

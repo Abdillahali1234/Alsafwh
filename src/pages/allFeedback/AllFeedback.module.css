@@ -134,6 +134,17 @@
   width: 100%;
   border-radius: 8px;
 }
+.ConImgOk{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.styleImageOk{
+
+  width: 150px;
+}
 
 .containerForm {
   display: flex;
