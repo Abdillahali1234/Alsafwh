@@ -14,6 +14,7 @@ import {
   IconPhoto,
   IconMessageCircle,
   IconSettings,
+  IconStarFilled,
 } from "@tabler/icons-react";
 import { useState } from "react";
 import ReactPlayer from "react-player";
@@ -107,97 +108,7 @@ export default function ContentCourse() {
             </ul>
           </Tabs.Panel>
           <Tabs.Panel className={classes.styleTabsPanel} value="comment">
-            {/* {comments.map((item) => (
-              <Box key={item.id}>
-                <Box
-                  display={"flex"}
-                  style={{ alignItems: "center", gap: "5px" }}
-                >
-                  <Box
-                    display={"flex"}
-                    bg={"yellow"}
-                    style={{
-                      borderRadius: "100px",
-                      justifyContent: "center",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <img
-                      src={imagePerson}
-                      alt=""
-                      width={"50px"}
-                      height={"50px"}
-                    />
-                  </Box>
-                  <Box>
-                    <Text fz={13} fw={500}>
-                      {item.name}
-                    </Text>
-                    <Text fz={13} fw={300}>
-                      االأربعاء 13 مارس الساعة 2:45 ظهرا
-                    </Text>
-                  </Box>
-                </Box>
-                <Text mt={10} mr={10} fz={15} fw={500}>
-                  {item.comment}
-                </Text>
-
-                <Box mt={10} mr={20} display={"flex"} style={{ gap: "2rem" }}>
-                  <Text
-                    fz={13}
-                    fw={500}
-                    c={
-                      computedColorScheme == "light"
-                        ? "rgba(0, 0, 0, 0.6)"
-                        : "white"
-                    }
-                  >
-                    رد
-                  </Text>
-                  <Text
-                    fz={13}
-                    fw={500}
-                    c={
-                      computedColorScheme == "light"
-                        ? "rgba(0, 0, 0, 0.6)"
-                        : "white"
-                    }
-                  >
-                    اعجاب
-                  </Text>
-                </Box>
-                <Divider my={20} />
-              </Box>
-            ))}
-
-            <form>
-              <Box
-                display={"flex"}
-                style={{ alignItems: "center", gap: "10px" }}
-              >
-                <Box
-                  display={"flex"}
-                  bg={"yellow"}
-                  style={{
-                    borderRadius: "100px",
-                    justifyContent: "center",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img src={imagePerson} width={"50px"} height={"50px"} />
-                </Box>
-                <input
-                  className={classes.inputCommentCourse}
-                  type="text"
-                  name="comment"
-                  placeholder="اضافة تعليق..."
-                  required
-                />
-                <Button type="submit">ارسال</Button>
-              </Box>
-            </form> */}
-
-            <Comments/>
+            <Comments />
           </Tabs.Panel>
         </Tabs>
       ),
@@ -542,12 +453,33 @@ export default function ContentCourse() {
             ? classes.bgLessonLight
             : classes.bgLessonDark
         }
-        style={{ borderLeft: "1px solid rgba(0, 0, 0, 0.3)" }}
+        display={"grid"}
+
+        style={{ borderLeft: "1px solid rgba(0, 0, 0, 0.3)" , alignContent:"space-between"}}
       >
+        <Box style={{alignContent:"space-between"}} className={classes.containerLesson}>
+          <Box>
         <Text mb={50} ta={"center"} fz={20} fw={700}>
           مادة التاريخ{" "}
         </Text>
-        <Box className={classes.containerLesson}>{door}</Box>
+
+          {door}
+          </Box>
+
+        </Box>
+          <Box  ta={"center"}>
+            <Text c={"gold"} fw={700} fz={50}>3.0</Text>
+            <Box  mb={20} display={"flex"} style={{gap:"4px"  , justifyContent:"center"}}>
+              <IconStarFilled style={{color:"gold"}}/>
+              <IconStarFilled style={{color:"gold"}}/>
+              <IconStarFilled style={{color:"gold"}}/>
+              <IconStarFilled style={{color:"rgba(203, 203, 203, 1)"}}/>
+              <IconStarFilled style={{color:"rgba(203, 203, 203, 1)"}}/>
+            </Box>
+            <Link to={"/feedback-course"} className={classes.evaluationBtn}>
+              لتقييم الكورس
+            </Link>
+          </Box>
       </Box>
 
       <Box

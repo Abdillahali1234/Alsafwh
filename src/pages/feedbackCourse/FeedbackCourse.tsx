@@ -1,58 +1,19 @@
 import {
-  Avatar,
   Box,
   Button,
   Container,
-  Group,
   Text,
   useComputedColorScheme,
 } from "@mantine/core";
-import classes from "./AllFeedback.module.css";
-import { Carousel } from "@mantine/carousel";
+import classes from "./FeedbackCourse.module.css";
 import image from "@assets/Alsafwa/img.png";
+import { IconStarFilled } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
-export default function AllFeedback() {
+export default function FeedbackCourse() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
-
-  const slider = (
-    <Carousel.Slide
-      className={
-        computedColorScheme == "light" ? classes.slideLight : classes.slideDark
-      }
-    >
-      <Box
-        c={"white"}
-        px={40}
-        py={30}
-        className={classes.styleSize}
-        bg={"rgba(69, 79, 255, 1)"}
-        style={{ borderRadius: "15px" }}
-      >
-        <Group></Group>
-        <Text pl={54} pt="sm" size="sm">
-          This Pokémon likes to lick its palms that are sweetened by being
-          soaked in honey. Teddiursa concocts its own honey by blending fruits
-          and pollen collected by Beedrill. Blastoise has water spouts that
-          protrude from its shell. The water spouts are very accurate.
-        </Text>
-      </Box>
-      <Box className={classes.info}>
-        <Avatar
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png"
-          alt="Jacob Warnhalter"
-          radius="xl"
-        />
-        <Box>
-          <Text size="sm">Jacob Warnhalter</Text>
-          <Text size="xs" c="">
-            10 minutes ago
-          </Text>
-        </Box>
-      </Box>
-    </Carousel.Slide>
-  );
 
   return (
     <Container
@@ -77,34 +38,55 @@ export default function AllFeedback() {
                 ? classes.titleLight
                 : classes.titleDark
             }`}
+            fw={700}
+            fz={28}
           >
             كل الاراء
           </Text>
         </Box>
       </div>
 
-      <Carousel
-        styles={{
-          indicator: { backgroundColor: "rgba(69, 79, 255, 1)" },
-          control: { backgroundColor: "rgb(69,79,255 ,1)", color: "white" },
-        }}
-        withIndicators
-        height={"auto"}
-        style={{ direction: "ltr" }}
-        loop
-        dragFree
-        slideGap="md"
-        align="start"
+      <Container
+        mt={40}
+        px={40}
+        pb={20}
+        pt={40}
+        w={"fit-content"}
+        bg={computedColorScheme == "light" ? "white" : "rgb(36,36,36)"}
+        style={{ borderRadius: "15px", width: "fit-content" }}
       >
-        {slider}
-        {slider}
-        {slider}
-        {slider}
-        {slider}
-      </Carousel>
+        <Text pb={20} mb={10} c={"rgba(34, 166, 241, 1)"} fz={20} fw={500} ta={"start"}>
+          تقييم الكورس
+        </Text>
+
+        <Text fz={14}>
+          تقييم كورس مادة التاريخ يهدف إلى قياس مدى استيعاب الطلاب للمعلومات
+          والمهارات المكتسبة خلال فترة الدراسة. يشمل التقييم مجموعة متنوعة من
+          الأساليب لضمان قياس شامل وعادل لأداء الطلاب.
+        </Text>
+
+        <Box  ta={"center"}>
+            <Text c={"gold"} fw={700} fz={50}>3.0</Text>
+            <Box  mb={20} display={"flex"} style={{gap:"4px"  , justifyContent:"center"}}>
+              <IconStarFilled style={{color:"gold"}}/>
+              <IconStarFilled style={{color:"gold"}}/>
+              <IconStarFilled style={{color:"gold"}}/>
+              <IconStarFilled style={{color:"rgba(203, 203, 203, 1)"}}/>
+              <IconStarFilled style={{color:"rgba(203, 203, 203, 1)"}}/>
+            </Box>
+            </Box>
+            <Box mt={50} display={"flex"} style={{justifyContent:"space-around" , flexWrap:"wrap" , gap:"1rem"}}>
+              <Button type="submit">
+              تعديل التقييم
+              </Button>
+              <Button type="submit" color={"rgba(0, 208, 121, 1)"}>
+              تأكيد التقييم
+              </Button>
+            </Box>
+      </Container>
 
       <Container
-        mt={50}
+        mt={100}
         pb={20}
         pt={60}
         bg={computedColorScheme == "light" ? "white" : "rgb(36,36,36)"}
@@ -113,8 +95,8 @@ export default function AllFeedback() {
       >
         <Box className={classes.containerForm}>
           <form>
-            <Text fw={700} fz={23} mb={30}>
-              شاركنا رأيك
+            <Text fw={700} fz={23} mb={30} c={"rgba(34, 166, 241, 1)"}>
+              شاركنا رأيك عن الكورس
             </Text>
 
             <input
@@ -164,7 +146,6 @@ export default function AllFeedback() {
               src={image}
               className={classes.styleImage}
               alt=""
-        
             />
           </Box>
         </Box>
@@ -184,6 +165,13 @@ export default function AllFeedback() {
           </Text>
         </Box>
       </Container>
+      <Box ta={"end"} mt={50}>
+
+        <Link to={"/content-course"} className={classes.backToCourse}>
+        الرجوع الي الكورس
+        </Link>
+
+      </Box>
     </Container>
   );
 }

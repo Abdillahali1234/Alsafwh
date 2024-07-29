@@ -145,6 +145,11 @@
   margin-top: -50px;
 }
 
+.styleForm{
+  padding: 0px 70px;
+}
+
+
 @media (max-width: 961px) {
   .topParentLight {
     width: 700px;
@@ -180,7 +185,7 @@
   .styleImage {
     width: 250px;
     height: 250px;
-    margin-left: -150px;
+    margin-left: -100px;
     margin-top: -50px;
   }
 }
@@ -204,6 +209,9 @@
     display: inline;
     justify-content: center;
     align-items: center;
+  }
+  .styleForm{
+    padding: 0px 20px;
   }
 }
 

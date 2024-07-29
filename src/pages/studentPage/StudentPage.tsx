@@ -10,7 +10,6 @@ import image from "@assets/Alsafwa/RetratoTwo.png";
 import {
   IconAlignJustified,
   IconChevronDown,
-  IconMailFilled,
   IconPassword,
   IconPhoneFilled,
   IconSchool,
@@ -303,6 +302,7 @@ export default function StudentPage() {
           display={"flex"}
           mt={50}
           className={classes.containerStudentDate}
+<<<<<<< HEAD
           style={{ justifyContent: "space-between" }}>
           <Box>
             <Box>
@@ -341,6 +341,10 @@ export default function StudentPage() {
               </Box>
             </Box>
           </Box>
+=======
+          style={{ justifyContent: "start" }}
+        >
+>>>>>>> 69526a8aa66970b2072bae238165d1f3818f3333
 
           <Box ml={50}>
             <Box>

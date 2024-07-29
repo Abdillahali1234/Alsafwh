@@ -88,7 +88,7 @@ const now = new Date();
                         : "white"
                     }
                   >
-                    رد
+                    تعديل 
                   </Text>
                   <Text
                     fz={13}
@@ -99,7 +99,7 @@ const now = new Date();
                         : "white"
                     }
                   >
-                    اعجاب
+                  حذف
                   </Text>
                 </Box>
                 <Divider my={20} />
