@@ -16,9 +16,12 @@ import {
   IconSchool,
   IconUserFilled,
 } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/Store";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@store/Store";
+import HeaderTeacher from "@pages/teacherpage/components/headerteacher/HeaderTeacher";
+import { useEffect } from "react";
+import { GetStudentApi } from "@store/api/StudentApi";
 
 const color = "rgb(34,166,241)";
 
@@ -36,6 +39,12 @@ export default function StudentPage() {
   };
 
   const { student } = useSelector((state: RootState) => state.Student);
+  const dispatch = useDispatch<AppDispatch>();
+  const { id } = useParams();
+  useEffect(() => {
+    if (id == null || id == "") return;
+    dispatch(GetStudentApi(id));
+  }, [student, dispatch, id]);
 
   return (
     <Box mb={100} className={classes.parent}>
@@ -43,7 +52,6 @@ export default function StudentPage() {
         <Text my={20} fz={30} c={"#003EDD"}>
           الطلاب{" "}
         </Text>
-
         <Text my={20} fz={30} c={"white"}>
           هم امل التقدم و مفتاح المستقبل{" "}
         </Text>
@@ -63,31 +71,17 @@ export default function StudentPage() {
             alignItems: "center",
             flexWrap: "wrap",
           }}>
-          <Box display={"flex"} style={{ alignItems: "center", gap: "1rem" }}>
-            <Box className={classes.containerImage} h={100} w={100}>
-              <img
-                src={
-                  student?.user.fileUploads.url
-                    ? student?.user.fileUploads.url
-                    : image
-                }
-                width={"150px"}
-                height={"100%"}
-                alt=""
-              />
-            </Box>
-
-            <Box>
-              <Text fw={700} fz={18} c={color}>
-                {student
-                  ? student.user.firstName + " " + student.user.lastName
-                  : ""}
-              </Text>
-              <Text fz={15} fw={400} mt={8}>
-                {student?.user.gender === "male" ? "طالب" : "طالبه"}
-              </Text>
-            </Box>
-          </Box>
+          <HeaderTeacher
+            name={student?.user.firstName + " " + student?.user.lastName}
+            image={
+              student?.user.fileUploads.url
+                ? student?.user.fileUploads.url
+                : image
+            }
+            subject={student?.user.gender === "male" ? "طالب" : "طالبه"}
+            publicId={student?.user?.fileUploads?.publicId || ""}
+            userId={student?.user?.id || ""}
+          />
 
           <Box
             className={classes.numberOfCourses}
@@ -104,7 +98,7 @@ export default function StudentPage() {
             />
             <Text fz={17}>الكورسات المسجل بها :</Text>
             <Text mr={10} fz={25} fw={700} c={color}>
-              6
+              0
             </Text>
           </Box>
         </Box>
@@ -132,6 +126,7 @@ export default function StudentPage() {
               type="text"
               id="firstName"
               name="firstName"
+              value={student?.user.firstName}
               placeholder="اسمك الاول"
               className={classes.inputFiled}
             />
@@ -155,6 +150,7 @@ export default function StudentPage() {
               type="text"
               id="secondName"
               name="secondName"
+              value={student?.user.lastName}
               placeholder="اسمك الثاني"
               className={classes.inputFiled}
             />
@@ -194,10 +190,9 @@ export default function StudentPage() {
               id="class"
               name="class"
               className={classes.inputFiledSelect}>
-              <option defaultValue="year" disabled hidden>
-                صفك
+              <option value={`${student?.year.id}`}>
+                {student?.year.name}
               </option>
-              <option value="1">1</option>
             </Input>
           </Box>
 
@@ -231,10 +226,9 @@ export default function StudentPage() {
               id="department"
               name="department"
               className={classes.inputFiledSelect}>
-              <option value="spelization" disabled hidden>
-                تخصصك
+              <option value={`${student?.specialization}`}>
+                {student?.specialization}
               </option>
-              <option value="1">1</option>
             </Input>
           </Box>
         </Box>
@@ -296,8 +290,6 @@ export default function StudentPage() {
           mt={50}
           className={classes.containerStudentDate}
           style={{ justifyContent: "space-between" }}>
-
-
           <Box>
             <Box>
               <Box display={"flex"} style={{ alignItems: "center" }}>

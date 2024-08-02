@@ -7,8 +7,7 @@ import {
   SimpleGrid,
   Box,
 } from "@mantine/core";
-import image from "@assets/404 Error-pana.svg";
-import imageTwo from "@assets/404 Error-pana.svg";
+import image from "@assets/404 Error-pana.png";
 
 import classes from "./ErrorPage.module.css";
 import { Link } from "react-router-dom";
@@ -46,7 +45,7 @@ export default function ErrorPage() {
               </Link>
             </Button>
           </div>
-          <Image src={imageTwo} className={classes.desktopImage} />
+          <Image src={image} className={classes.desktopImage} />
         </SimpleGrid>
       </Container>
 

@@ -14,11 +14,6 @@ export default function HeaderLesson({
 }) {
   return (
     <div className={Styles.parent}>
-      {/* <p>{name}</p> */}
-      {/* <div className={Styles.conInfo}> */}
-      {/* <img src={img} alt="" /> */}
-      {/* <span>{title}</span> */}
-
       <Box
         className={Styles.numberOfCourses}
         display={"flex"}
@@ -34,7 +29,6 @@ export default function HeaderLesson({
           display={"grid"}
           style={{
             borderRadius: "15px",
-            // alignContent:"center"
           }}
           bg={"rgba(198, 215, 255, 1)"}
         >

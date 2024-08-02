@@ -18,8 +18,8 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: black;
   padding: 10px;
+  background-color: #f2f2f2;
 }
 
 .teacherInfo {

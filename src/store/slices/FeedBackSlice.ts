@@ -20,14 +20,11 @@ const FeedBackSlice = createSlice({
       state.isLoading = action.payload.loading;
       state.isSubmitted = action.payload.submit;
     },
-    removeFeedback: (state, action) => {
-
-    },
     getFeedbacks: (state, action) => {
       state.feedbacks = action.payload;
     },
   },
 });
 
-export const { addFeedback, removeFeedback, getFeedbacks } = FeedBackSlice.actions;
+export const { addFeedback, getFeedbacks } = FeedBackSlice.actions;
 export default FeedBackSlice.reducer;

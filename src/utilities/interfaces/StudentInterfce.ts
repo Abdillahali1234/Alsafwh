@@ -1,10 +1,10 @@
-import { IFile, IUser } from "./PublicInterfce";
+import { IFile, IUser, IYear } from "./PublicInterfce";
 
 export interface IStudent {
-  Year: "FirstYear" | "SecondYear" | "ThirdYear";
   file: IFile | null;
   location: string;
   specialization: string;
   user: IUser;
   fatherPhone: string;
+  year:IYear
 }

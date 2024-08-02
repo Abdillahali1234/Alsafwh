@@ -12,15 +12,17 @@ import { AppDispatch, RootState } from "@store/Store";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { LogOut } from "@store/api/AuthApi";
+import { PiStudentFill } from "react-icons/pi";
 
 export default function MenuCom({ img }: { img: string }) {
   const { AuthModel } = useSelector((state: RootState) => state.Auth);
   const { student } = useSelector((state: RootState) => state.Student);
   const dispatch = useDispatch<AppDispatch>();
+
   const navigate = useNavigate();
   const handleLogout = () => {
     console.log("enter");
-    
+
     Swal.fire({
       title: "تسجيل الخروج",
       text: "هل تريد تسحيل الخروج!",
@@ -46,14 +48,18 @@ export default function MenuCom({ img }: { img: string }) {
       <Menu.Target>
         <div className={Styles.conImg}>
           <img
-            src={student?.user.fileUploads ? student.user.fileUploads.url : img}
+            src={
+              student && student?.user.fileUploads != undefined
+                ? student?.user.fileUploads.url
+                : img
+            }
             alt=""
           />
         </div>
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Label>Application</Menu.Label>
+        <Menu.Label>الصفوه</Menu.Label>
         <Menu.Item
           leftSection={
             <IconSettings style={{ width: rem(14), height: rem(14) }} />
@@ -74,7 +80,17 @@ export default function MenuCom({ img }: { img: string }) {
           leftSection={
             <IconPhoto style={{ width: rem(14), height: rem(14) }} />
           }>
-          Gallery
+          الصور
+        </Menu.Item>
+        <Menu.Item
+          leftSection={
+            <PiStudentFill style={{ width: rem(14), height: rem(14) }} />
+          }>
+          <Link
+            to={`/courses-student/${AuthModel?.userId}`}
+            className={Styles.LinkStyle}>
+            الكورسات
+          </Link>
         </Menu.Item>
 
         <Menu.Divider />
@@ -91,8 +107,6 @@ export default function MenuCom({ img }: { img: string }) {
         <Menu.Item
           color="red"
           onClick={() => {
-            console.log("clicked");
-            
             handleLogout();
           }}
           leftSection={

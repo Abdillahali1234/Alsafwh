@@ -75,7 +75,7 @@ export default function LoginUser() {
             ليس لديك حساب ؟
             <Link
               style={{ color: "#408fff", marginRight: "5px" }}
-              to={"/signin-user"}>
+              to={"/signin"}>
               انشاء حساب
             </Link>
           </Text>

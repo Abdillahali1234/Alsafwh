@@ -12,8 +12,8 @@
   margin: auto;
 }
 
-.headerDark{
-  background-color: rgb(36,36,36);
+.headerDark {
+  background-color: rgb(36, 36, 36);
   padding: 20px 10px;
   width: 90%;
   border-radius: 10px;
@@ -27,16 +27,21 @@
   color: white;
 }
 
-.conSearch {
+.conSearch,
+.DeleteButton {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: rgb(9, 52, 145);
-  width: 50px;
-  height: 50px;
-  padding: 15px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   color: white;
+  cursor: pointer;
+}
+.DeleteButton {
+  border: none;
+  background-color: rgb(179, 37, 37);
 }
 .formStyle > div {
   display: flex;
@@ -71,8 +76,7 @@
   box-shadow: #3788fa51 0px 4px 12px;
 }
 
-
-@media (max-width:1170px) {
+@media (max-width: 1170px) {
   .formStyle {
     display: flex;
     flex-wrap: wrap;
@@ -81,12 +85,10 @@
     gap: 1rem;
     width: 70%;
   }
-  
 }
 
-
 @media (max-width: 1087px) {
-  .conSearch {
+  .conSearch,.DeleteButton {
     width: 40px;
     height: 40px;
     font-size: 14px;
@@ -100,7 +102,7 @@
   }
 }
 @media (max-width: 810px) {
-  .conSearch {
+  .conSearch,.DeleteButton {
     width: 40px;
     height: 40px;
     font-size: 14px;

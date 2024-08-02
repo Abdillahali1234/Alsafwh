@@ -24,12 +24,11 @@ export default function Courses() {
     <>
       <Box>
         <Text mt={150} fz={30} fw={700} mr={50} mb={70}>
-          أحدث{" "}
+          {" "}
           <span
             style={{ color: "#003EDD", fontSize: "35px", fontWeight: "bold" }}>
             الكورسات
           </span>{" "}
-          إضافة{" "}
         </Text>
       </Box>
 

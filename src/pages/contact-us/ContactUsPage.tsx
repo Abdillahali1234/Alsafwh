@@ -17,7 +17,7 @@ const links = [
   },
   {
     icon: IconBrandFacebook,
-    link: "https://www.facebook.com/your_facebook_handle",
+    link: "https://www.facebook.com/profile.php?id=61560580450930&mibextid=ZbWKwL",
   },
   {
     icon: IconBrandInstagram,

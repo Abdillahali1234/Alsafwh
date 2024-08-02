@@ -33,6 +33,7 @@ import FeedbackCourse from "@pages/feedbackCourse/FeedbackCourse";
 import CoursesForStudent from "@pages/coursesForStudent/CoursesForStudent";
 import ForgetPassword from "@pages/forgetPassword/ForgetPassword";
 import ResetPassword from "@pages/resetPassowrd/ResetPassword";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function AppRouter() {
   const { IsConfirmed, AuthModel } = useSelector(
@@ -66,7 +67,7 @@ export default function AppRouter() {
           element: <AboutUs />,
         },
         {
-          path: "/single-course",
+          path: "/single-course/:id",
           element: <SingleCourse />,
         },
         {
@@ -75,14 +76,18 @@ export default function AppRouter() {
         },
         {
           path: "/student-page/:StudentId",
-          element: <StudentPage />,
+          element: (
+            <ProtectedRoute requiredRole="Student">
+              <StudentPage />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/all-materials",
           element: <AllMaterials />,
         },
         {
-          path: "/single-material",
+          path: "/single-material/:id",
           element: <SingleMaterial />,
         },
         {
@@ -90,8 +95,13 @@ export default function AppRouter() {
           element: <ContactUsPage />,
         },
         {
-          path: "/teacher-profile",
-          element: <TeacherPage />,
+          path: "/teacher-profile/:id",
+          element: (
+            <ProtectedRoute requiredRole="Teacher">
+              {" "}
+              <TeacherPage />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/teacher-courses",
@@ -142,13 +152,13 @@ export default function AppRouter() {
           element: <FeedbackCourse />,
         },
         {
-          path: "/courses-student",
+          path: "/courses-student/:id",
           element: <CoursesForStudent />,
         },
       ],
     },
   ]);
-//comment
+  //comment
   return (
     <MantineProvider>
       <RouterProvider router={router}></RouterProvider>

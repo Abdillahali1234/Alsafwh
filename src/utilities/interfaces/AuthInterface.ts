@@ -1,5 +1,5 @@
 export interface IStudentRegister {
-  Year: "FirstYear" | "SecondYear" | "ThirdYear";
+  YearId: string;
   ImgIdentity: File | null;
   Location: string;
   Email: string;
@@ -10,7 +10,7 @@ export interface IStudentRegister {
   LastName: string;
   Password: string;
   ConfirmPassword: string;
-  Specialization: "literary" | "Mathematical" | "scientific" | "";
+  Specialization: string;
   Gender: "male" | "female";
 }
 

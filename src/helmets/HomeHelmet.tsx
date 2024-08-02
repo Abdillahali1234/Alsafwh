@@ -4,7 +4,7 @@ export default function HomeHelmet() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Alsafwh</title>
+        <title>الصفوه</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
     </HelmetProvider>

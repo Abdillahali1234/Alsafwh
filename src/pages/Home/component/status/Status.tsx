@@ -1,11 +1,10 @@
 import { Box, Text } from "@mantine/core";
 import classes from "./Status.module.css";
-import image from "@assets/Alsafwa/Mathematics-bro.png";
-import imageEnglish from "@assets/Alsafwa/English teacher-bro.png";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 
 import { IconCertificate, IconPlus, IconSchool } from "@tabler/icons-react";
 import Button from "@shared/Button/Button";
+import AllSubjects from "../subjects/AllSubjects";
 
 export default function Status() {
   return (
@@ -22,8 +21,7 @@ export default function Status() {
             className={classes.titleStatus}
             mt={50}
             display={"flex"}
-            style={{ gap: "2rem", flexWrap: "wrap" }}
-          >
+            style={{ gap: "2rem", flexWrap: "wrap" }}>
             <Box display={"flex"} style={{ alignItems: "start" }}>
               <IconSchool
                 style={{
@@ -100,55 +98,7 @@ export default function Status() {
           <Button route="/all-materials" text="جميع المواد" />
         </Box>
 
-        <Box className={classes.cards}>
-          <Box className={classes.containerOne}>
-            <Box
-              ta={"center"}
-              w={"250px"}
-              h={"150px"}
-              className={classes.styleFirstCard}
-            >
-              <Text>الكيمياء سحر العِلم</Text>
-              <img src={image} width={"150px"} height={"110px"} />
-            </Box>
-
-            <Box
-              ta={"center"}
-              w={"250px"}
-              h={"150px"}
-              className={classes.styleSecondCard}
-            >
-              <Text>الإنجليزية توسع الآفاق</Text>
-              <img src={imageEnglish} width={"150px"} height={"110px"} />
-            </Box>
-          </Box>
-
-          <Box className={classes.containerTwo} mt={-120} mb={120}>
-            <Box
-              ta={"center"}
-              w={"250px"}
-              h={"150px"}
-              className={classes.styleThreeCard}
-            >
-              <Text>الرياضيات عقل الحياة</Text>
-              <img src={image} width={"150px"} height={"110px"} />
-            </Box>
-
-            <Box
-              ta={"center"}
-              w={"250px"}
-              h={"150px"}
-              className={classes.styleFourCard}
-            >
-              <Text>الفيزياء أساس الكون</Text>
-              <img src={image} width={"150px"} height={"110px"} />
-            </Box>
-          </Box>
-
-          <div className={classes.pointOne}></div>
-          <div className={classes.pointTwo}></div>
-          <div className={classes.pointThree}></div>
-        </Box>
+        <AllSubjects />
       </Box>
     </Box>
   );

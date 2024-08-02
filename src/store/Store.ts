@@ -2,11 +2,19 @@ import { configureStore } from "@reduxjs/toolkit";
 import AuthSlice from "./slices/AuthSlice";
 import StudentSlice from "./slices/StudentSlice";
 import FeedBackSlice from "./slices/FeedBackSlice";
+import CourseSlice from "./slices/CourseSlice";
+import SubjectSlice from "./slices/SubjectSlice";
+import TeacherSlice from './slices/TeahcerSlice';
+import YearSlice from "./slices/YearSlice";
 export const Store = configureStore({
   reducer: {
     Auth: AuthSlice,
     Student: StudentSlice,
     FeedBack: FeedBackSlice,
+    Course: CourseSlice,
+    Subject: SubjectSlice,
+    Teacher: TeacherSlice,
+    Year: YearSlice,
   },
 });
 

@@ -35,3 +35,23 @@ export interface IResetPassword {
   password: string;
   confirmPassword: string;
 }
+
+export interface ISubject {
+  description: string;
+  id: string;
+  imgId: string;
+  name: string;
+  fileUploads: IFile;
+}
+
+export interface ITeacher {
+  user: IUser;
+  description: string;
+  yearsofExperience: string;
+  id: number;
+}
+
+export interface IYear {
+  name: string;
+  id: string;
+}

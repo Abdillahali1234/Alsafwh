@@ -51,6 +51,15 @@
   color: white;
 }
 
+.WelcomStyle{
+
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-style: italic;
+  color: #003e8a;
+}
+
 .SearchStyle {
   position: absolute;
   bottom: -33px;

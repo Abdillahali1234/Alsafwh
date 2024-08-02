@@ -12,35 +12,27 @@ import { AppDispatch, RootState } from "@store/Store";
 import { SignInApi } from "@store/api/AuthApi";
 import Spinner from "@shared/spineer/Spinner";
 import Swal from "sweetalert2";
+import { GetAllYears } from "@store/api/YearApi";
 
 const depratmets = [
   {
+    name: "لم اختر شعبه بعد",
+    value: "لم يتم اختيار الشعبه بعد",
+  },
+  {
     name: "ادبي",
-    value: "literary",
+    value: "ادبي",
   },
   {
     name: "علم علوم",
-    value: "scientific",
+    value: "علم علوم",
   },
   {
-    name: " علم رياضه",
-    value: "Mathematical",
+    name: "علم رياضه",
+    value: "علم رياضه",
   },
 ];
-const Years = [
-  {
-    name: "الاول الثانوي",
-    value: "FirstYear",
-  },
-  {
-    name: "الثاني الثانوي",
-    value: "SecondYear",
-  },
-  {
-    name: "الثالث الثانوي",
-    value: "ThirdYear",
-  },
-];
+
 const gender = [
   {
     name: "ذكر",
@@ -70,10 +62,11 @@ export default function SigninUser() {
     Specialization: "",
     Img: null,
     ImgIdentity: null,
-    Year: "ThirdYear",
+    YearId: "",
   };
   const dispatch = useDispatch<AppDispatch>();
   const { IsRegistered } = useSelector((state: RootState) => state.Auth);
+  const { years } = useSelector((state: RootState) => state.Year);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
@@ -92,7 +85,7 @@ export default function SigninUser() {
       formData.append("Gender", values.Gender);
       formData.append("FatherPhone", values.FatherPhone);
       formData.append("Specialization", values.Specialization);
-      formData.append("Year", values.Year);
+      formData.append("YearId", values.YearId);
       if (values.Img && values.ImgIdentity) {
         formData.append("Img", values.Img);
         formData.append("ImgIdentity", values.ImgIdentity);
@@ -118,6 +111,11 @@ export default function SigninUser() {
       });
     }
   }, [IsRegistered]);
+
+  useEffect(() => {
+    dispatch(GetAllYears());
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -223,19 +221,19 @@ export default function SigninUser() {
               <Text c="red">{formik.errors.Location}</Text>
             ) : null}
             <select
-              name="Year"
+              name="YearId"
               onChange={formik.handleChange}
-              value={formik.values.Year}
+              value={formik.values.YearId}
               onBlur={formik.handleBlur}
               className={classes.input}>
-              {Years.map((year) => (
-                <option key={year.value} value={year.value}>
+              {years.map((year) => (
+                <option key={year.id} value={year.id}>
                   {year.name}
                 </option>
               ))}
             </select>
-            {formik.touched.Year && formik.errors.Year ? (
-              <Text c="red">{formik.errors.Year}</Text>
+            {formik.touched.YearId && formik.errors.YearId ? (
+              <Text c="red">{formik.errors.YearId}</Text>
             ) : null}
 
             <select

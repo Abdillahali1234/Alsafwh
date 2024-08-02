@@ -45,7 +45,6 @@ export default function Home() {
         <Status />
         <Teachers />
         <FeedBack />
-
         <Subscription />
       </Box>
     </motion.div>

@@ -1,9 +1,9 @@
 import * as Yup from "yup";
 
 const signUpSchema = Yup.object().shape({
-  Year: Yup.string().required("الصف مطلوب"),
+  YearId: Yup.string().required("الصف مطلوب"),
   ImgIdentity: Yup.mixed().nullable().required("شهادة الميلاد مطلوبة"),
-  Specialization: Yup.string().nullable(),
+  Specialization: Yup.string().required("التخصص مطلوب"),
   Location: Yup.string().required("المكان مطلوب"),
   Gender: Yup.string().nullable(),
   Email: Yup.string()

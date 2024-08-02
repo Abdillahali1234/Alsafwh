@@ -7,7 +7,7 @@
   color: white;
   cursor: pointer;
 }
-.lapelImg {
+.btnsend {
   background: rgb(65, 130, 249);
   outline: none;
   border: 0px;
@@ -15,6 +15,22 @@
   padding: 6px 20px;
   color: white;
   cursor: pointer;
+}
+.lapelImg {
+  background: rgb(65, 130, 249);
+  outline: none;
+  border: 0px;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  bottom: 50px;
+  right: -10px;
 }
 .inputImg {
   display: none;
@@ -24,6 +40,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
 }
 .containerImage {
   display: flex;
