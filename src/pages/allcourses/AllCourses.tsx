@@ -9,7 +9,7 @@ import { AppDispatch, RootState } from "@store/Store";
 import { GetAllCoursesApi, GetCountCoursesApi } from "@store/api/CourseApi";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Take = 4;
+const Take = 6;
 const { parent, NotFoundStyle } = styles;
 
 export default function AllCourses() {
@@ -28,7 +28,6 @@ export default function AllCourses() {
   useEffect(() => {
     dispatch(GetAllCoursesApi(page, Take));
   }, [dispatch, page]);
-
 
   useEffect(() => {
     if (count > 0) {

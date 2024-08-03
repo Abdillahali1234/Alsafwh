@@ -3,6 +3,7 @@ import { Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import {
   getAllCourses,
   getAllCoursesCount,
+  getModernCourses,
   getSingleCourse,
 } from "@store/slices/CourseSlice";
 import { Api } from "@utilities/Api";
@@ -40,6 +41,19 @@ export const GetSingleCourse = (id: string) => {
       dispatch(getSingleCourse(data));
     } catch (error: any) {
       toast.error(error.response.data.message || "حدث خطا اثناء تحميل البينات");
+    }
+  };
+};
+
+export const GetCourseModern = () => {
+  return async (dispatch: Dispatch<PayloadAction<ICourse[]>>) => {
+    try {
+      const { data } = await Api.get(
+        `Course/getAll?page=${1}&take=${4}&sort=true`
+      );
+      dispatch(getModernCourses(data));
+    } catch (error: any) {
+      toast.error(error.response.data.message || "Error in get All Courses");
     }
   };
 };

@@ -1,7 +1,7 @@
 import { ISubject, ITeacher, IYear } from "./PublicInterfce";
 export interface ICourse {
   description: string;
-  evaluation: number;
+  evalution: number;
   id: string;
   imgUrl: string;
   isFree: boolean;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./NewCourses.module.css";
 import person from "@assets/Alsafwa/person.png";
 import personOne from "@assets/Alsafwa/Archaeologist-bro(1).png";
@@ -9,17 +9,12 @@ import secondGirlone from "@assets/Alsafwa/Psychologist-rafiki(1).png";
 import secondPersone from "@assets/Alsafwa/Retrato Corporativo _ Foto para LinkedIn _ Perfil Profissional _ São Paulo_BR.png";
 import secondPersoneOne from "@assets/Alsafwa/Group therapy-bro.png";
 import { Box, Container, Text } from "@mantine/core";
-import {
-  IconClock,
-  IconPointFilled,
-  IconUser,
-} from "@tabler/icons-react";
+import { IconClock, IconPointFilled, IconUser } from "@tabler/icons-react";
 import Button from "@shared/Button/Button";
-export default function NewCourses() {
-  // const computedColorScheme = useComputedColorScheme("light", {
-  //   getInitialValueInEffect: true,
-  // });
 
+import { ICourse } from "@utilities/interfaces/CourseInterface";
+export default function NewCourses({courses}:{courses:ICourse[]}) {
+  
   return (
     <>
       <Box>
@@ -99,7 +94,6 @@ export default function NewCourses() {
                 </Box>
               </Box>
             </Box>
-
             <Box className={classes.styleCard}>
               <Box className={classes.positionImageFirstGirl}>
                 <Box style={{ display: "grid", justifyContent: "center" }}>
@@ -163,7 +157,6 @@ export default function NewCourses() {
                 </Box>
               </Box>
             </Box>
-
             <Box className={classes.styleCard}>
               <Box className={classes.positionImageSecondGirl}>
                 <Box style={{ display: "grid", justifyContent: "center" }}>

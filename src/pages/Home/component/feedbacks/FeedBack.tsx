@@ -2,16 +2,13 @@ import { Container } from "@mantine/core";
 import TitleSection from "@shared/titlesction/TitleSection";
 import styles from "./FeedBack.module.css";
 import person from "@assets/Alsafwa/girl.png";
-import { useEffect, useState } from "react";
 import Button from "@shared/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/Store";
 import { IFeedBack } from "@utilities/interfaces/PublicInterfce";
-import { GetAllFeedbackApi } from "@store/api/FeedBackApi";
+import { useEffect, useState } from "react";
 
 const { parentDiv } = styles;
 
-export default function FeedBack() {
+export default function FeedBack({ feedbacks }: { feedbacks: IFeedBack[] }) {
   const profiles = [
     {
       src: person,
@@ -43,19 +40,22 @@ export default function FeedBack() {
     },
   ];
   const [isFading, setIsFading] = useState(false);
-  const { feedbacks } = useSelector((state: RootState) => state.FeedBack);
+
   const [data, setData] = useState<IFeedBack>(feedbacks[0]);
+
   const handleClick = (feedback: IFeedBack) => {
-    setIsFading(true);
+    setIsFading(true);    
     setTimeout(() => {
       setData(feedback);
       setIsFading(false);
     }, 500);
   };
-  const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
-    dispatch(GetAllFeedbackApi());
-  }, []);
+    if (feedbacks[0] != null) {
+      setData(feedbacks[0]);
+    }
+  }, [feedbacks[0]]);
 
   return (
     <>

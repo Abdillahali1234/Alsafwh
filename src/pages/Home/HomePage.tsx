@@ -15,16 +15,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/Store";
 import { useEffect } from "react";
 import { GetStudentApi } from "@store/api/StudentApi";
+import { GetAllFeedbackApi } from "@store/api/FeedBackApi";
+import { GetCourseModern } from "@store/api/CourseApi";
 export default function Home() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
   const dispatch = useDispatch<AppDispatch>();
   const { AuthModel } = useSelector((state: RootState) => state.Auth);
-
+  const { courseModern } = useSelector((state: RootState) => state.Course);
   useEffect(() => {
     if (!AuthModel?.userId) return;
     dispatch(GetStudentApi(AuthModel.userId));
+  }, []);
+  const { feedbacks } = useSelector((state: RootState) => state.FeedBack);
+
+  useEffect(() => {
+    dispatch(GetAllFeedbackApi());
+    dispatch(GetCourseModern());
   }, []);
 
   return (
@@ -39,12 +47,12 @@ export default function Home() {
         <HomeHelmet />
         <FristSection />
         <SecondeSection />
-        <NewCourses />
+        <NewCourses courses={courseModern} />
         <Announcement />
         <Courses />
         <Status />
         <Teachers />
-        <FeedBack />
+        <FeedBack feedbacks={feedbacks} />
         <Subscription />
       </Box>
     </motion.div>

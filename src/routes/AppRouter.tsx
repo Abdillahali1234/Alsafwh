@@ -34,8 +34,8 @@ import CoursesForStudent from "@pages/coursesForStudent/CoursesForStudent";
 import ForgetPassword from "@pages/forgetPassword/ForgetPassword";
 import ResetPassword from "@pages/resetPassowrd/ResetPassword";
 import ProtectedRoute from "./ProtectedRoute";
-import Subscriptions from "@pages/subscriptions/Subscriptions";
 import { Payment } from "@pages/payment/Payment";
+import SubscriptionsPage from "@pages/subscriptions/SubscriptionsPage";
 
 export default function AppRouter() {
   const { IsConfirmed, AuthModel } = useSelector(
@@ -159,7 +159,7 @@ export default function AppRouter() {
         },
         {
           path: "/subscriptions",
-          element: <Subscriptions />,
+          element: <SubscriptionsPage  />,
         },
         {
           path: "/payment",

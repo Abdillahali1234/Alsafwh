@@ -4,6 +4,7 @@ import TitleSection from "@shared/titlesction/TitleSection";
 // import { classes } from '@pages/Home/component/courses/Courses.module.css';
 import classes from "./Subscription.module.css";
 import { Box } from "@mantine/core";
+import Button from "@shared/Button/Button";
 
 // const { centerCard } = styles;
 export default function Subscription() {
@@ -21,6 +22,7 @@ export default function Subscription() {
           <SubscriptionCard />
         </div>
       </Box>
+      <Button route="/subscriptions" text="جميع الاشتراكات" />
     </Box>
   );
 }

@@ -1,8 +1,7 @@
 import { Box, Container, Text, useComputedColorScheme } from "@mantine/core";
-import React from "react";
 import classes from "./Subscriptions.module.css";
 import SubscriptionCard from "@shared/subscriptioncard/SubscriptionCard";
-export default function Subscriptions() {
+export default function SubscriptionsPage() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
@@ -22,8 +21,7 @@ export default function Subscriptions() {
           }
           p={10}
           pl={15}
-          style={{ borderRadius: "15px" }}
-        >
+          style={{ borderRadius: "15px" }}>
           <ul style={{ listStyle: "inherit", color: "rgba(38, 180, 252, 1)" }}>
             <li>
               <Text
@@ -31,12 +29,11 @@ export default function Subscriptions() {
                 mb={40}
                 c={computedColorScheme == "light" ? "black" : "white"}
                 fz={18}
-                fw={500}
-              >
+                fw={500}>
                 <span style={{ color: "rgba(38, 180, 252, 1)" }}>
                   الاشتراك الشهرى :
                 </span>{" "}
-                اشتراك مدته 30 يوم تحسب من وقت تأكيد الدفع
+                هو الحصول علي محتوي شهر معين
               </Text>
             </li>
             <li>
@@ -45,12 +42,11 @@ export default function Subscriptions() {
                 mb={40}
                 c={computedColorScheme == "light" ? "black" : "white"}
                 fz={18}
-                fw={500}
-              >
+                fw={500}>
                 <span style={{ color: "rgba(38, 180, 252, 1)" }}>
-                  الاشتراك الشهرى :
+                  الاشتراك الفصلي :
                 </span>{" "}
-                اشتراك مدته 30 يوم تحسب من وقت تأكيد الدفع
+                الحصول علي محتوي الفصل بالكامل
               </Text>
             </li>
             <li>
@@ -59,12 +55,12 @@ export default function Subscriptions() {
                 mb={40}
                 c={computedColorScheme == "light" ? "black" : "white"}
                 fz={18}
-                fw={500}
-              >
+                fw={500}>
                 <span style={{ color: "rgba(38, 180, 252, 1)" }}>
-                  الاشتراك الشهرى :
+                  الاشتراك السنوي :
                 </span>{" "}
-                اشتراك مدته 30 يوم تحسب من وقت تأكيد الدفع
+                
+                الحصول علي محتوي السنوي بالكامل
               </Text>
             </li>
           </ul>
