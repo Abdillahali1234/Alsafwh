@@ -41,58 +41,58 @@ export default function Courses() {
         }}>
         <Container>
           <Box className={classes.styleAllCard}>
-            {courses?.length > 0 &&
-              courses.slice(0, 4).map((course) => {
-
-                return (
-                  <Box className={classes.styleCard} key={course.id}>
-                    <Box className={classes.positionImage}>
-                      <Box
-                        style={{ display: "grid", justifyContent: "center" }}>
-                        <Text pb={-100} pt={30} pr={25} fw={600} fz={20}>
-                          {course.title}
-                        </Text>
+            {courses?.length > 0 ? (
+              <>
+                {courses.slice(0, 4).map((course) => {
+                  return (
+                    <Box className={classes.styleCard} key={course.id}>
+                      <Box className={classes.positionImage}>
+                        <Box
+                          style={{ display: "grid", justifyContent: "center" }}>
+                          <Text pb={-100} pt={30} pr={25} fw={600} fz={20}>
+                            {course.title}
+                          </Text>
+                          <img
+                            src={course.imgUrl}
+                            className={classes.positionImageOne}
+                          />
+                        </Box>
                         <img
-                          src={course.imgUrl}
-                          className={classes.positionImageOne}
+                          src={course.teacher.user.fileUploads.url}
+                          className={classes.position_Image}
                         />
                       </Box>
-                      <img
-                        src={course.teacher.user.fileUploads.url}
-                        className={classes.position_Image}
-                      />
-                    </Box>
 
-                    <Box pt={0}>
-                      <Text mb={8} mt={3} fw={700} fz={18}>
-                        {course.subject?.name} ({course?.year.name}){" "}
-                      </Text>
-
-                      <Box
-                        mt={-8}
-                        display={"flex"}
-                        style={{ alignItems: "center" }}>
-                        <IconUser
-                          style={{
-                            width: "15px",
-                            height: "20px",
-                            color: "#828282",
-                            marginLeft: "5px",
-                          }}
-                          stroke={1.5}
-                        />
-                        <Text fz={17}>
-                          {course?.teacher?.user.firstName +
-                            " " +
-                            course?.teacher?.user.lastName}
+                      <Box pt={0}>
+                        <Text mb={8} mt={3} fw={700} fz={18}>
+                          {course.subject?.name} ({course?.year.name}){" "}
                         </Text>
-                      </Box>
-                      <Text fz={11} fw={500}>
-                        {course?.title}
-                      </Text>
-                      <Box>{<Stars num={course.evalution} />}</Box>
 
-                      {/* <Box
+                        <Box
+                          mt={-8}
+                          display={"flex"}
+                          style={{ alignItems: "center" }}>
+                          <IconUser
+                            style={{
+                              width: "15px",
+                              height: "20px",
+                              color: "#828282",
+                              marginLeft: "5px",
+                            }}
+                            stroke={1.5}
+                          />
+                          <Text fz={17}>
+                            {course?.teacher?.user.firstName +
+                              " " +
+                              course?.teacher?.user.lastName}
+                          </Text>
+                        </Box>
+                        <Text fz={11} fw={500}>
+                          {course?.title}
+                        </Text>
+                        <Box>{<Stars num={course.evalution} />}</Box>
+
+                        {/* <Box
                         pt={5}
                         pl={10}
                         display={"flex"}
@@ -111,10 +111,16 @@ export default function Courses() {
                         </Box>
 
                       </Box> */}
+                      </Box>
                     </Box>
-                  </Box>
-                );
-              })}
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                <p>لا توجد داتا لعرض</p>
+              </>
+            )}
           </Box>
         </Container>
       </Box>
