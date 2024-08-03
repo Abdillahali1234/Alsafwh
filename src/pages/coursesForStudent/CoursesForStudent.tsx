@@ -1,21 +1,14 @@
-import {
-  Box,
-  Container,
-  Divider,
-  Slider,
-  Text,
-  useComputedColorScheme,
-} from "@mantine/core";
+import { Box, Container, Text, useComputedColorScheme } from "@mantine/core";
 import classes from "./CoursesForStudent.module.css";
 import { IconSchool } from "@tabler/icons-react";
-import image from "@assets/Alsafwa/RetratoTwo.png";
-import imageCourse from "@assets/Alsafwa/Archaeologist-bro(1).png";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/Store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GetCoursesToStudentApi } from "@store/api/StudentApi";
 import { toast } from "react-toastify";
+import CourseCardStudent from "./coursecardstudent/CourseCardStudent";
+import PaginationCom from "@shared/Pagination/PaginationCom";
 
 const color = "rgb(34,166,241)";
 
@@ -30,6 +23,9 @@ export default function CoursesForStudent() {
     (state: RootState) => state.Student
   );
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
+
   const { id } = useParams();
   useEffect(() => {
     if (id != student?.user.id) {
@@ -37,9 +33,17 @@ export default function CoursesForStudent() {
       return;
     }
     if (id !== null && id) {
+      console.log("enter");
       dispatch(GetCoursesToStudentApi(id));
     }
-  }, [id, dispatch, student, studentCourses]);
+  }, [id, dispatch, student]);
+
+  const indexOfLastCourse = currentPage * itemsPerPage;
+  const indexOfFirstCourse = indexOfLastCourse - itemsPerPage;
+  const currentCourses = studentCourses.slice(
+    indexOfFirstCourse,
+    indexOfLastCourse
+  );
 
   return (
     <Box mb={100} className={classes.parent}>
@@ -65,26 +69,23 @@ export default function CoursesForStudent() {
           <Box
             display={"grid"}
             style={{
-              // justifyContent: "",
               gap: "2rem",
               alignItems: "center",
               flexWrap: "wrap",
             }}>
             <Box display={"flex"} style={{ alignItems: "center", gap: "1rem" }}>
               <Box className={classes.containerImage} h={100} w={100}>
-                <img src={image} width={"150px"} height={"100%"} alt="" />
+                <img src={student?.user.fileUploads.url} alt="" />
               </Box>
-
               <Box>
                 <Text fw={700} fz={18} c={color}>
-                  احمد كامل
+                  {student?.user.firstName + " " + student?.user.lastName}
                 </Text>
                 <Text fz={15} fw={400} mt={8}>
-                  طالب
+                  {student?.user.gender === "male" ? "طالب" : "طالبه"}
                 </Text>
               </Box>
             </Box>
-
             <Box
               className={classes.numberOfCourses}
               display={"flex"}
@@ -100,138 +101,16 @@ export default function CoursesForStudent() {
               />
               <Text fz={17}>الكورسات المسجل بها :</Text>
               <Text mr={10} fz={25} fw={700} c={color}>
-                {CoursesForStudent.length}
+                {studentCourses.length}
               </Text>
             </Box>
           </Box>
         </Box>
         {studentCourses.length > 0 ? (
           <>
-            {" "}
-            <Box mt={30}>
-              <Box
-                p={20}
-                className={classes.courseCard}
-                bg={computedColorScheme == "light" ? "" : "rgb(41,41,42)"}>
-                <Box bg={"rgba(118, 84, 182, 1)"} h={"fit-content"}>
-                  <img
-                    src={imageCourse}
-                    alt=""
-                    height={"100px"}
-                    width={"100px"}
-                  />
-                </Box>
-
-                <Box className={classes.withSlider}>
-                  <Text mb={10} fz={15} fw={400}>
-                    ماده التاريخ
-                  </Text>
-                  <Text mb={10} c={color} fw={700} fz={19}>
-                    التاريخ اعرف ماضيك
-                  </Text>
-                  <Box
-                    display={"flex"}
-                    style={{ alignItems: "center", gap: "5px" }}>
-                    <Slider
-                      defaultValue={18}
-                      disabled
-                      w={"100%"}
-                      styles={{
-                        bar: { backgroundColor: "rgba(0, 208, 121, 1)" },
-                      }}
-                    />
-                    <Text fz={15} fw={400}>
-                      18%
-                    </Text>
-                  </Box>
-                  <Text fz={15} fw={400}>
-                    التقدم الكلى
-                  </Text>
-                </Box>
-
-                <Box display={"flex"}>
-                  <Divider orientation="vertical" className={classes.divider} />
-                  <Box className={classes.endContainer}>
-                    <Text fz={15} fw={700} mb={10}>
-                      التالي
-                    </Text>
-                    <Text fw={500} c={color} mb={10}>
-                      فيديو تعريفى عن التاريخ
-                    </Text>
-                    <Text fw={300} fz={14} mb={10}>
-                      الدرس الرابع | فيديو . 4 دقايق
-                    </Text>
-                    <Box mt={15}>
-                      <Link to={"/content-course"} className={classes.btnLearn}>
-                        تابع التعلم
-                      </Link>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-            <Box mt={30}>
-              <Box
-                p={20}
-                className={classes.courseCard}
-                bg={computedColorScheme == "light" ? "" : "rgb(41,41,42)"}>
-                <Box bg={"rgba(118, 84, 182, 1)"} h={"fit-content"}>
-                  <img
-                    src={imageCourse}
-                    alt=""
-                    height={"100px"}
-                    width={"100px"}
-                  />
-                </Box>
-
-                <Box className={classes.withSlider}>
-                  <Text mb={10} fz={15} fw={400}>
-                    ماده التاريخ
-                  </Text>
-                  <Text mb={10} c={color} fw={700} fz={19}>
-                    التاريخ اعرف ماضيك
-                  </Text>
-                  <Box
-                    display={"flex"}
-                    style={{ alignItems: "center", gap: "5px" }}>
-                    <Slider
-                      defaultValue={18}
-                      disabled
-                      w={"100%"}
-                      styles={{
-                        bar: { backgroundColor: "rgba(0, 208, 121, 1)" },
-                      }}
-                    />
-                    <Text fz={15} fw={400}>
-                      18%
-                    </Text>
-                  </Box>
-                  <Text fz={15} fw={400}>
-                    التقدم الكلى
-                  </Text>
-                </Box>
-
-                <Box display={"flex"}>
-                  <Divider orientation="vertical" className={classes.divider} />
-                  <Box className={classes.endContainer}>
-                    <Text fz={15} fw={700} mb={10}>
-                      التالي
-                    </Text>
-                    <Text fw={500} c={color} mb={10}>
-                      فيديو تعريفى عن التاريخ
-                    </Text>
-                    <Text fw={300} fz={14} mb={10}>
-                      الدرس الرابع | فيديو . 4 دقايق
-                    </Text>
-                    <Box mt={15}>
-                      <Link to={"/content-course"} className={classes.btnLearn}>
-                        تابع التعلم
-                      </Link>
-                    </Box>{" "}
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
+            {currentCourses.map((course) => (
+              <CourseCardStudent key={course.id} course={course} />
+            ))}
           </>
         ) : (
           <div
@@ -244,9 +123,20 @@ export default function CoursesForStudent() {
           </div>
         )}
 
-        {/* <Box display={"flex"} style={{justifyContent:"center"}} mt={50} mb={10}>
-          <Pagination total={5} size={"md"} />
-        </Box> */}
+        {studentCourses.length > 0 && (
+          <Box
+            display={"flex"}
+            style={{ justifyContent: "center" }}
+            mt={50}
+            mb={10}>
+            <PaginationCom
+              length={studentCourses.length}
+              SetPage={setCurrentPage}
+              page={currentPage}
+              Take={itemsPerPage}
+            />
+          </Box>
+        )}
       </Container>
     </Box>
   );

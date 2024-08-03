@@ -4,8 +4,9 @@ import StudentSlice from "./slices/StudentSlice";
 import FeedBackSlice from "./slices/FeedBackSlice";
 import CourseSlice from "./slices/CourseSlice";
 import SubjectSlice from "./slices/SubjectSlice";
-import TeacherSlice from './slices/TeahcerSlice';
+import TeacherSlice from "./slices/TeahcerSlice";
 import YearSlice from "./slices/YearSlice";
+import LessonSlice from "./slices/LessonSlice";
 export const Store = configureStore({
   reducer: {
     Auth: AuthSlice,
@@ -15,6 +16,7 @@ export const Store = configureStore({
     Subject: SubjectSlice,
     Teacher: TeacherSlice,
     Year: YearSlice,
+    Lesson: LessonSlice,
   },
 });
 

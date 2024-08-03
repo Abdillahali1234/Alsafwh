@@ -16,34 +16,28 @@ import {
   IconSettings,
   IconStarFilled,
 } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import examImage from "@assets/exambg.png";
-import { Link } from "react-router-dom";
-// import imagePerson from "@assets/Alsafwa/RetratoTwo.png";
+import { Link, useParams } from "react-router-dom";
 import Comments from "./comment/Comments";
+import { useDispatch} from "react-redux";
+import { AppDispatch } from "@store/Store";
+import { GetLessonsStudentApi } from "@store/api/LessionApi";
+const iconStyle = { width: rem(12), height: rem(12) };
+const examTap = ["امتحان 1", "امتحان 2", "امتحان 3"];
 
 export default function ContentCourse() {
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
-
-  const iconStyle = { width: rem(12), height: rem(12) };
-
-  // const comments = [
-  //   {
-  //     id: 1,
-  //     name: "احمد ماهر",
-  //     comment: "أريد ان اسأل سؤال : هل التاريخ يمكن التحريف فيه حقا ؟",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "احمد ماهر",
-  //     comment: "أريد ان اسأل سؤال : هل التاريخ يمكن التحريف فيه حقا ؟",
-  //   },
-  // ];
-
-  const examTap = ["امتحان 1", "امتحان 2", "امتحان 3"];
+  const { CourseId } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
+  // const {}=useSelector((state:RootState)=>state.Lesson)
+  useEffect(() => {
+    if (!CourseId) return;
+    dispatch(GetLessonsStudentApi(CourseId));
+  }, [CourseId, dispatch]);
 
   const doors = [
     {
@@ -58,26 +52,22 @@ export default function ContentCourse() {
           <Tabs.List>
             <Tabs.Tab
               value="gallery"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               ملاحظات
             </Tabs.Tab>
             <Tabs.Tab
               value="messages"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               مراجع{" "}
             </Tabs.Tab>
             <Tabs.Tab
               value="settings"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               امتحان ({examTap.length})
             </Tabs.Tab>
             <Tabs.Tab
               value="comment"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               التعليقات{" "}
             </Tabs.Tab>
           </Tabs.List>
@@ -86,8 +76,7 @@ export default function ContentCourse() {
             className={classes.styleTabsPanel}
             py={15}
             pr={15}
-            value="gallery"
-          >
+            value="gallery">
             التاريخ
           </Tabs.Panel>
 
@@ -124,26 +113,22 @@ export default function ContentCourse() {
           <Tabs.List>
             <Tabs.Tab
               value="gallery"
-              leftSection={<IconPhoto style={iconStyle} />}
-            >
+              leftSection={<IconPhoto style={iconStyle} />}>
               Gallery2
             </Tabs.Tab>
             <Tabs.Tab
               value="messages"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               Messages2
             </Tabs.Tab>
             <Tabs.Tab
               value="settings"
-              leftSection={<IconSettings style={iconStyle} />}
-            >
+              leftSection={<IconSettings style={iconStyle} />}>
               Settings2
             </Tabs.Tab>
             <Tabs.Tab
               value="comment"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               التعليقات{" "}
             </Tabs.Tab>
           </Tabs.List>
@@ -176,26 +161,22 @@ export default function ContentCourse() {
           <Tabs.List>
             <Tabs.Tab
               value="gallery"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               ملاحظات
             </Tabs.Tab>
             <Tabs.Tab
               value="messages"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               مراجع{" "}
             </Tabs.Tab>
             <Tabs.Tab
               value="settings"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               امتحان ({examTap.length})
             </Tabs.Tab>
             <Tabs.Tab
               value="comment"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               التعليقات{" "}
             </Tabs.Tab>
           </Tabs.List>
@@ -204,8 +185,7 @@ export default function ContentCourse() {
             className={classes.styleTabsPanel}
             py={15}
             pr={15}
-            value="gallery"
-          >
+            value="gallery">
             التاريخ
           </Tabs.Panel>
 
@@ -242,26 +222,22 @@ export default function ContentCourse() {
           <Tabs.List>
             <Tabs.Tab
               value="gallery"
-              leftSection={<IconPhoto style={iconStyle} />}
-            >
+              leftSection={<IconPhoto style={iconStyle} />}>
               Gallery4
             </Tabs.Tab>
             <Tabs.Tab
               value="messages"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               Messages4
             </Tabs.Tab>
             <Tabs.Tab
               value="settings"
-              leftSection={<IconSettings style={iconStyle} />}
-            >
+              leftSection={<IconSettings style={iconStyle} />}>
               Settings4
             </Tabs.Tab>
             <Tabs.Tab
               value="comment"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               التعليقات{" "}
             </Tabs.Tab>
           </Tabs.List>
@@ -294,26 +270,22 @@ export default function ContentCourse() {
           <Tabs.List>
             <Tabs.Tab
               value="gallery"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               ملاحظات
             </Tabs.Tab>
             <Tabs.Tab
               value="messages"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               مراجع{" "}
             </Tabs.Tab>
             <Tabs.Tab
               value="settings"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               امتحان ({examTap.length})
             </Tabs.Tab>
             <Tabs.Tab
               value="comment"
-              leftSection={<IconMessageCircle style={iconStyle} />}
-            >
+              leftSection={<IconMessageCircle style={iconStyle} />}>
               التعليقات{" "}
             </Tabs.Tab>
           </Tabs.List>
@@ -322,8 +294,7 @@ export default function ContentCourse() {
             className={classes.styleTabsPanel}
             py={15}
             pr={15}
-            value="gallery"
-          >
+            value="gallery">
             التاريخ
           </Tabs.Panel>
 
@@ -363,8 +334,7 @@ export default function ContentCourse() {
               justifyContent: "space-between",
               flexWrap: "wrap",
               gap: "5px",
-            }}
-          >
+            }}>
             <Text c={"rgba(34, 166, 241, 1)"} fw={700} fz={20}>
               عدد الأسئلة : 6 اسئلة
             </Text>
@@ -421,13 +391,11 @@ export default function ContentCourse() {
         setActive(index);
       }}
       my={20}
-      className={classes.container}
-    >
+      className={classes.container}>
       <Text
         style={{ border: "2px solid", borderRadius: "50px" }}
         py={1}
-        px={10}
-      >
+        px={10}>
         {item.id}
       </Text>
       <Text fw={500} fz={15}>
@@ -454,32 +422,39 @@ export default function ContentCourse() {
             : classes.bgLessonDark
         }
         display={"grid"}
-
-        style={{ borderLeft: "1px solid rgba(0, 0, 0, 0.3)" , alignContent:"space-between"}}
-      >
-        <Box style={{alignContent:"space-between"}} className={classes.containerLesson}>
+        style={{
+          borderLeft: "1px solid rgba(0, 0, 0, 0.3)",
+          alignContent: "space-between",
+        }}>
+        <Box
+          style={{ alignContent: "space-between" }}
+          className={classes.containerLesson}>
           <Box>
-        <Text mb={50} ta={"center"} fz={20} fw={700}>
-          مادة التاريخ{" "}
-        </Text>
+            <Text mb={50} ta={"center"} fz={20} fw={700}>
+              مادة التاريخ{" "}
+            </Text>
 
-          {door}
+            {door}
           </Box>
-
         </Box>
-          <Box  ta={"center"}>
-            <Text c={"gold"} fw={700} fz={50}>3.0</Text>
-            <Box  mb={20} display={"flex"} style={{gap:"4px"  , justifyContent:"center"}}>
-              <IconStarFilled style={{color:"gold"}}/>
-              <IconStarFilled style={{color:"gold"}}/>
-              <IconStarFilled style={{color:"gold"}}/>
-              <IconStarFilled style={{color:"rgba(203, 203, 203, 1)"}}/>
-              <IconStarFilled style={{color:"rgba(203, 203, 203, 1)"}}/>
-            </Box>
-            <Link to={"/feedback-course"} className={classes.evaluationBtn}>
-              لتقييم الكورس
-            </Link>
+        <Box ta={"center"}>
+          <Text c={"gold"} fw={700} fz={50}>
+            3.0
+          </Text>
+          <Box
+            mb={20}
+            display={"flex"}
+            style={{ gap: "4px", justifyContent: "center" }}>
+            <IconStarFilled style={{ color: "gold" }} />
+            <IconStarFilled style={{ color: "gold" }} />
+            <IconStarFilled style={{ color: "gold" }} />
+            <IconStarFilled style={{ color: "rgba(203, 203, 203, 1)" }} />
+            <IconStarFilled style={{ color: "rgba(203, 203, 203, 1)" }} />
           </Box>
+          <Link to={"/feedback-course"} className={classes.evaluationBtn}>
+            لتقييم الكورس
+          </Link>
+        </Box>
       </Box>
 
       <Box
@@ -499,8 +474,7 @@ export default function ContentCourse() {
         <Box
           mb={10}
           display={"flex"}
-          style={{ justifyContent: "space-between" }}
-        >
+          style={{ justifyContent: "space-between" }}>
           <Box display={"flex"} style={{ gap: "0.5rem" }}>
             <Text fz={20} c={"blue"}>
               {id}
@@ -511,8 +485,7 @@ export default function ContentCourse() {
                 computedColorScheme == "light"
                   ? classes.titleLight
                   : classes.titleDark
-              }
-            >
+              }>
               {title}
             </Text>
           </Box>
@@ -540,15 +513,13 @@ export default function ContentCourse() {
             pb={15}
             bg={"rgba(34, 166, 241, 0.1)"}
             style={{ borderRadius: "10px" }}
-            className={classes.teacherData}
-          >
+            className={classes.teacherData}>
             <Text ta={"center"} mb={10} fz={15} fw={700}>
               عن المعلم
             </Text>
             <Box
               display={"flex"}
-              style={{ justifyContent: "center", alignItems: "center" }}
-            >
+              style={{ justifyContent: "center", alignItems: "center" }}>
               <Box mt={5} className={classes.containerImageEmail} h={70} w={70}>
                 <img src={image} width={"150px"} height={"100%"} alt="" />
               </Box>
@@ -557,8 +528,7 @@ export default function ContentCourse() {
                   fz={14}
                   ta={"center"}
                   fw={700}
-                  c={"rgba(34, 166, 241, 1)"}
-                >
+                  c={"rgba(34, 166, 241, 1)"}>
                   أحمد كامل
                 </Text>
                 <Text fz={13} ta={"center"} fw={700}>

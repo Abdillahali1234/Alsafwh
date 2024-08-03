@@ -55,3 +55,9 @@ export interface IYear {
   name: string;
   id: string;
 }
+
+export interface ILesson {
+
+
+  
+}

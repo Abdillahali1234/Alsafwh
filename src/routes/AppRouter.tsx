@@ -110,8 +110,12 @@ export default function AppRouter() {
           element: <TeacherCourses />,
         },
         {
-          path: "/content-course",
-          element: <ContentCourse />,
+          path: "/content-course/:CourseId",
+          element: (
+            <ProtectedRoute requiredRole="Student">
+              <ContentCourse />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/all-feedback",
@@ -159,7 +163,7 @@ export default function AppRouter() {
         },
         {
           path: "/subscriptions",
-          element: <SubscriptionsPage  />,
+          element: <SubscriptionsPage />,
         },
         {
           path: "/payment",

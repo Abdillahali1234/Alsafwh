@@ -21,7 +21,6 @@ export default function MenuCom({ img }: { img: string }) {
 
   const navigate = useNavigate();
   const handleLogout = () => {
-    console.log("enter");
 
     Swal.fire({
       title: "تسجيل الخروج",
@@ -40,6 +39,7 @@ export default function MenuCom({ img }: { img: string }) {
     });
   };
 
+  
   return (
     <Menu
       shadow="md"
